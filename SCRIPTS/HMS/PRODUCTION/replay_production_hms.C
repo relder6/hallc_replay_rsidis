@@ -16,7 +16,8 @@ void replay_production_hms(Int_t RunNumber=0, Int_t MaxEvent=0) {
   }
 
   // Create file name patterns.
-  const char* RunFileNamePattern = "hms_all_%05d.dat";
+  //  const char* RunFileNamePattern = "hms_all_%05d.dat.0";
+  const char* RunFileNamePattern = "lad_Production_%05d.dat.0";
   vector<TString> pathList;
   pathList.push_back(".");
   pathList.push_back("./raw");
@@ -50,10 +51,15 @@ void replay_production_hms(Int_t RunNumber=0, Int_t MaxEvent=0) {
   // Add trigger detector to trigger apparatus
   THcTrigDet* hms = new THcTrigDet("hms", "HMS Trigger Information");
   TRG->AddDetector(hms);
-
+  //Ignore these events
+  hms->SetEvtType(1);
+  
   // Set up the equipment to be analyzed.
   THcHallCSpectrometer* HMS = new THcHallCSpectrometer("H", "HMS");
   gHaApps->Add(HMS);
+  //Accept these events
+  HMS->SetEvtType(2);
+
   // Add drift chambers to HMS apparatus
   THcDC* dc = new THcDC("dc", "Drift Chambers");
   HMS->AddDetector(dc);
@@ -107,14 +113,12 @@ void replay_production_hms(Int_t RunNumber=0, Int_t MaxEvent=0) {
   hscaler->SetUseFirstEvent(kTRUE);
   gHaEvtHandlers->Add(hscaler);
 
-  /*
   // Add event handler for helicity scalers
   THcHelicityScaler *hhelscaler = new THcHelicityScaler("H", "Hall C helicity scaler");
   //hhelscaler->SetDebugFile("HHelScaler.txt");
   hhelscaler->SetROC(5);
   hhelscaler->SetUseFirstEvent(kTRUE);
   gHaEvtHandlers->Add(hhelscaler);
-  */
   
   // Add event handler for DAQ configuration event
   THcConfigEvtHandler *hconfig = new THcConfigEvtHandler("hconfig", "Hall C configuration event handler");

@@ -29,12 +29,12 @@ TH1F hcal_hC_raw_mult_pos 'HMS hC+ Raw Multiplicity; Number of PMTs Hit; Total N
 TH1F hcal_hD_raw_mult_pos 'HMS hD+ Raw Multiplicity; Number of PMTs Hit; Total Number of Raw +ADC Hits / PMT' H.cal.4ta.totNumPosAdcHits 13 0.5 13.5
 
 # Raw Pulse Pedestals
-TH2F hcal_hA_raw_pped_vs_pmt_pos 'HMS hA+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.1pr.posAdcCounter H.cal.1pr.posAdcPedRaw 13 0.5 13.5 2000 1000 3000
-TH2F hcal_hA_raw_pped_vs_pmt_neg 'HMS hA- Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.1pr.negAdcCounter H.cal.1pr.negAdcPedRaw 13 0.5 13.5 2000 1000 3000
-TH2F hcal_hB_raw_pped_vs_pmt_pos 'HMS hB+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.2ta.posAdcCounter H.cal.2ta.posAdcPedRaw 13 0.5 13.5 2000 1000 3000
-TH2F hcal_hB_raw_pped_vs_pmt_neg 'HMS hB- Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.2ta.negAdcCounter H.cal.2ta.negAdcPedRaw 13 0.5 13.5 2000 1000 3000
-TH2F hcal_hC_raw_pped_vs_pmt_pos 'HMS hC+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.3ta.posAdcCounter H.cal.3ta.posAdcPedRaw 13 0.5 13.5 2000 1000 3000
-TH2F hcal_hD_raw_pped_vs_pmt_pos 'HMS hD+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.4ta.posAdcCounter H.cal.4ta.posAdcPedRaw 13 0.5 13.5 2000 1000 3000
+TH2F hcal_hA_raw_pped_vs_pmt_pos 'HMS hA+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.1pr.posAdcCounter H.cal.1pr.posAdcPedRaw 13 0.5 13.5 3000 0 3000
+TH2F hcal_hA_raw_pped_vs_pmt_neg 'HMS hA- Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.1pr.negAdcCounter H.cal.1pr.negAdcPedRaw 13 0.5 13.5 3000 0 3000
+TH2F hcal_hB_raw_pped_vs_pmt_pos 'HMS hB+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.2ta.posAdcCounter H.cal.2ta.posAdcPedRaw 13 0.5 13.5 3000 0 3000
+TH2F hcal_hB_raw_pped_vs_pmt_neg 'HMS hB- Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.2ta.negAdcCounter H.cal.2ta.negAdcPedRaw 13 0.5 13.5 3000 0 3000
+TH2F hcal_hC_raw_pped_vs_pmt_pos 'HMS hC+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.3ta.posAdcCounter H.cal.3ta.posAdcPedRaw 13 0.5 13.5 3000 0 3000
+TH2F hcal_hD_raw_pped_vs_pmt_pos 'HMS hD+ Raw Pulse Pedestal vs. PMT Number; PMT Number; Raw Pulse Pedestal / 1 ADC Units' H.cal.4ta.posAdcCounter H.cal.4ta.posAdcPedRaw 13 0.5 13.5 3000 0 3000
 
 # Raw Pulse Integrals
 TH2F hcal_hA_raw_pi_vs_pmt_pos 'HMS hA+ Raw Pulse Integral vs. PMT Number; PMT Number; Raw Pulse Integral / 50 ADC Units' H.cal.1pr.posAdcCounter H.cal.1pr.posAdcPulseIntRaw 13 0.5 13.5 650 0 32500
