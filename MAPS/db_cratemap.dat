@@ -1,4 +1,4 @@
-TSROC 1
+TSROC 2
 ==== Crate 1 type vme Bank Decoding
 
 # slot  model   bank
@@ -74,7 +74,11 @@ TSROC 1
 
 ==== Crate 5 type vme Bank Decoding
 # slot  model   bank
-2   4     4
+  2   4     4
+
+==== Crate 8 type vme Bank Decoding
+# slot  model   bank
+  2   4     4
 
 ==== Crate 6 type vme Bank Decoding
 # slot  model   bank

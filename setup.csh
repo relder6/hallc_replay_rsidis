@@ -8,6 +8,7 @@
     #    setenv HCANA /home/cdaq/nps-2023/hcana
     module use /capps/modulefiles
     module load hcana
+    module load panguin    
 
     echo " Setting hcana from: "
     echo $HCANA
