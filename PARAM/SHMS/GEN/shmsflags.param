@@ -25,4 +25,4 @@ p_oopcentral_offset = 0.0
 ; sets ppcentral = ppcentral * ( 1. + ppcentral_offset / 100. )
 ppcentral_offset = -0.4
 
-
+p.present = 1
