@@ -141,15 +141,15 @@ TH2F hhodo_2y_neg_rawptime_vs_pad 'HMS 2Y- Raw Pulse Time vs. Paddle Number; Pad
 # HMS Hodo Raw TDC Time
 #-----------------------------
 
-TH2F hhodo_1x_pos_raw_tdc_time_vs_pad 'HMS 1X+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.1x.posTdcCounter  H.hod.1x.posTdcTimeRaw 16 0.5 16.5 800 0 8000
-TH2F hhodo_1y_pos_raw_tdc_time_vs_pad 'HMS 1Y+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.1y.posTdcCounter  H.hod.1y.posTdcTimeRaw 10 0.5 10.5 800 0 8000
-TH2F hhodo_2x_pos_raw_tdc_time_vs_pad 'HMS 2X+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.2x.posTdcCounter  H.hod.2x.posTdcTimeRaw 16 0.5 16.5 800 0 8000
-TH2F hhodo_2y_pos_raw_tdc_time_vs_pad 'HMS 2Y+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.2y.posTdcCounter  H.hod.2y.posTdcTimeRaw 10 0.5 10.5 800 0 8000
+TH2F hhodo_1x_pos_raw_tdc_time_vs_pad 'HMS 1X+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.1x.posTdcCounter  H.hod.1x.posTdcTimeRaw  16 0.5 16.5 800 0 40000
+TH2F hhodo_1y_pos_raw_tdc_time_vs_pad 'HMS 1Y+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.1y.posTdcCounter  H.hod.1y.posTdcTimeRaw 10 0.5 10.5 800 0 40000
+TH2F hhodo_2x_pos_raw_tdc_time_vs_pad 'HMS 2X+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.2x.posTdcCounter  H.hod.2x.posTdcTimeRaw 16 0.5 16.5 800 0 40000
+TH2F hhodo_2y_pos_raw_tdc_time_vs_pad 'HMS 2Y+ Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.2y.posTdcCounter  H.hod.2y.posTdcTimeRaw 10 0.5 10.5 800 0 40000
 
-TH2F hhodo_1x_neg_raw_tdc_time_vs_pad 'HMS 1X- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.1x.negTdcCounter  H.hod.1x.negTdcTimeRaw 16 0.5 16.5 800 0 8000
-TH2F hhodo_1y_neg_raw_tdc_time_vs_pad 'HMS 1Y- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.1y.negTdcCounter  H.hod.1y.negTdcTimeRaw 10 0.5 10.5 800 0 8000
-TH2F hhodo_2x_neg_raw_tdc_time_vs_pad 'HMS 2X- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.2x.negTdcCounter  H.hod.2x.negTdcTimeRaw 16 0.5 16.5 800 0 8000
-TH2F hhodo_2y_neg_raw_tdc_time_vs_pad 'HMS 2Y- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / 10 ADC Units' H.hod.2y.negTdcCounter  H.hod.2y.negTdcTimeRaw 10 0.5 10.5 800 0 8000
+TH2F hhodo_1x_neg_raw_tdc_time_vs_pad 'HMS 1X- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.1x.negTdcCounter  H.hod.1x.negTdcTimeRaw 16 0.5 16.5 800 0 40000
+TH2F hhodo_1y_neg_raw_tdc_time_vs_pad 'HMS 1Y- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.1y.negTdcCounter  H.hod.1y.negTdcTimeRaw 10 0.5 10.5 800 0 40000
+TH2F hhodo_2x_neg_raw_tdc_time_vs_pad 'HMS 2X- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.2x.negTdcCounter  H.hod.2x.negTdcTimeRaw 16 0.5 16.5 800 0 40000
+TH2F hhodo_2y_neg_raw_tdc_time_vs_pad 'HMS 2Y- Raw TDC Time vs. Paddle Number; Paddle Number; Raw TDC Time / ch' H.hod.2y.negTdcCounter  H.hod.2y.negTdcTimeRaw 10 0.5 10.5 800 0 40000
 
 
 #-------------------------

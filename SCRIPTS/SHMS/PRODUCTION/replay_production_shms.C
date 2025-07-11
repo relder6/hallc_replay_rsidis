@@ -16,7 +16,8 @@ void replay_production_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   }
 
   // Create file name patterns.
-  const char* RunFileNamePattern = "shms_all_%05d.dat";
+  //  const char* RunFileNamePattern = "shms_all_%05d.dat.0";
+  const char* RunFileNamePattern = "lad_Production_%05d.dat.0";  
   vector<TString> pathList;
   pathList.push_back(".");
   pathList.push_back("./raw");
@@ -48,11 +49,16 @@ void replay_production_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   gHaApps->Add(TRG);
   // Add trigger detector to trigger apparatus
   THcTrigDet* shms = new THcTrigDet("shms", "SHMS Trigger Information");
+  //Ignore these events
   TRG->AddDetector(shms);
+  shms->SetEvtType(2);
 
   // Set up the equipment to be analyzed.
   THcHallCSpectrometer* SHMS = new THcHallCSpectrometer("P", "SHMS");
+  //Accept these events
   gHaApps->Add(SHMS);
+  SHMS->SetEvtType(1);
+
   // Add Noble Gas Cherenkov to SHMS apparatus
   THcCherenkov* ngcer = new THcCherenkov("ngcer", "Noble Gas Cherenkov");
   SHMS->AddDetector(ngcer);

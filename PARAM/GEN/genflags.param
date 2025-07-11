@@ -9,4 +9,8 @@
 ; gen_eloss_enable         (0=disabled) total_eloss.f
   gen_eloss_enable = 1
 
-
+;helicity
+helicity_freq = 29.55964838
+helicity_delay = 8
+;scaler reads next H+ and previous qrt
+helicity_CycleOffset = 3
