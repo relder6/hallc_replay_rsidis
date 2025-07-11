@@ -50,13 +50,15 @@ void replay_production_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   // Add trigger detector to trigger apparatus
   THcTrigDet* shms = new THcTrigDet("shms", "SHMS Trigger Information");
   //Ignore these events
-  shms->SetEvtType(2);
   TRG->AddDetector(shms);
+  shms->SetEvtType(2);
+
   // Set up the equipment to be analyzed.
   THcHallCSpectrometer* SHMS = new THcHallCSpectrometer("P", "SHMS");
   //Accept these events
-  SHMS->SetEvtType(1);
   gHaApps->Add(SHMS);
+  SHMS->SetEvtType(1);
+
   // Add Noble Gas Cherenkov to SHMS apparatus
   THcCherenkov* ngcer = new THcCherenkov("ngcer", "Noble Gas Cherenkov");
   SHMS->AddDetector(ngcer);

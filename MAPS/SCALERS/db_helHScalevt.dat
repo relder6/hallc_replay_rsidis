@@ -1,4 +1,4 @@
-map 3801 5 19 00001320 ffffffff 19 8 1000000
+map 3801 5 17  00e00d20 ffffffff 17 8 1000000
 variable 19 0 1 .BCM1_Hel.scaler HMS BCM1 Hel+/-
 variable 19 0 2 .BCM1_Hel.scalerRate HMS BCM1 Hel+/-
 variable 19 0 3 .BCM1_Hel.scalerCurrent HMS BCM1 Hel+/-
