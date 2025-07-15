@@ -16,7 +16,8 @@ void replay_production_hms_coin(Int_t RunNumber=0, Int_t MaxEvent=0, Int_t First
   }
 
   // Create file name patterns.
-  const char* RunFileNamePattern = "coin_all_%05d.dat";
+  // const char* RunFileNamePattern = "coin_all_%05d.dat";
+  const char* RunFileNamePattern = "lad_Production_%05d.dat.0";    
   vector<TString> pathList;
   pathList.push_back(".");
   pathList.push_back("./raw");
