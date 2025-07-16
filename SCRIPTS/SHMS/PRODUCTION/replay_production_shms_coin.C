@@ -167,7 +167,7 @@ void replay_production_shms_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0, Int_t
   // Define output ROOT file
   analyzer->SetOutFile(ROOTFileName.Data());
   // Define DEF-file
-  analyzer->SetOdefFile("DEF-files/SHMS/PRODUCTION/pstackana_production.def");
+  analyzer->SetOdefFile("DEF-files/SHMS/PRODUCTION/pstackana_production_all.def");
   // Define cuts file
   analyzer->SetCutFile("DEF-files/SHMS/PRODUCTION/CUTS/pstackana_production_cuts.def");  // optional
   // File to record accounting information for cuts

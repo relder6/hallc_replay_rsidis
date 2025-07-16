@@ -77,8 +77,8 @@ latestMonRootFile="${monRootDir}/${spec}_coin_production_latest.root"
 latestMonPdfFile="${monPdfDir}/${spec}_coin_production_latest.pdf"
 
 # Where to put log.
-reportFile="${reportFileDir}/replay_${spec}_coin_production_${runNum}_${numEvents}.txt"
-summaryFile="${reportFileDir}/summary_production_${runNum}_${numEvents}.txt"
+reportFile="${reportFileDir}/replay_${spec}_coin_production_${runNum}_${numEvents}.report"
+summaryFile="${reportFileDir}/summary_production_${runNum}_${numEvents}.report"
 
 # What is base name of onlineGUI output.
 outFile="${spec}_coin_production_${runNum}"
@@ -169,4 +169,6 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   echo ""                         
 
 } 2>&1 | tee "${replayReport}"
-
+#echo ""
+#echo "Launching FID tracking efficiency plot..."
+#python3 plot_effic.py "${reportFile}"

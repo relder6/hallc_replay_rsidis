@@ -17,7 +17,8 @@ void replay_production_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
 
   // Create file name patterns.
   //  const char* RunFileNamePattern = "shms_all_%05d.dat.0";
-  const char* RunFileNamePattern = "lad_Production_%05d.dat.0";  
+  //const char* RunFileNamePattern = "lad_Production_%05d.dat.0";
+  const char* RunFileNamePattern = "rsidis_production_%05d.dat.0";
   vector<TString> pathList;
   pathList.push_back(".");
   pathList.push_back("./raw");

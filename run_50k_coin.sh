@@ -49,6 +49,8 @@ configshms="CONFIG/${SPEC}/PRODUCTION/${spec}_production_rsidis_shms.cfg"
 
 #Define some useful directories
 rootFileDir="./ROOTfiles"
+goldenDir="../ROOTfiles"
+goldenFile="${goldenDir}/${spec}_replay_production_golden.root"
 monRootDir="./HISTOGRAMS/${SPEC}/ROOT"
 monPdfDir="./HISTOGRAMS/${SPEC}/PDF"
 reportFileDir="./REPORT_OUTPUT/${SPEC}/PRODUCTION"
@@ -61,15 +63,15 @@ reportMonFile="reportMonitor_${spec}_${runNum}_${numEvents}.txt"
 # Which commands to run.
 runHcana="hcana -q \"${script}(${runNum}, ${numEvents})\""
 runAnalysis="hcana -l -b -q \"${analysis}(${runNum},${numEvents},${numCoin},\\\"${rootFileDir}\\\",\\\"${reportFileDir}\\\",\\\"${monPdfDir}\\\")\""
-runOnlineGUI="panguin -f ${config} -r ${runNum}"
-saveOnlineGUI="panguin -f ${config} -r ${runNum} -P"
-runOnlineGUIhms="panguin -f ${confighms} -r ${runNum}"
-saveOnlineGUIhms="panguin -f ${confighms} -r ${runNum} -P"
-runOnlineGUIshms="panguin -f ${configshms} -r ${runNum}"
-saveOnlineGUIshms="panguin -f ${configshms} -r ${runNum} -P"
+runOnlineGUI="panguin -f ${config} -r ${runNum} -G ${goldenFile}"
+saveOnlineGUI="panguin -f ${config} -r ${runNum} -P -G ${goldenFile}"
+runOnlineGUIhms="panguin -f ${confighms} -r ${runNum} -G ${goldenFile}"
+saveOnlineGUIhms="panguin -f ${confighms} -r ${runNum} -P -G ${goldenFile}"
+runOnlineGUIshms="panguin -f ${configshms} -r ${runNum} -G ${goldenFile}"
+saveOnlineGUIshms="panguin -f ${configshms} -r ${runNum} -P -G ${goldenFile}"
 #saveExpertOnlineGUI="panguin -f ${expertConfig} -r ${runNum} -P"
-#runReportMon="./${reportMonDir}/reportSummary.py ${runNum} ${numEvents} ${spec}"
-#openReportMon="emacs ${reportMonOutDir}/${reportMonFile}"  
+runReportMon="./${reportMonDir}/reportSummary.py ${runNum} ${numEvents} ${spec}"
+openReportMon="emacs ${reportMonOutDir}/${reportMonFile}"  
 
 # Name of the replay ROOT file
 replayFile="${spec}_replay_production_${runNum}"
@@ -86,8 +88,8 @@ latestMonPdfFilehms="${monPdfDir}/${spec}_production_hms_latest.pdf"
 latestMonPdfFileshms="${monPdfDir}/${spec}_production_shms_latest.pdf"
 
 # Where to put log.
-reportFile="${reportFileDir}/replay_${spec}_production_${runNum}_${numEvents}.txt"
-summaryFile="${reportFileDir}/summary_production_${runNum}_${numEvents}.txt"
+reportFile="${reportFileDir}/replay_${spec}_production_${runNum}_${numEvents}.report"
+summaryFile="${reportFileDir}/summary_production_${runNum}_${numEvents}.report"
 
 # What is base name of onlineGUI output.
 outFile="${spec}_production_${runNum}"
@@ -226,4 +228,6 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   echo ""                         
 
 } 2>&1 | tee "${replayReport}"
-
+echo ""
+echo "Launching FID tracking efficiency plot..."
+python3 plot_effic.py "${reportFile}"
