@@ -5200,7 +5200,7 @@ ppcentral = 4.146
 ppartmass = 0.0005109
 hpartmass = 0.0005109
 
-22178-29999
+22178-22178
 gpbeam = 10.673
 gtargmass_amu = 1.00794
 htheta_lab = -13.50
@@ -5210,4 +5210,14 @@ ppcentral = 4.4
 ppartmass = 0.0005109
 hpartmass = 0.0005109
 
+### Start of R-SIDIS
 
+23824 - 23999
+gpbeam = 8565.0
+gtargmass_amu = 12.010
+htheta_lab = -42.000
+ptheta_lab = 12.470
+hpcentral = 2.28
+ppcentral = -7.070
+hpartmass = 0.938272
+ppartmass = 0.000511

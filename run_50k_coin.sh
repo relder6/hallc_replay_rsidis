@@ -11,7 +11,7 @@ SPEC=$(echo "$spec" | tr '[:lower:]' '[:upper:]')
 #    ls raw/"${spec}"_all_*.dat raw/../raw.copiedtotape/"${spec}"_all_*.dat -R 2>/dev/null | perl -ne 'if(/0*(\d+)/) {prin#t "$1\n"}' | sort -n | tail -1 \
 #)
 lastRun=$( \
-    ls raw/coin_all_*.dat raw/../raw.copiedtotape/coin_all_*.dat cache/coin_all_*.dat -R 2>/dev/null | perl -ne 'if(/0*(\d+)/) {print "$1\n"}' | sort -n | tail -1 \
+    ls raw/rsidis_production_*.dat.0 raw/../raw.copiedtotape/rsidis_production_*.dat.0 cache/rsidis_production_*.dat.0 -R 2>/dev/null | perl -ne 'if(/0*(\d+)/) {print "$1\n"}' | sort -n | tail -1 \
 )
 
 # If no arguments are given, prompt the user for all three
@@ -43,7 +43,9 @@ fi
 script="SCRIPTS/${SPEC}/PRODUCTION/replay_production_${spec}_hElec_pProt.C"
 analysis="get_good_coin_ev.C"
 config="CONFIG/${SPEC}/PRODUCTION/${spec}_production_rsidis.cfg"
-expertConfig="CONFIG/${SPEC}/PRODUCTION/${spec}_production_rsidis.cfg" 
+confighms="CONFIG/${SPEC}/PRODUCTION/${spec}_production_rsidis_hms.cfg"
+configshms="CONFIG/${SPEC}/PRODUCTION/${spec}_production_rsidis_shms.cfg"
+#expertConfig="CONFIG/${SPEC}/PRODUCTION/${spec}_production_rsidis.cfg" 
 
 #Define some useful directories
 rootFileDir="./ROOTfiles"
@@ -61,9 +63,13 @@ runHcana="hcana -q \"${script}(${runNum}, ${numEvents})\""
 runAnalysis="hcana -l -b -q \"${analysis}(${runNum},${numEvents},${numCoin},\\\"${rootFileDir}\\\",\\\"${reportFileDir}\\\",\\\"${monPdfDir}\\\")\""
 runOnlineGUI="panguin -f ${config} -r ${runNum}"
 saveOnlineGUI="panguin -f ${config} -r ${runNum} -P"
-saveExpertOnlineGUI="panguin -f ${expertConfig} -r ${runNum} -P"
-runReportMon="./${reportMonDir}/reportSummary.py ${runNum} ${numEvents} ${spec}"
-openReportMon="emacs ${reportMonOutDir}/${reportMonFile}"  
+runOnlineGUIhms="panguin -f ${confighms} -r ${runNum}"
+saveOnlineGUIhms="panguin -f ${confighms} -r ${runNum} -P"
+runOnlineGUIshms="panguin -f ${configshms} -r ${runNum}"
+saveOnlineGUIshms="panguin -f ${configshms} -r ${runNum} -P"
+#saveExpertOnlineGUI="panguin -f ${expertConfig} -r ${runNum} -P"
+#runReportMon="./${reportMonDir}/reportSummary.py ${runNum} ${numEvents} ${spec}"
+#openReportMon="emacs ${reportMonOutDir}/${reportMonFile}"  
 
 # Name of the replay ROOT file
 replayFile="${spec}_replay_production_${runNum}"
@@ -76,6 +82,8 @@ monPdfFile="${spec}_coin_production_${runNum}.pdf"
 monExpertPdfFile="${spec}_coin_production_expert_${runNum}.pdf"
 latestMonRootFile="${monRootDir}/${spec}_coin_production_latest.root"
 latestMonPdfFile="${monPdfDir}/${spec}_production_latest.pdf"
+latestMonPdfFilehms="${monPdfDir}/${spec}_production_hms_latest.pdf"
+latestMonPdfFileshms="${monPdfDir}/${spec}_production_shms_latest.pdf"
 
 # Where to put log.
 reportFile="${reportFileDir}/replay_${spec}_production_${runNum}_${numEvents}.txt"
@@ -84,6 +92,8 @@ summaryFile="${reportFileDir}/summary_production_${runNum}_${numEvents}.txt"
 # What is base name of onlineGUI output.
 outFile="${spec}_production_${runNum}"
 outExpertFile="summaryPlots_${runNum}_${spec}_production_rsidis"
+outExpertFilehms="summaryPlots_${runNum}_${spec}_production_rsidis_hms"
+outExpertFileshms="summaryPlots_${runNum}_${spec}_production_rsidis_shms"
 outFileMonitor="output.txt"
 
 # Replay out files
@@ -127,8 +137,8 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   echo ""
   echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
   echo ""
-  echo "Running onlineGUI for analyzed ${SPEC} COIN run ${runNum}:"
-  echo " -> CONFIG:  ${config}"
+  echo "Running onlineGUI for analyzed HMS COIN run ${runNum}:"
+  echo " -> CONFIG:  ${confighms}"
   echo " -> RUN:     ${runNum}"
   echo " -> COMMAND: ${runOnlineGUI}"
   echo ""
@@ -136,10 +146,44 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
 
   sleep 2
   cd onlineGUI
+
+  eval ${runOnlineGUIhms}
+  eval ${saveOnlineGUIhms}
+  mv "${outExpertFilehms}.pdf" "../HISTOGRAMS/${SPEC}/PDF/${outExpertFilehms}.pdf"
+
+  echo "" 
+  echo ""
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+  echo ""
+  echo "Running onlineGUI for analyzed SHMS COIN run ${runNum}:"
+  echo " -> CONFIG:  ${configshms}"
+  echo " -> RUN:     ${runNum}"
+  echo " -> COMMAND: ${runOnlineGUIshms}"
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+  
+  eval ${runOnlineGUIshms}
+  eval ${saveOnlineGUIshms}
+  mv "${outExpertFileshms}.pdf" "../HISTOGRAMS/${SPEC}/PDF/${outExpertFileshms}.pdf"
+
+  echo "" 
+  echo ""
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+  echo ""
+  echo "Running onlineGUI for analyzed COIN run ${runNum}:"
+  echo " -> CONFIG:  ${config}"
+  echo " -> RUN:     ${runNum}"
+  echo " -> COMMAND: ${runOnlineGUI}"
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="  
   eval ${runOnlineGUI}
   eval ${saveExpertOnlineGUI}
   mv "${outExpertFile}.pdf" "../HISTOGRAMS/${SPEC}/PDF/${outExpertFile}.pdf"
   cd ..
+  ln -fs ${outExpertFilehms}.pdf ${latestMonPdfFilehms}
+  ln -fs ${outExpertFileshms}.pdf ${latestMonPdfFileshms}  
   ln -fs ${outExpertFile}.pdf ${latestMonPdfFile}
 
   echo "" 

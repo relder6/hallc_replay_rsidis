@@ -11,7 +11,7 @@ SPEC=$(echo "$spec" | tr '[:lower:]' '[:upper:]')
 #    ls raw/"${spec}"_all_*.dat raw/../raw.copiedtotape/"${spec}"_all_*.dat -R 2>/dev/null | perl -ne 'if(/0*(\d+)/) {prin#t "$1\n"}' | sort -n | tail -1 \
 #)
 lastRun=$( \
-    ls raw/coin_all_*.dat raw/../raw.copiedtotape/coin_all_*.dat cache/coin_all_*.dat -R 2>/dev/null | perl -ne 'if(/0*(\d+)/) {print "$1\n"}' | sort -n | tail -1 \
+    ls raw/rsidis_production_*.dat.0 raw/../raw.copiedtotape/rsidis_production_*.dat.0 cache/rsidis_production_*.dat.0 -R 2>/dev/null | perl -ne 'if(/0*(\d+)/) {print "$1\n"}' | sort -n | tail -1 \
 )
 
 # If no arguments are given, ask the user interactively
@@ -39,10 +39,12 @@ fi
 
 # Which scripts to run.
 script="SCRIPTS/${SPEC}/PRODUCTION/replay_production_${spec}_coin.C"
-config="CONFIG/${SPEC}/PRODUCTION/${spec}_coin_production.cfg"
+config="CONFIG/${SPEC}/PRODUCTION/${spec}_production_new.cfg"
 expertConfig="CONFIG/${SPEC}/PRODUCTION/${spec}_coin_production_expert.cfg"
 
 #Define some useful directories
+goldenDir="../ROOTfiles"
+goldenFile="${goldenDir}/${spec}_coin_replay_production_golden.root"
 rootFileDir="./ROOTfiles"
 monRootDir="./HISTOGRAMS/${SPEC}/ROOT"
 monPdfDir="./HISTOGRAMS/${SPEC}/PDF"
@@ -56,8 +58,8 @@ reportMonFile="reportMonitor_${spec}_${runNum}_${numEvents}.txt"
 # Which commands to run.
 #runHcana="hcana -q \"${script}(${runNum}, ${numEvents},${firstevent})\""
 runHcana="hcana -q \"${script}(${runNum}, ${numEvents}, 1)\""
-runOnlineGUI="panguin -f ${config} -r ${runNum}"
-saveOnlineGUI="panguin -f ${config} -r ${runNum} -P"
+runOnlineGUI="panguin -f ${config} -r ${runNum} -G ${goldenFile}"
+saveOnlineGUI="panguin -f ${config} -r ${runNum} -P -G ${goldenFile}"
 saveExpertOnlineGUI="panguin -f ${expertConfig} -r ${runNum} -P"
 runReportMon="./${reportMonDir}/reportSummary.py ${runNum} ${numEvents} ${spec} coin"
 openReportMon="emacs ${reportMonOutDir}/${reportMonFile}"  
