@@ -1,4 +1,36 @@
 #	RSIDIS (6/15/2025-)  Runs in numerical order
 #
-# Run#  Ebeam I-beam Target HMS_p  HMS_th  SHMS_p  SHMS_th  PS1-6   Comment
+# Run#  Ebeam I-beam Target      HMS_p  HMS_th   SHMS_p SHMS_th PS1-6			Comment
 #------------------------------------------------------------------------------------------------------------------------------------
+23834	8.565	5    C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1		!First real RSIDIS run!!!
+23835	8.565	5    C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1
+23836	8.565	5    C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1		Junk; EDTM was on at 20Hz
+23837	8.565	5    C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1		EDTM is off; 3x3 raster look good
+23838	8.565	5    C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1		2X2 raster look good
+23839	8.565	5    LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	Changed to LH2 target;Beam trips above 5uA, so kept running at 5uA
+23840	8.565	5    LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1
+23841	8.565	25   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	Junk run, current changed from 5uA to 25uA  in the middle of the run
+23842	8.565	35   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	pushed to max current, current was up to 40uA
+23843		     									Junk
+23844	8.565	30   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	
+23845	8.565	30   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	current vary from 30-50uA
+23846	8.565	40   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	current vary around 40uA
+23847	8.565	40   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	current vary from 40-50uA
+23848	8.565	40   LH2	+2.28	42.00	-7.07	12.47	-1,-1,-1,-1,0,-1	current vary from 40-50uA
+23849	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	detectors changed to low rate elastic p(e,e'p) setting; current vary from 30-50uA
+23850	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	current vary from 30-50uA
+23851	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	current vary from 30-50uA
+23852	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	current vary from 30-50uA
+23853	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,5,-1,-1	changed to DIS setting at x=0.3, Q2=2.3, W=2.5;No clear current recorded
+23854		       									Junk
+23855	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1	No clear current recorded
+23856	8.565	max? LH2	-4.50	14.00	-4.50	14.00	7,-1,-1,-1,-1,-1	SHMS run; No clear current recorded
+23857	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,5,-1,-1,-1	No clear current recorded
+23858	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,5,-1,-1,-1	No clear current recorded
+23859	8.565	35?  LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1	DIS production run with HMS EL_REAL trigger;
+23860	8.565	30?  LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1
+23861	8.565	
+
+
+
+

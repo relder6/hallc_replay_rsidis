@@ -68,8 +68,8 @@ TH1F ptrig_pFADC_TREF_ROC2_ptime_mult 'SHMS pFADC_TREF_ROC2 ADC Multiplicity; AD
 #SHMS TRIG PEDESTALS for HGC, NGC, PRESHWR
 #--------------------------------------------
 
-TH1F ptrig_phgc_sum_pped     'SHMS Heavy Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pHGCER_adcPed       400 0 200  T.coin.pHGCER_adcPed>0.0&&
-TH1F ptrig_pngc_sum_pped     'SHMS Noble Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pNGCER_adcPed       400 0 200  T.coin.pNGCER_adcPed>0.0&&
-TH1F ptrig_prshwr_sum_pped   'SHMS Preshwr Sum FADC pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV'    T.coin.pPSHWR_adcPed      400 0 200  T.coin.pPSHWR_adcPed>0.0&&
-TH1F ptrig_phgc_sum_MOD_pped 'SHMS Heavy Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pHGCER_MOD_adcPed   400 0 200  T.coin.pHGCER_MOD_adcPed>0.0&&
-TH1F ptrig_pngc_sum_MOD_pped 'SHMS Heavy Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pNGCER_MOD_adcPed   400 0 200  T.coin.pNGCER_MOD_adcPed>0.0&&
+TH1F ptrig_phgc_sum_pped     'SHMS Heavy Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pHGCER_adcPed       400 0 200  T.coin.pHGCER_adcPed>0.0
+TH1F ptrig_pngc_sum_pped     'SHMS Noble Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pNGCER_adcPed       400 0 200  T.coin.pNGCER_adcPed>0.0
+TH1F ptrig_prshwr_sum_pped   'SHMS Preshwr Sum FADC pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV'    T.coin.pPSHWR_adcPed      400 0 200  T.coin.pPSHWR_adcPed>0.0
+TH1F ptrig_phgc_sum_MOD_pped 'SHMS Heavy Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pHGCER_MOD_adcPed   400 0 200  T.coin.pHGCER_MOD_adcPed>0.0
+TH1F ptrig_pngc_sum_MOD_pped 'SHMS Heavy Gas Sum FADC Pulse Pedestal; Pulse Pedestal; Number of Entries / 0.5 mV' T.coin.pNGCER_MOD_adcPed   400 0 200  T.coin.pNGCER_MOD_adcPed>0.0

@@ -43,10 +43,10 @@ metrics = ["SING", "E SING", "HADRON SING"]
 x = range(len(metrics))
 width = 0.35
 
-hms_vals = [v[1] for v in data["HMS"]]
-hms_errs = [v[2] for v in data["HMS"]]
-shms_vals = [v[1] for v in data["SHMS"]]
-shms_errs = [v[2] for v in data["SHMS"]]
+hms_vals = [v[1] for v in data["HMS"]] if data.get("HMS") else [0, 0, 0]
+hms_errs = [v[2] for v in data["HMS"]] if data.get("HMS") else [0, 0, 0]
+shms_vals = [v[1] for v in data["SHMS"]] if data.get("SHMS") else [0, 0, 0]
+shms_errs = [v[2] for v in data["SHMS"]] if data.get("SHMS") else [0, 0, 0]
 
 ax.bar([i - width/2 for i in x], shms_vals, width, yerr=shms_errs, label='SHMS', capsize=5, color='tab:blue')
 ax.bar([i + width/2 for i in x], hms_vals, width, yerr=hms_errs, label='HMS', capsize=5, color='tab:green')
