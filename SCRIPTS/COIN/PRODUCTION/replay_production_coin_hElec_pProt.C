@@ -211,8 +211,12 @@ void replay_production_coin_hElec_pProt (Int_t RunNumber = 0, Int_t MaxEvent = 0
   // Suppress missing reference time warnings for these event types
   coin->SetEvtType(1);
   coin->AddEvtType(2);
-  TRG->AddDetector(coin); 
+  TRG->AddDetector(coin);
 
+  /*
+  THcHelicity* helicity = new THcHelicity("helicity", "Helicity Detector");
+  TRG->AddDetector(helicity);
+  */
   
   //Add coin physics module THcCoinTime::THcCoinTime (const char *name, const char* description, const char* hadArmName, 
   // const char* elecArmName, const char* coinname) :

@@ -21,16 +21,29 @@
 23850	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	current vary from 30-50uA
 23851	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	current vary from 30-50uA
 23852	8.565	40   LH2	+3.75	30.00	-5.67	19.34	-1,-1,-1,-1,0,-1	current vary from 30-50uA
-23853	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,5,-1,-1	changed to DIS setting at x=0.3, Q2=2.3, W=2.5;No clear current recorded
+23853	8.565	max  LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,5,-1,-1	changed to DIS setting at x=0.3, Q2=2.3, W=2.5;No clear current recorded
 23854		       									Junk
-23855	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1	No clear current recorded
-23856	8.565	max? LH2	-4.50	14.00	-4.50	14.00	7,-1,-1,-1,-1,-1	SHMS run; No clear current recorded
-23857	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,5,-1,-1,-1	No clear current recorded
-23858	8.565	max? LH2	-4.50	14.00	-4.50	14.00	-1,-1,5,-1,-1,-1	No clear current recorded
-23859	8.565	35?  LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1	DIS production run with HMS EL_REAL trigger;
-23860	8.565	30?  LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1
-23861	8.565	
-
-
-
-
+23855	8.565	max  LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1	No clear current recorded
+23856	8.565	max  LH2	-4.50	14.00	-4.50	14.00	7,-1,-1,-1,-1,-1	SHMS run; No clear current recorded
+23857	8.565	max  LH2	-4.50	14.00	-4.50	14.00	-1,-1,5,-1,-1,-1	No clear current recorded
+23858	8.565	max  LH2	-4.50	14.00	-4.50	14.00	-1,-1,5,-1,-1,-1	No clear current recorded
+23859	8.565	35   LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1	DIS production run with HMS EL_REAL trigger;
+23860	8.565	30   LH2	-4.50	14.00	-4.50	14.00	-1,-1,-1,4,-1,-1
+23861	8.565	45   LH2	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0	Change to SIDIS run
+23862	8.565	25   LD2	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0
+23863											Junk
+23864	8.565	40   Carbon 3%	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0
+23865	8.565	40   Copper 6%	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0
+23866	8.565	40   Dummy 10cm	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0
+23867	8.565	45   LH2	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0
+23868	8.565	45   LH2	-1.53	29.06	-3.63	11.08	-1,-1,-1,-1,-1,0
+23869											Junk/cosmic
+23870											Junk/cosmic
+23871											Junk/cosmic
+23872											Junk/cosmic
+23873											Junk/cosmic
+23874											Junk/cosmic
+23875											Junk/cosmic
+23876	8.565	15   LH2	-1.53	29.06	-2.62	7.878	-1,-1,-1,-1,-1,0
+23877											Junk
+23878	8.565	7    LD2	-1.53	29.06	-2.62	7.878	-1,-1,-1,-1,-1,0	move from 10uA to 7uA to get good triger rate(At 7 uA, s1X =0.95 MHz and PTRIG1 = 690 KHz)

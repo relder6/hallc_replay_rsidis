@@ -17,7 +17,10 @@ lastRun=$( \
 
 # If no arguments are given, ask the user interactively
 if [ $# -eq 0 ]; then
-  read -p "Enter run number: " runNum
+  read -p "Enter run number (default last run): " runNum
+  if [ -z "$runNum" ]; then
+    runNum=$lastRun
+  fi    
   read -p "Enter number of events (default 50000): " numEvents
   if [ -z "$numEvents" ]; then
     numEvents=50000
@@ -169,6 +172,41 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   echo ""                         
 
 } 2>&1 | tee "${replayReport}"
-#echo ""
-#echo "Launching FID tracking efficiency plot..."
-#python3 plot_effic.py "${reportFile}"
+echo ""
+echo "Launching FID tracking efficiency plot..."
+python3 plot_effic.py "${reportFile}"
+
+###########################################################
+function yes_or_no() {
+    while true; do
+	read -p "$* [y/n]: " yn
+	case $yn in
+	    [Yy]*) return 0 ;;
+	    [Nn]*)
+		echo "No entered"
+		return 1
+		;;
+	esac
+    done
+}
+# function used to prompt user for questions
+# post pdfs in hclog
+yes_or_no "Upload these plots to logbook HCLOG? " && {
+    read -p "Enter a text body for the log entry (or leave blank): " logCaption
+    echo "$logCaption" >caption.txt
+   if [ "$numEvents" -eq -1 ]; then
+      title="Full replay plots for run ${runNum}"
+    else
+      title="${numEvents}k replay plots for run ${runNum}"
+   fi
+   /site/ace/certified/apps/bin/logentry \
+       -cert /home/cdaq/.elogcert \
+       -t "$title" \
+       -e cdaq \
+       -l HCLOG \
+       -a ${latestMonPdfFile} \
+       -b "caption.txt"
+
+   
+   rm -rf "caption.txt"
+}
