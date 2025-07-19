@@ -188,7 +188,7 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   cd ..
   ln -fs ${outExpertFilehms}.pdf ${latestMonPdfFilehms}
   ln -fs ${outExpertFileshms}.pdf ${latestMonPdfFileshms}  
-  ln -fs ${outExpertFile}.pdf ${latestMonPdfFile}
+  #ln -fs ${latestMonPdfFile} ${outExpertFile}.pdf
 
   echo "" 
   echo ""
@@ -256,7 +256,7 @@ yes_or_no "Upload these plots to logbook HCLOG? " && {
    if [ "$numEvents" -eq -1 ]; then
       title="Full replay plots for run ${runNum}"
     else
-      title="${numEvents}k replay plots for run ${runNum}"
+      title="$((numEvents / 1000))k replay plots for run ${runNum}"
    fi
    /site/ace/certified/apps/bin/logentry \
        -cert /home/cdaq/.elogcert \

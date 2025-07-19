@@ -42,7 +42,9 @@ fi
 
 # Which scripts to run.
 script="SCRIPTS/${SPEC}/PRODUCTION/replay_production_${spec}_coin.C"
+analysis="get_good_dis_ev.C"
 config="CONFIG/${SPEC}/PRODUCTION/${spec}_coin_production.cfg"
+configcnt="CONFIG/${SPEC}/PRODUCTION/${spec}_coin_production_rsidis.cfg"
 expertConfig="CONFIG/${SPEC}/PRODUCTION/${spec}_coin_production_expert.cfg"
 
 #Define some useful directories
@@ -61,9 +63,11 @@ reportMonFile="reportMonitor_${spec}_${runNum}_${numEvents}.txt"
 # Which commands to run.
 #runHcana="hcana -q \"${script}(${runNum}, ${numEvents},${firstevent})\""
 runHcana="hcana -q \"${script}(${runNum}, ${numEvents}, 1)\""
-runOnlineGUI="panguin -f ${config} -r ${runNum} -G ${goldenFile}"
-#saveOnlineGUI="panguin -f ${config} -r ${runNum} -P -G ${goldenFile}"
-#saveExpertOnlineGUI="panguin -f ${expertConfig} -r ${runNum} -P"
+runAnalysis="hcana -l -b -q \"${analysis}(${runNum},${numEvents},\\\"${SPEC}\\\")\""
+runOnlineGUI="panguin -f ${config} -r ${runNum}"
+runOnlineGUIcnt="panguin -f ${configcnt} -r ${runNum}"
+saveOnlineGUI="panguin -f ${config} -r ${runNum} -P"
+saveExpertOnlineGUI="panguin -f ${expertConfig} -r ${runNum} -P"
 runReportMon="./${reportMonDir}/reportSummary.py ${runNum} ${numEvents} ${spec} coin"
 openReportMon="emacs ${reportMonOutDir}/${reportMonFile}"  
 
@@ -78,6 +82,7 @@ monPdfFile="${spec}_coin_production_${runNum}.pdf"
 monExpertPdfFile="${spec}_coin_production_expert_${runNum}.pdf"
 latestMonRootFile="${monRootDir}/${spec}_coin_production_latest.root"
 latestMonPdfFile="${monPdfDir}/${spec}_coin_production_latest.pdf"
+latestMonPdfFileCnt="${monPdfDir}/output_get_good_dis_ev_${runNum}_${numEvents}.pdf"
 
 # Where to put log.
 reportFile="${reportFileDir}/replay_${spec}_coin_production_${runNum}_${numEvents}.report"
@@ -109,6 +114,18 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   sleep 2
   eval ${runHcana}
 
+  echo "" 
+  echo ""
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+  echo ""
+  echo "Calculating number of randoms subtracted good coincidence events"
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+
+  sleep 2
+  eval ${runAnalysis}    
+
   # Link the ROOT file to latest for online monitoring
   ln -fs ${rootFile} ${latestRootFile}
   
@@ -127,8 +144,26 @@ replayReport="${reportFileDir}/replayReport_${spec}_production_${runNum}_${numEv
   sleep 2
   cd onlineGUI
   eval ${runOnlineGUI}
-#  eval ${saveExpertOnlineGUI}
+  eval ${saveExpertOnlineGUI}
   mv "${outExpertFile}.pdf" "../HISTOGRAMS/${SPEC}/PDF/${outExpertFile}.pdf"
+
+  echo "" 
+  echo ""
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+  echo ""
+  echo "Running onlineGUI for analyzed ${SPEC} DIS run ${runNum}:"
+  echo " -> CONFIG:  ${configcnt}"
+  echo " -> RUN:     ${runNum}"
+  echo " -> COMMAND: ${runOnlineGUI}"
+  echo ""
+  echo ":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:="
+
+  sleep 2  
+  eval ${runOnlineGUIcnt}
+  # eval ${saveOnlineGUIcnt}
+  # mv "${outExpertFile}.pdf" "../HISTOGRAMS/${SPEC}/PDF/${outExpertFile}.pdf"
+  
   cd ..
   ln -fs ${outExpertFile}.pdf ${latestMonPdfFile}
 
@@ -197,7 +232,7 @@ yes_or_no "Upload these plots to logbook HCLOG? " && {
    if [ "$numEvents" -eq -1 ]; then
       title="Full replay plots for run ${runNum}"
     else
-      title="${numEvents}k replay plots for run ${runNum}"
+      title="$((numEvents / 1000))k replay plots for run ${runNum}"
    fi
    /site/ace/certified/apps/bin/logentry \
        -cert /home/cdaq/.elogcert \
@@ -205,6 +240,7 @@ yes_or_no "Upload these plots to logbook HCLOG? " && {
        -e cdaq \
        -l HCLOG \
        -a ${latestMonPdfFile} \
+       -a ${latestMonPdfFileCnt} \              
        -b "caption.txt"
 
    
