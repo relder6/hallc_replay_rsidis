@@ -41,7 +41,7 @@ void PlotCutRegion(double xmin, double xmax, EColor fcolor, double alpha);
 double CalcNormYield(std::string const &inrepfile, double Nrealcoinev, std::string spec, int verbosity);
 std::vector<std::string> SplitString(char const delim, std::string const myStr);
 double ExtractValueFromReportFile(const std::string& filename, const std::string& key, const char delimiter, int skipCount);
-TPaveText* CreateSummaryPaveText(int rnum, const std::string& anacuts, const double counts, double normyield, TStopwatch* sw);
+TPaveText* CreateSummaryPaveText(int rnum, ULong64_t totevintree, const std::string& anacuts, const double counts, double normyield, TStopwatch* sw);
 void PrintCSVLine(std::ofstream &out, int runnum, double gooddis, double normyield);
 
 // global variables
@@ -112,7 +112,9 @@ int get_good_dis_ev(int rnum,                  // Run number to analyze
   double normyield = CalcNormYield(inrepfile,counts,spec,1);
   // Write important stuff to a summary canvas
   ceOVp->cd(2);
-  TPaveText* pvtxt = CreateSummaryPaveText(rnum, anacuts, counts, normyield, sw);
+  ULong64_t nEntries = *data_rdf_raw.Count();
+  //std::cout << nEntries << "\n";  
+  TPaveText* pvtxt = CreateSummaryPaveText(rnum, nEntries, anacuts, counts, normyield, sw);
   pvtxt->Draw();
   ceOVp->Update();
   ceOVp->Write("",TObject::kOverwrite);
@@ -305,10 +307,12 @@ std::vector<std::string> SplitString(char const delim, std::string const myStr)
   return out;
 }
 //----------------------------------------------------------
-TPaveText* CreateSummaryPaveText(int rnum, const std::string& anacuts,
-				     const double counts,
-				     double normyield,
-				     TStopwatch* sw)
+TPaveText* CreateSummaryPaveText(int rnum,
+				 ULong64_t totevintree,				 
+				 const std::string& anacuts,
+				 const double counts,
+				 double normyield,
+				 TStopwatch* sw)
 /* Function to create a summary canvas */
 {  
   TPaveText* pvtxt = new TPaveText(.05, .1, .95, .8);

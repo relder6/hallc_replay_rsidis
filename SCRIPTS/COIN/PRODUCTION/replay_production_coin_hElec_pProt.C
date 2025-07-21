@@ -178,7 +178,7 @@ void replay_production_coin_hElec_pProt (Int_t RunNumber = 0, Int_t MaxEvent = 0
   hscaler->AddEvtType(5);
   hscaler->AddEvtType(6);
   hscaler->AddEvtType(7);
-  hscaler->AddEvtType(129);
+  //  hscaler->AddEvtType(129);
   hscaler->AddEvtType(131);
   hscaler->SetDelayedType(131);
   hscaler->SetUseFirstEvent(kTRUE);

@@ -168,7 +168,7 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   // Write important stuff to a summary canvas
   ccoin->cd(2);
   ULong64_t nEntries = *data_rdf.Count();
-  std::cout << nEntries << "\n";
+  //std::cout << nEntries << "\n";
   TPaveText* pvtxt = CreateSummaryPaveText(rnum, nEntries, anacuts, counts, normyield, descoinev, predtrig, sw);
   pvtxt->Draw();
   ccoin->Update();
