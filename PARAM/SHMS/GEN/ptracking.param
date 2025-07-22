@@ -4,7 +4,7 @@
 ;              kami kaze events which hang the analyzer to a long time.
 
 ; Tracking parameters
-  pmax_pr_hits = 35, 35
+  pmax_pr_hits = 50, 50
 
 ; pminhit(i)   minimum number of hits in each space point (one for each chamber)
 pmin_hit = 5,5
