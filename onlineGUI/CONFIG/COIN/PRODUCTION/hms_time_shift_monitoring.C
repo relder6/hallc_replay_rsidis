@@ -33,7 +33,7 @@ void hms_time_shift_monitoring() {
   htrig_hFADC_TREF_ROC1_adcPulseTimeRaw->SetLineWidth(2);
   htrig_hFADC_TREF_ROC1_adcPulseTimeRaw->GetXaxis()->CenterTitle();
   htrig_hFADC_TREF_ROC1_adcPulseTimeRaw->GetYaxis()->CenterTitle();  
-  PlotCutRegion(2870,3070,kGreen,0.3);
+  PlotCutRegion(2490,3450,kGreen,0.3);
  
   padptr->cd(3);
   TPaveText* pvtxt = CreateSummaryPaveText();  
