@@ -29,7 +29,7 @@
 // --- Basic ---
 // ---
 // 1. list of analysis cuts to apply
-std::string anacuts = "P.aero.npeSum>4&&H.cal.etottracknorm>0.7&&P.cal.etottracknorm<0.8&&H.cer.npeSum>1&&abs(P.gtr.dp-5.)<15.&&abs(H.gtr.dp)<8.";
+std::string anacuts = "P.aero.npeSum>4&&H.cal.etottracknorm>0.7&&P.cal.etottracknorm<0.8&&abs(P.gtr.dp-5.)<15.&&abs(H.gtr.dp)<8.";
 // 2. histo ranges - Convention: {nbin,hmin,hmax}
 std::vector<double> hcoin_range{200,10,90};
 std::vector<double> hQ2_range{200,0.1,10},hx_range{200,0.01,1.2},hW_range{200,0.1,5},hz_range{200,0.01,1.2},hMMpi_range{200,-0.5,8};
