@@ -720,7 +720,7 @@
 24535	  08/03	     06:51	  8.565	14     Copper	-1.531	29.05	+2.615	7.87	-1,-1,-1,-1,-1,0	PI+SIDIS	0
 !**********Start positron background measurements****************************
 24536	  08/03	     11:50	  8.565	35     LD2	+1.531	29.05	+6.538	7.87	-1,-1,-1,-1,-1,0	PI+SIDIS	HMS Dipole set manually.  Momentum/angle not automatically recorded in CODA.
-24537	  08/03	     12:09	  8.565	35     LD2	+1.531	29.05	+6.538	7.87	-1,-1,-1,2,-1,-1	HMSDIS	1 minute of beam time here.  Beam down.  Will return to this setting.
+24537	  08/03	     12:09	  8.565	35     LD2	+1.531	29.05	+6.538	7.87	-1,-1,-1,2,-1,-1	HMSDIS		Only 1 minute of beam time here.  Beam down.  Will return to this setting.
 !24538	  08/03	     13:08	  0	0      LD2	+1.531	29.05	+6.538	7.87	-1,-1,-1,2,-2,-2	JUNK		EDTM check for hhod1x11+
 !24539	  08/03	     0		  0	0      0	0	0	0	0	0			JUNK		0
 !24540	  08/03	     0		  0	0      0	0	0	0	0	0			JUNK		0
