@@ -1,3 +1,5 @@
+block T.hms.*
+
 #include "DEF-files/HMS/PRODUCTION/TRIG/htrig_histos.def"
 #include "DEF-files/HMS/PRODUCTION/CAL/hcal_histos.def"
 #include "DEF-files/HMS/PRODUCTION/CER/hcer_histos.def"
@@ -12,6 +14,7 @@
 #include "DEF-files/HMS/PRODUCTION/PID/hpid_histos.def"
 #include "DEF-files/HMS/PRODUCTION/EXTCOR/hextcor_histos.def"
 
+#include "DEF-files/HMS/PRODUCTION/GTR/hgtr_vars.def"
 #include "DEF-files/HMS/PRODUCTION/PID/hpid_vars.def"
 #include "DEF-files/HMS/PRODUCTION/EPICS/hepics_vars.def"
 #include "DEF-files/HMS/PRODUCTION/KIN/hkin_vars.def"

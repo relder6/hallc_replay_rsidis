@@ -11,12 +11,14 @@ void replay_production_hms_coin(Int_t RunNumber=0, Int_t MaxEvent=0, Int_t First
     cin >> MaxEvent;
     if(MaxEvent == 0) {
       cerr << "...Invalid entry\n";
-      exit;
+      return;
     }
   }
 
   // Create file name patterns.
-  const char* RunFileNamePattern = "coin_all_%05d.dat";
+  // const char* RunFileNamePattern = "coin_all_%05d.dat";
+  // const char* RunFileNamePattern = "lad_Production_%05d.dat.0";
+  const char* RunFileNamePattern = "rsidis_production_%05d.dat.0";      
   vector<TString> pathList;
   pathList.push_back(".");
   pathList.push_back("./raw");
@@ -101,13 +103,16 @@ void replay_production_hms_coin(Int_t RunNumber=0, Int_t MaxEvent=0, Int_t First
   gHaEvtHandlers->Add(hcepics);
   // Add handler for scaler events
   THcScalerEvtHandler *hscaler = new THcScalerEvtHandler("H", "Hall C scaler event type 2");  
+  hscaler->AddEvtType(1);
   hscaler->AddEvtType(2);
+  hscaler->AddEvtType(3);
   hscaler->AddEvtType(4);
   hscaler->AddEvtType(5);
   hscaler->AddEvtType(6);
   hscaler->AddEvtType(7);
-  hscaler->AddEvtType(129);
-  hscaler->SetDelayedType(129);
+  // hscaler->AddEvtType(129);
+  hscaler->AddEvtType(131);
+  hscaler->SetDelayedType(131);
   hscaler->SetUseFirstEvent(kTRUE);
   gHaEvtHandlers->Add(hscaler);
 
@@ -163,7 +168,7 @@ void replay_production_hms_coin(Int_t RunNumber=0, Int_t MaxEvent=0, Int_t First
   // Define output ROOT file
   analyzer->SetOutFile(ROOTFileName.Data());
   // Define output DEF-file 
-  analyzer->SetOdefFile("DEF-files/HMS/PRODUCTION/hstackana_production.def");
+  analyzer->SetOdefFile("DEF-files/HMS/PRODUCTION/hstackana_production_all.def");
   // Define cuts file
   analyzer->SetCutFile("DEF-files/HMS/PRODUCTION/CUTS/hstackana_production_cuts.def");    // optional
   // File to record cuts accounting information for cuts

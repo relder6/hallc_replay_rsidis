@@ -10,12 +10,12 @@
 
 ; no cuts
  pdc_tdcrefcut=-19000
- phodo_tdcrefcut=-10
- phodo_adcrefcut=-100000
- pngcer_adcrefcut=-100000
- phgcer_adcrefcut=-1000000
- paero_adcrefcut=-100000
- pcal_adcrefcut=-100000
+ phodo_tdcrefcut=-8000
+ phodo_adcrefcut=-3000
+ pngcer_adcrefcut=-4500
+ phgcer_adcrefcut=-4500
+ paero_adcrefcut=-4500
+ pcal_adcrefcut=-4500
 
 ; determined for fall 2019 startup
 ; cut variable = pDCREF(min)
