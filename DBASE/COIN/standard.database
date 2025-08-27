@@ -68,11 +68,14 @@ g_ctp_parm_filename       = "DBASE/COIN/general_rsidis.param"
 g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
 g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"
 g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin.param"
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p62gev_7p87deg_rsidis.param"
+#g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p62gev_7p87deg_rsidis.param"
 
 # -----------------------------
 # Run dependent SHMS CAL params
 # -----------------------------
+20000-23833
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p62gev_7p87deg_rsidis.param"
+
 23834-23875,23876-23956,24428-24535,24564-24571,24598-24600,24606-24610
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p62gev_7p87deg_rsidis.param"
 
