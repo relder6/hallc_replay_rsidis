@@ -219,10 +219,10 @@ void timeWalkHistos(TString inputname,Int_t runNum, string SPEC_flg) {    //SPEC
   // replayFile = new TFile(Form("ROOTfiles/hms_coin_replay_production_%d_-1.root", runNum), "READ");
 
 
-  //========================================================//made changes here: start
+  //============Modified by rparvez: Begin============//
   //outFile    = new TFile("timeWalkHistos.root", "RECREATE");
   outFile = new TFile(Form("timeWalkHistos_%d.root", runNum), "RECREATE");
-  //========================================================//made changes here: stop
+  //============Modified by rparvez: End============//
 
 
   // Obtain the tree

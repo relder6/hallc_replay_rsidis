@@ -25,14 +25,11 @@
 #include <TF1.h>
 
 
-//============Modified by rparvez: Begin===========//
-// Declare ROOT files
-//TFile *histoFile, *outFile;
+//============Modified by rparvez: Begin============//
 // Declare ROOT files
 TFile *histoFile; 
 TFile *histOutFile;
-//=============Modified by rparvez: End========//
-
+//============Modified by rparvez: End============//
 
 
 
@@ -268,7 +265,7 @@ void drawParams(UInt_t iplane) {
 
 
 
-//==================Modified by rparvez: Begin===============//
+//============Modified by rparvez: Begin============//
 
 //Add method for writing summary plots to ROOT File
 void writePlots(int runNUM) 
@@ -320,7 +317,7 @@ void writePlots(int runNUM)
   return;
 }
 
-//===================Modified by rparvez: End===================//
+//============Modified by rparvez: End============//
 
 
 
@@ -423,7 +420,7 @@ void WriteFitParam(int runNUM)
 
 
 
-//===============Modified by rparvez: Begin==============//
+//============Modified by rparvez: Begin============//
 
 // This is to write all the parrameters with there errors, so that they may be checked against other Runs - NH 21/05/06
 void WriteFitParamErr(int runNUM)
@@ -493,7 +490,7 @@ void WriteFitParamErr(int runNUM)
 
 } //WriteFitParamErr
 
-//===============Modified by rparvez: End===========//
+//============Modified by rparvez: End============//
 
 
 
@@ -569,7 +566,7 @@ using namespace std;
 
 
 
-  //==================Modified by rparvez: Begin===================//
+  //============Modified by rparvez: Begin============//
 
   //histoFile->Close();
 
@@ -591,7 +588,7 @@ using namespace std;
 
   return;
 
-  //================Modified by rparvez: End==============//
+  //============Modified by rparvez: End============//
 
 }
 

@@ -16,7 +16,7 @@ The two codes have different parameters and it is possible to switch between the
 
 (In case you are calibrating SHMS hodo using a coincidence run, then make sure to include T.coin.*)
 
-2. Determine the time walk correction parameters. Instead of "root -l", use "hcana -l".
+2. Determine the time walk correction parameters. Instead of "root -l", I recommend using "hcana -l".
 
      a. Start "root -l" and then  .x timeWalkHistos.C+("current_dir/to/ROOT_filename.root",Run_Number, "shms") ---> If doing coincidence, then "shms"->"coin"
 

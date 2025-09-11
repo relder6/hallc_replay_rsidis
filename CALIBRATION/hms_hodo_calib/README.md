@@ -17,7 +17,7 @@ The two codes have different parameters and it is possible to switch between the
 (In case you are calibrating HMS hodo using a coincidence run, then make sure to include T.coin.*)
 
 
-2. Determine the time walk correction parameters. Instead of "root -l", use "hcana -l".
+2. Determine the time walk correction parameters. Instead of "root -l", I recommend using "hcana -l".
 
      a. Start "root -l" and then  .x timeWalkHistos.C+("current_dir/to/ROOT_filename.root", Run_Number, "hms") ---> If doing coincidence, then "hms"->"coin"
 
@@ -41,5 +41,5 @@ The two codes have different parameters and it is possible to switch between the
 
      c.  It also creates the root file HodoCalibPlots_runnumber.root
 
-     d.  To analyze cosmic data :  .x  fitHodoCalib.C+("current_dir/to/ROOT_filename.root",Run_Number,kTRUE) 
+     d.  To analyze cosmic data :  .x  fitHodoCalib.C+("current_dir/to/ROOT_filename.root",Run_Number,kTRUE)
      e. For cosmic data the speed of light is set to -30 cm/ns and the PID cut is just on P.hod.betanotrack with the default of betanotrack_low_cut = -1.2 and betanotrack_hi_cut = -.7
