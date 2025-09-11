@@ -12,7 +12,7 @@
 ! PI+SIDIS = pi+ SIDIS H/D/A(e,epi+)X
 ! JUNK = bad
 !
-! Run#    Date       Start_Time   Ebeam	I-beam Target   HMS_p   HMS_th  SHMS_p  SHMS_th PS1,2,3,4,5,6		Run_type	Comment
+! Run#    Date       Start_Time   Ebeam	   I-beam Target   HMS_p   HMS_th  SHMS_p  SHMS_th PS1,2,3,4,5,6		Run_type	Comment
 !-------------------------------------------------------------------------------------------------------------------------------------------------------------
 23834     07/15      23:26        8.565 5      C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1		HOLE		!First real RSIDIS run!!!
 23835     07/15      23:58        8.565	5      C-hole	+2.28	42.00	-7.07	12.47	0,-1,0,-1,-1,-1		HOLE            0    
