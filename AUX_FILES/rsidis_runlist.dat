@@ -1743,11 +1743,11 @@
 25529	  09/01	     16:06	  10.671643	50	Optics1	-5.270	14.02	-5.270	13.505	-1,0,-1,0,-1,-1		OPTICS		0
 25530	  09/01	     16:39	  10.671643	50	Optics1 -5.270	14.02	-5.270	13.505	-1,0,-1,0,-1,-1		OPTICS		0
 !**** Back to production settings for z=0.50, theta_pq=2.0, pi-
-!25531	  09/01	     17:33	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Sieve slits were in place - realized almost at the end of the run.  This run probably shouldn't be used for typical analysis.
+!25531	  09/01	     17:33	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Sieve slits were in place. Don't use. HMS angle camera stuck.
 25532	  09/01	     18:09	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	0
-25533	  09/01	     18:40	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Short run ~ 20 minutes of beam time (One of the RF cavities stopped working)
+25533	  09/01	     18:40	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Short run ~ 20 minutes of beam time
 25534	  09/01	     19:19	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	0
-!25535	  09/01	     19:50	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Super short run (only 25k events), beam tripped after 1 minute-basically junk
+!25535	  09/01	     19:50	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Super short run (only 25k events)
 25536 	  09/01	     20:04	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Another short run, only 10 minutes before beam tripped
 !25537	  09/01	     20:54	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	Yet another short run (20k events)
 25538	  09/01	     22:14	  10.671643	30	LH2	-3.642	16.75	-3.632	8.10	-1,-1,-1,-1,-1,0	PI-SIDIS	0
@@ -1777,18 +1777,18 @@
 25560	  09/02	     23:16	  2.231		10	Dummy	-1.980	19.00	+3.632	8.10	-1,-1,-1,4,-1,-1	HEE		0
 !25561	  0	     0		  0		0	0	0	0	0	0	0			JUNK		CODA crashed.
 25562	  09/02	     23:43	  2.231		10	LH2	-1.822	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		0
-25563	  09/02	     23:54	  2.231		10	LH2	-1.802	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		Prescales not noted on the runsheets!!! I'm assuming PS4 = 6 from adjacent runs that were noted.
+25563	  09/02	     23:54	  2.231		10	LH2	-1.802	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		Prescales not noted on the runsheets!!! Assuming PS4 = 6
 25564	  09/03	     00:07	  2.231		10	LH2	-1.782	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		0
 25565	  09/03	     00:20	  2.231		10	LH2	-1.762	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		0
 25566	  09/03	     00:30	  2.231		10	LH2	-1.742	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		0
 25567	  09/03	     00:42	  2.231		10	LH2	-1.723	19.00	+3.632	8.10	-1,-1,-1,6,-1,-1	HEE		0
 !**** shms elastics with 1-Pass beam ****
-!25568	  09/03	     00:51	  2.231		10	LH2	-1.723	19.00	-2.360	18.500	-1,5,-1,-1,-1,-1	HEE		Marked as 'Junk' on runsheet with no additional comment.  Shift summary comments the 20k replay showed peak outside of green region; TO also made a log entry.
-!25569	  09/03	     01:03	  2.231		10	LH2	-1.723	19.00	-2.320	18.500	-1,5,-1,-1,-1,-1	HEE		Marked as 'Junk' on runsheet with no additional comment.  Shift summary comments the 20k replay showed peak outside of green region; TO also made a log entry.
-!25570	  09/03	     01:16	  2.231		10	LH2	-1.723	19.00	-2.280	18.500	-1,5,-1,-1,-1,-1	HEE		Marked as 'Junk' on runsheet with no additional comment.  Shift summary comments the 20k replay showed peak outside of green region; TO also made a log entry.
-!25571	  09/03	     01:19	  2.231		10	LH2	-1.723	19.00	-2.240	18.500	-1,5,-1,-1,-1,-1	HEE		NOT marked as 'Junk' on runsheet, BUT, shift summary and run plan documents show that this run was also repeated.  I'm marking it as 'junk' for now.
-!25572	  09/03	     01:31	  2.231		10	LH2	-1.723	19.00	-2.200	18.500	-1,5,-1,-1,-1,-1	HEE		NOT marked as 'Junk' on runsheet, BUT, shift summary and run plan documents show that this run was also repeated.  I'm marking it as 'junk' for now.
-25573	  09/03	     01:55	  2.231		10	LH2	-1.723	19.00	-2.360	18.500	-1,5,-1,-1,-1,-1	HEE		Shift summary indicates this run is ok.  "First Go to the MOL current, then Go to the Target current."  Maybe SHMS magnets weren't set properly for the runs above?
+!25568	  09/03	     00:51	  2.231		10	LH2	-1.723	19.00	-2.360	18.500	-1,5,-1,-1,-1,-1	HEE		Marked as 'Junk' on runsheet with no additional comment.
+!25569	  09/03	     01:03	  2.231		10	LH2	-1.723	19.00	-2.320	18.500	-1,5,-1,-1,-1,-1	HEE		Marked as 'Junk' on runsheet with no additional comment.
+!25570	  09/03	     01:16	  2.231		10	LH2	-1.723	19.00	-2.280	18.500	-1,5,-1,-1,-1,-1	HEE		Marked as 'Junk' on runsheet with no additional comment.
+!25571	  09/03	     01:19	  2.231		10	LH2	-1.723	19.00	-2.240	18.500	-1,5,-1,-1,-1,-1	HEE		NOT marked as 'Junk' on runsheet, BUT, repeated later. Junk for now
+!25572	  09/03	     01:31	  2.231		10	LH2	-1.723	19.00	-2.200	18.500	-1,5,-1,-1,-1,-1	HEE		NOT marked as 'Junk' on runsheet, BUT, repeated later. Junk for now
+25573	  09/03	     01:55	  2.231		10	LH2	-1.723	19.00	-2.360	18.500	-1,5,-1,-1,-1,-1	HEE		Shift summary indicates this run is ok. 
 25574	  09/03	     02:03	  2.231		10	LH2	-1.723	19.00	-2.320	18.500	-1,5,-1,-1,-1,-1	HEE		0
 25575	  09/03	     02:12	  2.231		10	LH2	-1.723	19.00	-2.280	18.500	-1,5,-1,-1,-1,-1	HEE		0
 25576	  09/03	     02:20	  2.231		10	LH2	-1.723	19.00	-2.240	18.500	-1,5,-1,-1,-1,-1	HEE		0
