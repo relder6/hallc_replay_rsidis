@@ -221,44 +221,47 @@ HMS Accepted EDTM Triggers   : {HMS_edtm_accepted.npassed}
 = Live/Dead Time Calculations
 =:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:
 
-ROC2 Pre-Scaled Ps1 ROC2 Computer Live Time : {(pTRIG1_ROC2.npassed / (P.pTRIG1.scalerCut/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps1 ROC2 Computer Dead Time : {100.0 - (pTRIG1_ROC2.npassed / (P.pTRIG1.scalerCut/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps1 ROC2 Computer Live Time (no BCM cut) : {(pTRIG1_ROC2.npassed / (P.pTRIG1.scaler/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps1 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG1_ROC2.npassed / (P.pTRIG1.scaler/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps2 ROC2 Computer Live Time : {(pTRIG2_ROC2.npassed / (P.pTRIG2.scalerCut/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps2 ROC2 Computer Dead Time : {100.0 - (pTRIG2_ROC2.npassed / (P.pTRIG2.scalerCut/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps2 ROC2 Computer Live Time (no BCM cut) : {(pTRIG2_ROC2.npassed / (P.pTRIG2.scaler/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps2 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG2_ROC2.npassed / (P.pTRIG2.scaler/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps3 ROC2 Computer Live Time : {(pTRIG3_ROC2.npassed / (P.pTRIG3.scalerCut/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps3 ROC2 Computer Dead Time : {100.0 - (pTRIG3_ROC2.npassed / (P.pTRIG3.scalerCut/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps3 ROC2 Computer Live Time (no BCM cut) : {(pTRIG3_ROC2.npassed / (P.pTRIG3.scaler/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps3 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG3_ROC2.npassed / (P.pTRIG3.scaler/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps4 ROC2 Computer Live Time : {(pTRIG4_ROC2.npassed / (P.pTRIG4.scalerCut/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps4 ROC2 Computer Dead Time : {100.0 - (pTRIG4_ROC2.npassed / (P.pTRIG4.scalerCut/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps4 ROC2 Computer Live Time (no BCM cut) : {(pTRIG4_ROC2.npassed / (P.pTRIG4.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps4 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG4_ROC2.npassed / (P.pTRIG4.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps6 ROC2 Computer Live Time : {(pTRIG6_ROC2.npassed / (P.pTRIG6.scalerCut/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps6 ROC2 Computer Dead Time : {100.0 - (pTRIG6_ROC2.npassed / (P.pTRIG6.scalerCut/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps5 ROC2 Computer Live Time (no BCM cut) : {(pTRIG5_ROC2.npassed / (P.pTRIG5.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps5 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG5_ROC2.npassed / (P.pTRIG5.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps1 Total Live Time (EDTM) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps1 Total Dead Time (EDTM) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps6 ROC2 Computer Live Time (no BCM cut) : {(pTRIG6_ROC2.npassed / (P.pTRIG6.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps6 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG6_ROC2.npassed / (P.pTRIG6.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps2 Total Live Time (EDTM) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps2 Total Dead Time (EDTM) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps1 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps1 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[0]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps3 Total Live Time (EDTM) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps3 Total Dead Time (EDTM) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps2 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps2 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[1]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps4 Total Live Time (EDTM) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps4 Total Dead Time (EDTM) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps3 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps3 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[2]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps6 Total Live Time (EDTM) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps6 Total Dead Time (EDTM) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scalerCut/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps4 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps4 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
 
-ROC2 OG 6 GeV Electronic Live Time (100, 150) : {100.0 - ((P.pPRE100.scalerCut - P.pPRE150.scalerCut)/P.pPRE100.scalerCut):%3.4f} %
-ROC2 OG 6 GeV Electronic Dead Time (100, 150) : {((P.pPRE100.scalerCut - P.pPRE150.scalerCut)/P.pPRE100.scalerCut):%3.4f} %
+ROC2 Pre-Scaled Ps6 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps6 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
 
-ROC2 OG 6 GeV Electronic Live Time (100, 200) : {100.0 - ((P.pPRE100.scalerCut - P.pPRE200.scalerCut)/P.pPRE100.scalerCut):%3.4f} %
-ROC2 OG 6 GeV Electronic Dead Time (100, 200) : {((P.pPRE100.scalerCut - P.pPRE200.scalerCut)/P.pPRE100.scalerCut):%3.4f} %
+ROC2 OG 6 GeV Electronic Live Time (100, 150) (no BCM cut) : {100.0 - ((P.pPRE100.scaler - P.pPRE150.scaler)/P.pPRE100.scaler):%3.4f} %
+ROC2 OG 6 GeV Electronic Dead Time (100, 150) (no BCM cut) : {((P.pPRE100.scaler - P.pPRE150.scaler)/P.pPRE100.scaler):%3.4f} %
 
-ROC2 OG 6 GeV Electronic Live Time (150, 200) : {100.0 - ((P.pPRE150.scalerCut - P.pPRE200.scalerCut)/P.pPRE150.scalerCut):%3.4f} %
-ROC2 OG 6 GeV Electronic Dead Time (150, 200) : {((P.pPRE150.scalerCut - P.pPRE200.scalerCut)/P.pPRE150.scalerCut):%3.4f} %
+ROC2 OG 6 GeV Electronic Live Time (100, 200) (no BCM cut) : {100.0 - ((P.pPRE100.scaler - P.pPRE200.scaler)/P.pPRE100.scaler):%3.4f} %
+ROC2 OG 6 GeV Electronic Dead Time (100, 200) (no BCM cut) : {((P.pPRE100.scaler - P.pPRE200.scaler)/P.pPRE100.scaler):%3.4f} %
+
+ROC2 OG 6 GeV Electronic Live Time (150, 200) (no BCM cut) : {100.0 - ((P.pPRE150.scaler - P.pPRE200.scaler)/P.pPRE150.scaler):%3.4f} %
+ROC2 OG 6 GeV Electronic Dead Time (150, 200) (no BCM cut) : {((P.pPRE150.scaler - P.pPRE200.scaler)/P.pPRE150.scaler):%3.4f} %
 
 =:=:=:=:=:=:=:
 = Hodoscopes
