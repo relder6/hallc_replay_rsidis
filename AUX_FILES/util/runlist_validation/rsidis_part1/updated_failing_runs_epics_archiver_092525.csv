@@ -1,0 +1,28 @@
+run,Errors
+23860,ecQ1_Set_Current: obs/nom = 0.340.; ecQ2_Set_Current: obs/nom = 0.340.; ecQ3_Set_Current: obs/nom = 0.339.; ecSDI_Set_Current: obs/nom = 0.807.; ecSHB_Set_Current: obs/nom = 0.804.; ecSQ1_Set_Current: obs/nom = 0.807.; ecSQ2_Set_Current: obs/nom = 0.807.; ecSQ3_Set_Current: obs/nom = 0.807.
+24188,Average value is -999. Likely undefined output from myData.
+24189,Average value is -999. Likely undefined output from myData.
+24190,Average value is -999. Likely undefined output from myData.
+24295,ecSDI_Set_Current: obs/nom = 0.873.; ecSDI_Set_Current: abs(Max-Min) = 394.360.; ecSHB_Set_Current: obs/nom = 0.871.; ecSHB_Set_Current: abs(Max-Min) = 418.900.; ecSQ1_Set_Current: obs/nom = 0.873.; ecSQ1_Set_Current: abs(Max-Min) = 259.520.; ecSQ2_Set_Current: obs/nom = 0.873.; ecSQ2_Set_Current: abs(Max-Min) = 435.910.; ecSQ3_Set_Current: obs/nom = 0.873.; ecSQ3_Set_Current: abs(Max-Min) = 286.824.
+24296,ecSDI_Set_Current: obs/nom = 1.170.; ecSDI_Set_Current: abs(Max-Min) = 394.090.
+24299,ecSDI_Set_Current: obs/nom = 1.129.; ecSDI_Set_Current: abs(Max-Min) = 300.000.
+24391,ecQ3_Set_Current: obs/nom = 1.959.; ecQ3_Set_Current: abs(Max-Min) = 252.364.
+24840,ecSDI_Set_Current: abs(Max-Min) = 28.400.; ecSHB_Set_Current: abs(Max-Min) = 30.990.; ecSQ1_Set_Current: abs(Max-Min) = 18.690.; ecSQ2_Set_Current: abs(Max-Min) = 31.390.; ecSQ3_Set_Current: abs(Max-Min) = 20.650.
+24844,ecSHB_Set_Current: abs(Max-Min) = 28.050.; ecSQ1_Set_Current: abs(Max-Min) = 17.010.; ecSQ2_Set_Current: abs(Max-Min) = 28.570.
+24847,Average value is 0. Likely no EPICS entry in the data stream.
+24848,Average value is 0. Likely no EPICS entry in the data stream.
+24849,Average value is 0. Likely no EPICS entry in the data stream.
+24905,ecSDI_Set_Current: obs/nom = 0.572.; ecSDI_Set_Current: abs(Max-Min) = 2386.020.; ecSQ3_Set_Current: abs(Max-Min) = 300.000.
+25178,ecSHB_Set_Current: obs/nom = 1.347.; ecSQ1_Set_Current: obs/nom = 1.340.; ecSQ2_Set_Current: obs/nom = 1.340.; ecSQ3_Set_Current: obs/nom = 1.340.
+25474,ecSHB_Set_Current: obs/nom = 0.500.; ecSHB_Set_Current: abs(Max-Min) = 865.468.; ecSQ1_Set_Current: obs/nom = 0.500.; ecSQ1_Set_Current: abs(Max-Min) = 549.071.; ecSQ2_Set_Current: obs/nom = 0.500.; ecSQ2_Set_Current: abs(Max-Min) = 922.262.
+25577,ecSDI_Set_Current: obs/nom = 0.955.; ecSDI_Set_Current: abs(Max-Min) = 63.812.
+25580,ecSDI_Set_Current: obs/nom = 0.988.; ecSDI_Set_Current: abs(Max-Min) = 12.762.
+25583,ecSDI_Set_Current: obs/nom = 0.987.; ecSDI_Set_Current: abs(Max-Min) = 12.763.
+25584,ecSDI_Set_Current: obs/nom = 0.986.; ecSDI_Set_Current: abs(Max-Min) = 12.762.
+25591,ecSDI_Set_Current: abs(Max-Min) = 12.763.; ecSHB_Set_Current: abs(Max-Min) = 13.293.
+25592,ecSDI_Set_Current: abs(Max-Min) = 12.762.; ecSHB_Set_Current: abs(Max-Min) = 13.292.; ecSQ1_Set_Current: abs(Max-Min) = 8.399.; ecSQ2_Set_Current: abs(Max-Min) = 14.107.; ecSQ3_Set_Current: abs(Max-Min) = 9.282.
+25595,ecSDI_Set_Current: abs(Max-Min) = 12.762.; ecSHB_Set_Current: abs(Max-Min) = 13.281.; ecSQ1_Set_Current: abs(Max-Min) = 8.399.; ecSQ2_Set_Current: abs(Max-Min) = 14.108.
+25596,ecSDI_Set_Current: abs(Max-Min) = 12.763.
+25597,ecSDI_Set_Current: abs(Max-Min) = 12.762.; ecSHB_Set_Current: abs(Max-Min) = 13.275.
+25599,ecSDI_Set_Current: obs/nom = 0.990.; ecSDI_Set_Current: abs(Max-Min) = 12.763.; ecSHB_Set_Current: obs/nom = 0.990.; ecSHB_Set_Current: abs(Max-Min) = 13.269.
+25601,ecSDI_Set_Current: obs/nom = 0.989.; ecSDI_Set_Current: abs(Max-Min) = 12.763.; ecSHB_Set_Current: obs/nom = 0.989.; ecSHB_Set_Current: abs(Max-Min) = 13.264.; ecSQ1_Set_Current: obs/nom = 0.989.; ecSQ1_Set_Current: abs(Max-Min) = 8.398.; ecSQ2_Set_Current: obs/nom = 0.989.; ecSQ2_Set_Current: abs(Max-Min) = 14.107.; ecSQ3_Set_Current: obs/nom = 0.989.; ecSQ3_Set_Current: abs(Max-Min) = 9.282.

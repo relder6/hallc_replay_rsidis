@@ -1,0 +1,213 @@
+{
+    "RunNumber": "25602",
+    "ecDI_B_Set_NMR": {
+        "average": 0.4717029999999999,
+        "current size": 8,
+        "first": 0.471703,
+        "maximum": 0.471703,
+        "minimum": 0.471703,
+        "most_common": 0.471703,
+        "num_of_zeros": 0,
+        "standard_deviation": 1.1102230246251565e-16
+    },
+    "ecDI_B_True_NMR": {
+        "average": 0.47172024999999995,
+        "current size": 8,
+        "first": 0.471719,
+        "maximum": 0.471722,
+        "minimum": 0.471719,
+        "most_common": 0.47172,
+        "num_of_zeros": 0,
+        "standard_deviation": 8.29156197587587e-07
+    },
+    "ecDI_I_coarse": {
+        "average": 523.4989999999999,
+        "current size": 8,
+        "first": 523.499,
+        "maximum": 523.499,
+        "minimum": 523.499,
+        "most_common": 523.499,
+        "num_of_zeros": 0,
+        "standard_deviation": 1.1368683772161603e-13
+    },
+    "ecDI_Set_Current": {
+        "average": 526.544,
+        "current size": 8,
+        "first": 526.544,
+        "maximum": 526.544,
+        "minimum": 526.544,
+        "most_common": 526.544,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.0
+    },
+    "ecQ1_I_coarse": {
+        "average": 224.26499999999993,
+        "current size": 8,
+        "first": 224.265,
+        "maximum": 224.265,
+        "minimum": 224.265,
+        "most_common": 224.265,
+        "num_of_zeros": 0,
+        "standard_deviation": 5.684341886080802e-14
+    },
+    "ecQ1_Set_Current": {
+        "average": 224.40100000000004,
+        "current size": 8,
+        "first": 224.401,
+        "maximum": 224.401,
+        "minimum": 224.401,
+        "most_common": 224.401,
+        "num_of_zeros": 0,
+        "standard_deviation": 2.842170943040401e-14
+    },
+    "ecQ2_I_coarse": {
+        "average": 178.24299999999997,
+        "current size": 8,
+        "first": 178.243,
+        "maximum": 178.243,
+        "minimum": 178.243,
+        "most_common": 178.243,
+        "num_of_zeros": 0,
+        "standard_deviation": 2.842170943040401e-14
+    },
+    "ecQ2_Set_Current": {
+        "average": 178.33899999999997,
+        "current size": 8,
+        "first": 178.339,
+        "maximum": 178.339,
+        "minimum": 178.339,
+        "most_common": 178.339,
+        "num_of_zeros": 0,
+        "standard_deviation": 2.842170943040401e-14
+    },
+    "ecQ3_I_coarse": {
+        "average": 86.19135,
+        "current size": 8,
+        "first": 86.184,
+        "maximum": 86.2036,
+        "minimum": 86.184,
+        "most_common": 86.184,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.009488809198206697
+    },
+    "ecQ3_Set_Current": {
+        "average": 86.6483,
+        "current size": 8,
+        "first": 86.6483,
+        "maximum": 86.6483,
+        "minimum": 86.6483,
+        "most_common": 86.6483,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.0
+    },
+    "ecSDI_I_coarse": {
+        "average": 592.9719999999999,
+        "current size": 8,
+        "first": 592.972,
+        "maximum": 592.972,
+        "minimum": 592.972,
+        "most_common": 592.972,
+        "num_of_zeros": 0,
+        "standard_deviation": 1.1368683772161603e-13
+    },
+    "ecSDI_Set_Current": {
+        "average": 593.4520000000001,
+        "current size": 8,
+        "first": 593.452,
+        "maximum": 593.452,
+        "minimum": 593.452,
+        "most_common": 593.452,
+        "num_of_zeros": 0,
+        "standard_deviation": 1.1368683772161603e-13
+    },
+    "ecSHB_I_coarse": {
+        "average": 613.272,
+        "current size": 8,
+        "first": 613.272,
+        "maximum": 613.272,
+        "minimum": 613.272,
+        "most_common": 613.272,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.0
+    },
+    "ecSHB_Set_Current": {
+        "average": 614.592,
+        "current size": 8,
+        "first": 614.592,
+        "maximum": 614.592,
+        "minimum": 614.592,
+        "most_common": 614.592,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.0
+    },
+    "ecSQ1_I_coarse": {
+        "average": 390.54875000000004,
+        "current size": 8,
+        "first": 390.541,
+        "maximum": 390.603,
+        "minimum": 390.541,
+        "most_common": 390.541,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.020504572660754488
+    },
+    "ecSQ1_Set_Current": {
+        "average": 390.5439999999999,
+        "current size": 8,
+        "first": 390.544,
+        "maximum": 390.544,
+        "minimum": 390.544,
+        "most_common": 390.544,
+        "num_of_zeros": 0,
+        "standard_deviation": 5.684341886080802e-14
+    },
+    "ecSQ2_I_coarse": {
+        "average": 655.95425,
+        "current size": 8,
+        "first": 655.962,
+        "maximum": 655.962,
+        "minimum": 655.9,
+        "most_common": 655.9,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.020504572660754488
+    },
+    "ecSQ2_Set_Current": {
+        "average": 655.9880000000002,
+        "current size": 8,
+        "first": 655.988,
+        "maximum": 655.988,
+        "minimum": 655.988,
+        "most_common": 655.988,
+        "num_of_zeros": 0,
+        "standard_deviation": 1.1368683772161603e-13
+    },
+    "ecSQ3_I_coarse": {
+        "average": 432.03712500000006,
+        "current size": 8,
+        "first": 432.045,
+        "maximum": 432.045,
+        "minimum": 431.982,
+        "most_common": 431.982,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.02083529157462974
+    },
+    "ecSQ3_Set_Current": {
+        "average": 431.634,
+        "current size": 8,
+        "first": 431.634,
+        "maximum": 431.634,
+        "minimum": 431.634,
+        "most_common": 431.634,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.0
+    },
+    "hcBDSPOS": {
+        "average": 24018300.0,
+        "current size": 8,
+        "first": 24018300.0,
+        "maximum": 24018300.0,
+        "minimum": 24018300.0,
+        "most_common": 24018300.0,
+        "num_of_zeros": 0,
+        "standard_deviation": 0.0
+    }
+}

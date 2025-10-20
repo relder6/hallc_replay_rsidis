@@ -1,0 +1,37 @@
+RunNumber,Errors
+24023,ecDI_I_coarse: obs/nom = 0.722.; ecDI_I_coarse: abs(Max-Min) = 254.199.; ecQ1_I_coarse: obs/nom = 0.713.; ecQ1_I_coarse: abs(Max-Min) = 114.097.; ecQ3_I_coarse: obs/nom = 0.736.; ecQ3_I_coarse: abs(Max-Min) = 39.815.
+24188,Average value is -999. Likely undefined output from myData.
+24189,Average value is -999. Likely undefined output from myData.
+24190,Average value is -999. Likely undefined output from myData.
+24295,ecSHB_I_coarse: obs/nom = 0.870.; ecSHB_I_coarse: abs(Max-Min) = 418.390.; ecSQ1_I_coarse: obs/nom = 0.873.; ecSQ1_I_coarse: abs(Max-Min) = 259.649.; ecSQ2_I_coarse: obs/nom = 0.873.; ecSQ2_I_coarse: abs(Max-Min) = 435.550.; ecSQ3_I_coarse: obs/nom = 0.874.; ecSQ3_I_coarse: abs(Max-Min) = 287.112.
+24296,ecSDI_I_coarse: obs/nom = 1.340.
+24297,ecSDI_I_coarse: obs/nom = 1.340.
+24298,ecSDI_I_coarse: obs/nom = 1.340.
+24299,ecSDI_I_coarse: obs/nom = 1.340.
+24387,ecDI_I_coarse: obs/nom = 0.501.; ecDI_I_coarse: abs(Max-Min) = 461.341.; ecQ1_I_coarse: obs/nom = 0.500.; ecQ1_I_coarse: abs(Max-Min) = 199.279.; ecQ3_I_coarse: obs/nom = 0.494.; ecQ3_I_coarse: abs(Max-Min) = 76.949.
+24391,ecQ3_I_coarse: obs/nom = 1.793.; ecQ3_I_coarse: abs(Max-Min) = 276.943.
+24558,ecSHB_I_coarse: abs(Max-Min) = 2.500.; ecSDI_I_coarse: obs/nom = 1.052.; ecSDI_I_coarse: abs(Max-Min) = 120.870.
+24585,ecSQ3_I_coarse: obs/nom = 0.806.; ecSQ3_I_coarse: abs(Max-Min) = 439.706.
+24619,ecSHB_I_coarse: obs/nom = 0.499.; ecSHB_I_coarse: abs(Max-Min) = 1203.871.
+24689,ecDI_I_coarse: obs/nom = 0.583.; ecDI_I_coarse: abs(Max-Min) = 383.896.; ecQ1_I_coarse: obs/nom = 0.501.; ecQ1_I_coarse: abs(Max-Min) = 198.595.; ecQ3_I_coarse: obs/nom = 0.510.; ecQ3_I_coarse: abs(Max-Min) = 74.523.; ecSQ2_I_coarse: abs(Max-Min) = 8.070.
+24699,ecDI_I_coarse: obs/nom = 0.494.; ecDI_I_coarse: abs(Max-Min) = 467.100.; ecQ1_I_coarse: obs/nom = 0.500.; ecQ1_I_coarse: abs(Max-Min) = 199.260.; ecQ3_I_coarse: obs/nom = 0.494.; ecQ3_I_coarse: abs(Max-Min) = 76.969.
+24737,ecSQ3_I_coarse: obs/nom = 0.757.; ecSQ3_I_coarse: abs(Max-Min) = 411.166.
+24744,ecDI_I_coarse: obs/nom = 0.670.; ecDI_I_coarse: abs(Max-Min) = 302.941.; ecQ3_I_coarse: obs/nom = 0.598.; ecQ3_I_coarse: abs(Max-Min) = 60.925.
+24840,ecSHB_I_coarse: abs(Max-Min) = 26.740.; ecSQ1_I_coarse: abs(Max-Min) = 18.690.; ecSQ2_I_coarse: abs(Max-Min) = 31.340.; ecSQ3_I_coarse: abs(Max-Min) = 41.810.
+24844,ecSHB_I_coarse: abs(Max-Min) = 28.000.; ecSQ1_I_coarse: abs(Max-Min) = 17.070.; ecSQ2_I_coarse: abs(Max-Min) = 24.780.
+24846,ecSDI_I_coarse: obs/nom = 0.982.; ecSDI_I_coarse: abs(Max-Min) = 59.060.
+24847,ecSHB_I_coarse: obs/nom = -0.000.; ecSDI_I_coarse: obs/nom = -0.000.
+24848,ecSHB_I_coarse: obs/nom = -0.000.; ecSDI_I_coarse: obs/nom = -0.000.
+24849,ecSHB_I_coarse: obs/nom = -0.000.; ecSDI_I_coarse: obs/nom = -0.000.
+25123,ecSDI_I_coarse: obs/nom = 0.500.; ecSDI_I_coarse: abs(Max-Min) = 2086.595.
+25158,ecDI_I_coarse: obs/nom = 0.544.; ecDI_I_coarse: abs(Max-Min) = 1011.878.
+25178,ecSHB_I_coarse: obs/nom = 1.345.; ecSQ1_I_coarse: obs/nom = 1.341.; ecSQ2_I_coarse: obs/nom = 1.339.; ecSQ3_I_coarse: obs/nom = 1.341.
+25258,ecDI_I_coarse: obs/nom = 0.669.; ecDI_I_coarse: abs(Max-Min) = 1497.935.
+25396,ecSQ1_I_coarse: obs/nom = 1.320.; ecSQ1_I_coarse: abs(Max-Min) = 488.344.
+25455,ecDI_I_coarse: abs(Max-Min) = 1.830.
+25474,ecSHB_I_coarse: obs/nom = 0.990.; ecSHB_I_coarse: abs(Max-Min) = 14.233.; ecSQ1_I_coarse: abs(Max-Min) = 10.068.; ecSQ2_I_coarse: abs(Max-Min) = 8.383.
+25487,ecSQ2_I_coarse: obs/nom = 0.972.; ecSQ2_I_coarse: abs(Max-Min) = 70.510.
+25516,ecQ3_I_coarse: obs/nom = 0.498.; ecQ3_I_coarse: abs(Max-Min) = 183.227.
+25592,ecSHB_I_coarse: abs(Max-Min) = 7.351.; ecSQ1_I_coarse: abs(Max-Min) = 3.440.; ecSQ2_I_coarse: abs(Max-Min) = 11.762.; ecSQ3_I_coarse: abs(Max-Min) = 2.190.
+25595,ecSHB_I_coarse: abs(Max-Min) = 7.038.; ecSDI_I_coarse: abs(Max-Min) = 2.753.; ecSQ1_I_coarse: abs(Max-Min) = 1.064.; ecSQ2_I_coarse: abs(Max-Min) = 3.566.
+25601,ecSHB_I_coarse: obs/nom = 0.988.; ecSHB_I_coarse: abs(Max-Min) = 12.044.; ecSDI_I_coarse: obs/nom = 0.989.; ecSDI_I_coarse: abs(Max-Min) = 12.388.; ecSQ1_I_coarse: obs/nom = 0.990.; ecSQ1_I_coarse: abs(Max-Min) = 8.442.; ecSQ2_I_coarse: obs/nom = 0.989.; ecSQ2_I_coarse: abs(Max-Min) = 14.139.; ecSQ3_I_coarse: abs(Max-Min) = 9.326.

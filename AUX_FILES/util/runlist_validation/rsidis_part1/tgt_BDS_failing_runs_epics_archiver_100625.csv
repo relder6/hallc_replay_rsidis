@@ -1,0 +1,16 @@
+RunNumber,Errors
+23838,hcBDSPOS: obs/nom = 5.062. avg = 24018300.0.
+23860,hcBDSPOS: obs/nom = 0.397. avg = 9538140.0.
+23959,hcBDSPOS: Nominal value missing in CSV column 'BDSpos'.
+24046,hcBDSPOS: obs/nom = 0.869. avg = 4745290.0.; hcBDSPOS: abs(Max-Min) = 1430580.000. avg = 4745290.0
+24066,hcBDSPOS: obs/nom = 2.159. avg = 20593495.0.; hcBDSPOS: abs(Max-Min) = 22110810.000. avg = 20593495.0
+24067,hcBDSPOS: obs/nom = 1.373. avg = 7499335.0.; hcBDSPOS: abs(Max-Min) = 4077610.000. avg = 7499335.0
+24283,hcBDSPOS: obs/nom = 1.148. avg = 4628310.0.; hcBDSPOS: abs(Max-Min) = 1196520.000. avg = 4628310.0
+24300,hcBDSPOS: obs/nom = 0.869. avg = 4745270.0.
+24391,"hcBDSPOS: Nominal value is zero, cannot compute ratio."
+24558,hcBDSPOS: obs/nom = 0.687. avg = 21755700.0.; hcBDSPOS: abs(Max-Min) = 19786400.000. avg = 21755700.0
+24562,hcBDSPOS: obs/nom = 1.177. avg = 4745290.0.; hcBDSPOS: abs(Max-Min) = 1430580.000. avg = 4745290.0
+24570,hcBDSPOS: obs/nom = 1.060. avg = 4272205.0.; hcBDSPOS: abs(Max-Min) = 484410.000. avg = 4272205.0
+25032,hcBDSPOS: obs/nom = 0.935. avg = 5102895.0.; hcBDSPOS: abs(Max-Min) = 715270.000. avg = 5102895.0
+25037,hcBDSPOS: obs/nom = 0.902. avg = 4924830.0.; hcBDSPOS: abs(Max-Min) = 1071400.000. avg = 4924830.0
+25506,hcBDSPOS: obs/nom = 0.759. avg = 24018300.0.

@@ -1,0 +1,95 @@
+run,message,Errors
+23860,hms_p : left = -1.531 right = -4.5; shms_p : left = -3.632 right = -4.5,ecQ1_Set_Current: obs/nom = 0.340.; ecQ2_Set_Current: obs/nom = 0.340.; ecQ3_Set_Current: obs/nom = 0.339.; ecSDI_Set_Current: obs/nom = 0.807.; ecSHB_Set_Current: obs/nom = 0.804.; ecSQ1_Set_Current: obs/nom = 0.807.; ecSQ2_Set_Current: obs/nom = 0.807.; ecSQ3_Set_Current: obs/nom = 0.807.
+23861,hms_p : left = -1.531 right = -1.53; shms_p : left = -3.632 right = -3.63,
+23862,hms_p : left = -1.531 right = -1.53; shms_p : left = -3.632 right = -3.63,
+23864,shms_p : left = -3.632 right = -3.63,
+23865,shms_p : left = -3.632 right = -3.63,
+23866,shms_p : left = -3.632 right = -3.63,
+23867,shms_p : left = -3.632 right = -3.63,
+23868,shms_p : left = -3.632 right = -3.63,
+23956,shms_p : left = -6.538 right = -2.615,
+24188,,Average value is -999. Likely undefined output from myData.
+24189,,Average value is -999. Likely undefined output from myData.
+24190,,Average value is -999. Likely undefined output from myData.
+24295,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.873.; ecSDI_Set_Current: abs(Max-Min) = 394.360.; ecSHB_Set_Current: obs/nom = 0.871.; ecSHB_Set_Current: abs(Max-Min) = 418.900.; ecSQ1_Set_Current: obs/nom = 0.873.; ecSQ1_Set_Current: abs(Max-Min) = 259.520.; ecSQ2_Set_Current: obs/nom = 0.873.; ecSQ2_Set_Current: abs(Max-Min) = 435.910.; ecSQ3_Set_Current: obs/nom = 0.873.; ecSQ3_Set_Current: abs(Max-Min) = 286.824.
+24296,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.873.; ecSDI_Set_Current: abs(Max-Min) = 394.090.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24297,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24298,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24299,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.843.; ecSDI_Set_Current: abs(Max-Min) = 300.000.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24300,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24301,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24303,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24304,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24306,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24307,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24308,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24309,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24391,,ecQ3_Set_Current: obs/nom = 1.959.; ecQ3_Set_Current: abs(Max-Min) = 252.364.
+24840,shms_p : left = -5.594 right = -5.683,ecSDI_Set_Current: abs(Max-Min) = 28.400.; ecSHB_Set_Current: abs(Max-Min) = 30.990.; ecSQ1_Set_Current: abs(Max-Min) = 18.690.; ecSQ2_Set_Current: abs(Max-Min) = 31.390.; ecSQ3_Set_Current: abs(Max-Min) = 20.650.
+24844,shms_p : left = -5.343 right = -5.424,ecSHB_Set_Current: abs(Max-Min) = 28.050.; ecSQ1_Set_Current: abs(Max-Min) = 17.010.; ecSQ2_Set_Current: abs(Max-Min) = 28.570.
+24847,,Average value is 0. Likely no EPICS entry in the data stream.
+24848,,Average value is 0. Likely no EPICS entry in the data stream.
+24849,,Average value is 0. Likely no EPICS entry in the data stream.
+24905,,ecSDI_Set_Current: obs/nom = 0.572.; ecSDI_Set_Current: abs(Max-Min) = 2386.020.; ecSQ3_Set_Current: abs(Max-Min) = 300.000.
+25137,shms_p : left = -4.868 right = -6.538,
+25178,,ecSHB_Set_Current: obs/nom = 1.347.; ecSQ1_Set_Current: obs/nom = 1.340.; ecSQ2_Set_Current: obs/nom = 1.340.; ecSQ3_Set_Current: obs/nom = 1.340.
+25204,shms_p : left = -2.615 right = -3.632,
+25279,shms_p : left = 3.632 right = 4.868,
+25399,shms_p : left = -3.632 right = 3.632,
+25400,shms_p : left = -3.632 right = 3.632,
+25401,shms_p : left = -3.632 right = 3.632,
+25402,shms_p : left = -3.632 right = 3.632,
+25403,shms_p : left = -3.632 right = 3.632,
+25404,shms_p : left = -3.632 right = 3.632,
+25405,shms_p : left = -3.632 right = 3.632,
+25406,shms_p : left = -3.632 right = 3.632,
+25407,shms_p : left = -3.632 right = 3.632,
+25408,shms_p : left = -3.632 right = 3.632,
+25409,shms_p : left = -3.632 right = 3.632,
+25410,shms_p : left = -3.632 right = 3.632,
+25411,shms_p : left = -3.632 right = 3.632,
+25412,shms_p : left = -3.632 right = 3.632,
+25413,shms_p : left = -3.632 right = 3.632,
+25414,shms_p : left = -3.632 right = 3.632,
+25415,shms_p : left = -3.632 right = 3.632,
+25416,shms_p : left = -3.632 right = 3.632,
+25417,shms_p : left = -3.632 right = 3.632,
+25418,shms_p : left = -3.632 right = 3.632,
+25420,shms_p : left = -3.632 right = 3.632,
+25421,shms_p : left = -3.632 right = 3.632,
+25422,shms_p : left = -3.632 right = 3.632,
+25455,hms_p : left = -3.642 right = 3.642,
+25474,,ecSHB_Set_Current: obs/nom = 0.500.; ecSHB_Set_Current: abs(Max-Min) = 865.468.; ecSQ1_Set_Current: obs/nom = 0.500.; ecSQ1_Set_Current: abs(Max-Min) = 549.071.; ecSQ2_Set_Current: obs/nom = 0.500.; ecSQ2_Set_Current: abs(Max-Min) = 922.262.
+25478,shms_p : left = -6.6048 right = -6.048,
+25524,hms_p : left = -5.983 right = -6.358; shms_p : left = -5.983 right = -6.358,
+25528,hms_p : left = -5.27 right = -5.983; shms_p : left = -5.27 right = -5.983,
+25550,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25551,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25552,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25554,hms_p : left = -2.178 right = -2.198; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25555,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25556,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25557,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25558,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25560,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25562,hms_p : left = -1.802 right = -1.822; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25563,hms_p : left = -1.782 right = -1.802; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25564,hms_p : left = -1.762 right = -1.782; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25565,hms_p : left = -1.742 right = -1.762; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25566,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25567,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25575,shms_p : left = -2.24 right = -2.28,
+25577,shms_p : left = -2.0 right = -2.2,ecSDI_Set_Current: obs/nom = 0.955.; ecSDI_Set_Current: abs(Max-Min) = 63.812.
+25580,shms_p : left = -1.6 right = -1.64,ecSDI_Set_Current: obs/nom = 0.988.; ecSDI_Set_Current: abs(Max-Min) = 12.762.
+25581,shms_p : left = -1.56 right = -1.6,
+25582,shms_p : left = -1.52 right = -1.56,
+25583,shms_p : left = -1.48 right = -1.52,ecSDI_Set_Current: obs/nom = 0.987.; ecSDI_Set_Current: abs(Max-Min) = 12.763.
+25584,shms_p : left = -1.44 right = -1.48,ecSDI_Set_Current: obs/nom = 0.986.; ecSDI_Set_Current: abs(Max-Min) = 12.762.
+25585,shms_p : left = -1.4 right = -1.44,
+25591,shms_p : left = -2.26 right = -2.3,ecSDI_Set_Current: abs(Max-Min) = 12.763.; ecSHB_Set_Current: abs(Max-Min) = 13.293.
+25592,shms_p : left = -2.22 right = -2.26,ecSDI_Set_Current: abs(Max-Min) = 12.762.; ecSHB_Set_Current: abs(Max-Min) = 13.292.; ecSQ1_Set_Current: abs(Max-Min) = 8.399.; ecSQ2_Set_Current: abs(Max-Min) = 14.107.; ecSQ3_Set_Current: abs(Max-Min) = 9.282.
+25595,shms_p : left = -2.1 right = -2.14,ecSDI_Set_Current: abs(Max-Min) = 12.762.; ecSHB_Set_Current: abs(Max-Min) = 13.281.; ecSQ1_Set_Current: abs(Max-Min) = 8.399.; ecSQ2_Set_Current: abs(Max-Min) = 14.108.
+25596,shms_p : left = -2.06 right = -2.1,ecSDI_Set_Current: abs(Max-Min) = 12.763.
+25597,shms_p : left = -2.02 right = -2.06,ecSDI_Set_Current: abs(Max-Min) = 12.762.; ecSHB_Set_Current: abs(Max-Min) = 13.275.
+25599,shms_p : left = -1.94 right = -1.98,ecSDI_Set_Current: obs/nom = 0.990.; ecSDI_Set_Current: abs(Max-Min) = 12.763.; ecSHB_Set_Current: obs/nom = 0.990.; ecSHB_Set_Current: abs(Max-Min) = 13.269.
+25601,shms_p : left = -1.86 right = -1.9,ecSDI_Set_Current: obs/nom = 0.989.; ecSDI_Set_Current: abs(Max-Min) = 12.763.; ecSHB_Set_Current: obs/nom = 0.989.; ecSHB_Set_Current: abs(Max-Min) = 13.264.; ecSQ1_Set_Current: obs/nom = 0.989.; ecSQ1_Set_Current: abs(Max-Min) = 8.398.; ecSQ2_Set_Current: obs/nom = 0.989.; ecSQ2_Set_Current: abs(Max-Min) = 14.107.; ecSQ3_Set_Current: obs/nom = 0.989.; ecSQ3_Set_Current: abs(Max-Min) = 9.282.
