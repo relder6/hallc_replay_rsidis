@@ -1,0 +1,85 @@
+run,message
+23860,hms_p : left = -1.531 right = -4.5; shms_p : left = -3.632 right = -4.5
+23861,hms_p : left = -1.531 right = -1.53; shms_p : left = -3.632 right = -3.63
+23862,hms_p : left = -1.531 right = -1.53; shms_p : left = -3.632 right = -3.63
+23864,shms_p : left = -3.632 right = -3.63
+23865,shms_p : left = -3.632 right = -3.63
+23866,shms_p : left = -3.632 right = -3.63
+23867,shms_p : left = -3.632 right = -3.63
+23868,shms_p : left = -3.632 right = -3.63
+23956,shms_p : left = -6.538 right = -2.615
+24295,shms_p : left = 3.632 right = 4.868
+24296,shms_p : left = 3.632 right = 4.868
+24297,shms_p : left = 3.632 right = 4.868
+24298,shms_p : left = 3.632 right = 4.868
+24299,shms_p : left = 3.632 right = 4.868
+24300,shms_p : left = 3.632 right = 4.868
+24301,shms_p : left = 3.632 right = 4.868
+24303,shms_p : left = 3.632 right = 4.868
+24304,shms_p : left = 3.632 right = 4.868
+24306,shms_p : left = 3.632 right = 4.868
+24307,shms_p : left = 3.632 right = 4.868
+24308,shms_p : left = 3.632 right = 4.868
+24309,shms_p : left = 3.632 right = 4.868
+24840,shms_p : left = -5.594 right = -5.683
+24844,shms_p : left = -5.343 right = -5.424
+25137,shms_p : left = -4.868 right = -6.538
+25204,shms_p : left = -2.615 right = -3.632
+25279,shms_p : left = 3.632 right = 4.868
+25399,shms_p : left = -3.632 right = 3.632
+25400,shms_p : left = -3.632 right = 3.632
+25401,shms_p : left = -3.632 right = 3.632
+25402,shms_p : left = -3.632 right = 3.632
+25403,shms_p : left = -3.632 right = 3.632
+25404,shms_p : left = -3.632 right = 3.632
+25405,shms_p : left = -3.632 right = 3.632
+25406,shms_p : left = -3.632 right = 3.632
+25407,shms_p : left = -3.632 right = 3.632
+25408,shms_p : left = -3.632 right = 3.632
+25409,shms_p : left = -3.632 right = 3.632
+25410,shms_p : left = -3.632 right = 3.632
+25411,shms_p : left = -3.632 right = 3.632
+25412,shms_p : left = -3.632 right = 3.632
+25413,shms_p : left = -3.632 right = 3.632
+25414,shms_p : left = -3.632 right = 3.632
+25415,shms_p : left = -3.632 right = 3.632
+25416,shms_p : left = -3.632 right = 3.632
+25417,shms_p : left = -3.632 right = 3.632
+25418,shms_p : left = -3.632 right = 3.632
+25420,shms_p : left = -3.632 right = 3.632
+25421,shms_p : left = -3.632 right = 3.632
+25422,shms_p : left = -3.632 right = 3.632
+25455,hms_p : left = -3.642 right = 3.642
+25478,shms_p : left = -6.6048 right = -6.048
+25524,hms_p : left = -5.983 right = -6.358; shms_p : left = -5.983 right = -6.358
+25528,hms_p : left = -5.27 right = -5.983; shms_p : left = -5.27 right = -5.983
+25550,shms_p : left = -2.36 right = 3.632
+25551,shms_p : left = -2.36 right = 3.632
+25552,shms_p : left = -2.36 right = 3.632
+25554,hms_p : left = -2.178 right = -2.198; shms_p : left = -2.36 right = 3.632
+25555,shms_p : left = -2.36 right = 3.632
+25556,shms_p : left = -2.36 right = 3.632
+25557,shms_p : left = -2.36 right = 3.632
+25558,shms_p : left = -2.36 right = 3.632
+25560,shms_p : left = -2.36 right = 3.632
+25562,hms_p : left = -1.802 right = -1.822; shms_p : left = -2.36 right = 3.632
+25563,hms_p : left = -1.782 right = -1.802; shms_p : left = -2.36 right = 3.632
+25564,hms_p : left = -1.762 right = -1.782; shms_p : left = -2.36 right = 3.632
+25565,hms_p : left = -1.742 right = -1.762; shms_p : left = -2.36 right = 3.632
+25566,shms_p : left = -2.36 right = 3.632
+25567,shms_p : left = -2.36 right = 3.632
+25575,shms_p : left = -2.24 right = -2.28
+25577,shms_p : left = -2.0 right = -2.2
+25580,shms_p : left = -1.6 right = -1.64
+25581,shms_p : left = -1.56 right = -1.6
+25582,shms_p : left = -1.52 right = -1.56
+25583,shms_p : left = -1.48 right = -1.52
+25584,shms_p : left = -1.44 right = -1.48
+25585,shms_p : left = -1.4 right = -1.44
+25591,shms_p : left = -2.26 right = -2.3
+25592,shms_p : left = -2.22 right = -2.26
+25595,shms_p : left = -2.1 right = -2.14
+25596,shms_p : left = -2.06 right = -2.1
+25597,shms_p : left = -2.02 right = -2.06
+25599,shms_p : left = -1.94 right = -1.98
+25601,shms_p : left = -1.86 right = -1.9

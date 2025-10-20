@@ -1,0 +1,372 @@
+run,message,Errors
+23860,hms_p : left = -1.531 right = -4.5; shms_p : left = -3.632 right = -4.5,
+23861,hms_p : left = -1.531 right = -1.53; shms_p : left = -3.632 right = -3.63,
+23862,hms_p : left = -1.531 right = -1.53; shms_p : left = -3.632 right = -3.63,
+23864,shms_p : left = -3.632 right = -3.63,
+23865,shms_p : left = -3.632 right = -3.63,
+23866,shms_p : left = -3.632 right = -3.63,
+23867,shms_p : left = -3.632 right = -3.63,
+23868,shms_p : left = -3.632 right = -3.63,
+23956,shms_p : left = -6.538 right = -2.615,
+24295,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.887.; ecSDI_Set_Current: abs(Max-Min) = 394.360.; ecSHB_Set_Current: obs/nom = 0.871.; ecSHB_Set_Current: abs(Max-Min) = 418.900.; ecSQ1_Set_Current: obs/nom = 0.873.; ecSQ1_Set_Current: abs(Max-Min) = 259.520.; ecSQ2_Set_Current: obs/nom = 0.873.; ecSQ2_Set_Current: abs(Max-Min) = 435.910.; ecSQ3_Set_Current: obs/nom = 0.887.; ecSQ3_Set_Current: abs(Max-Min) = 286.824.
+24296,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.790.; ecSDI_Set_Current: abs(Max-Min) = 394.090.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24297,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24298,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24299,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24300,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24301,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24303,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24304,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24306,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24307,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24308,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24309,shms_p : left = 3.632 right = 4.868,ecSDI_Set_Current: obs/nom = 0.746.; ecSHB_Set_Current: obs/nom = 0.742.; ecSQ1_Set_Current: obs/nom = 0.746.; ecSQ2_Set_Current: obs/nom = 0.746.; ecSQ3_Set_Current: obs/nom = 0.746.
+24391,,ecQ3_Set_Current: obs/nom = 1.250.; ecQ3_Set_Current: abs(Max-Min) = 252.364.
+24543,,Average value is 0. Likely no EPICS entry in the data stream.
+24544,,Average value is 0. Likely no EPICS entry in the data stream.
+24545,,Average value is 0. Likely no EPICS entry in the data stream.
+24546,,Average value is 0. Likely no EPICS entry in the data stream.
+24547,,Average value is 0. Likely no EPICS entry in the data stream.
+24549,,Average value is 0. Likely no EPICS entry in the data stream.
+24550,,Average value is 0. Likely no EPICS entry in the data stream.
+24551,,Average value is 0. Likely no EPICS entry in the data stream.
+24553,,Average value is 0. Likely no EPICS entry in the data stream.
+24554,,Average value is 0. Likely no EPICS entry in the data stream.
+24555,,Average value is 0. Likely no EPICS entry in the data stream.
+24556,,Average value is 0. Likely no EPICS entry in the data stream.
+24557,,Average value is 0. Likely no EPICS entry in the data stream.
+24558,,Average value is 0. Likely no EPICS entry in the data stream.
+24559,,Average value is 0. Likely no EPICS entry in the data stream.
+24560,,Average value is 0. Likely no EPICS entry in the data stream.
+24561,,Average value is 0. Likely no EPICS entry in the data stream.
+24562,,Average value is 0. Likely no EPICS entry in the data stream.
+24563,,Average value is 0. Likely no EPICS entry in the data stream.
+24564,,Average value is 0. Likely no EPICS entry in the data stream.
+24566,,Average value is 0. Likely no EPICS entry in the data stream.
+24567,,Average value is 0. Likely no EPICS entry in the data stream.
+24568,,Average value is 0. Likely no EPICS entry in the data stream.
+24569,,Average value is 0. Likely no EPICS entry in the data stream.
+24570,,Average value is 0. Likely no EPICS entry in the data stream.
+24572,,Average value is 0. Likely no EPICS entry in the data stream.
+24573,,Average value is 0. Likely no EPICS entry in the data stream.
+24574,,Average value is 0. Likely no EPICS entry in the data stream.
+24575,,Average value is 0. Likely no EPICS entry in the data stream.
+24576,,Average value is 0. Likely no EPICS entry in the data stream.
+24577,,Average value is 0. Likely no EPICS entry in the data stream.
+24578,,Average value is 0. Likely no EPICS entry in the data stream.
+24579,,Average value is 0. Likely no EPICS entry in the data stream.
+24580,,Average value is 0. Likely no EPICS entry in the data stream.
+24581,,Average value is 0. Likely no EPICS entry in the data stream.
+24582,,Average value is 0. Likely no EPICS entry in the data stream.
+24583,,Average value is 0. Likely no EPICS entry in the data stream.
+24584,,Average value is 0. Likely no EPICS entry in the data stream.
+24585,,Average value is 0. Likely no EPICS entry in the data stream.
+24587,,Average value is 0. Likely no EPICS entry in the data stream.
+24588,,Average value is 0. Likely no EPICS entry in the data stream.
+24589,,Average value is 0. Likely no EPICS entry in the data stream.
+24590,,Average value is 0. Likely no EPICS entry in the data stream.
+24591,,Average value is 0. Likely no EPICS entry in the data stream.
+24592,,Average value is 0. Likely no EPICS entry in the data stream.
+24593,,Average value is 0. Likely no EPICS entry in the data stream.
+24594,,Average value is 0. Likely no EPICS entry in the data stream.
+24595,,Average value is 0. Likely no EPICS entry in the data stream.
+24596,,Average value is 0. Likely no EPICS entry in the data stream.
+24597,,Average value is 0. Likely no EPICS entry in the data stream.
+24598,,Average value is 0. Likely no EPICS entry in the data stream.
+24599,,Average value is 0. Likely no EPICS entry in the data stream.
+24600,,Average value is 0. Likely no EPICS entry in the data stream.
+24601,,Average value is 0. Likely no EPICS entry in the data stream.
+24602,,Average value is 0. Likely no EPICS entry in the data stream.
+24603,,Average value is 0. Likely no EPICS entry in the data stream.
+24604,,Average value is 0. Likely no EPICS entry in the data stream.
+24605,,Average value is 0. Likely no EPICS entry in the data stream.
+24606,,Average value is 0. Likely no EPICS entry in the data stream.
+24607,,Average value is 0. Likely no EPICS entry in the data stream.
+24608,,Average value is 0. Likely no EPICS entry in the data stream.
+24609,,Average value is 0. Likely no EPICS entry in the data stream.
+24610,,Average value is 0. Likely no EPICS entry in the data stream.
+24611,,Average value is 0. Likely no EPICS entry in the data stream.
+24612,,Average value is 0. Likely no EPICS entry in the data stream.
+24613,,Average value is 0. Likely no EPICS entry in the data stream.
+24614,,Average value is 0. Likely no EPICS entry in the data stream.
+24615,,Average value is 0. Likely no EPICS entry in the data stream.
+24616,,Average value is 0. Likely no EPICS entry in the data stream.
+24617,,Average value is 0. Likely no EPICS entry in the data stream.
+24618,,Average value is 0. Likely no EPICS entry in the data stream.
+24619,,Average value is 0. Likely no EPICS entry in the data stream.
+24620,,Average value is 0. Likely no EPICS entry in the data stream.
+24621,,Average value is 0. Likely no EPICS entry in the data stream.
+24622,,Average value is 0. Likely no EPICS entry in the data stream.
+24623,,Average value is 0. Likely no EPICS entry in the data stream.
+24624,,Average value is 0. Likely no EPICS entry in the data stream.
+24625,,Average value is 0. Likely no EPICS entry in the data stream.
+24626,,Average value is 0. Likely no EPICS entry in the data stream.
+24627,,Average value is 0. Likely no EPICS entry in the data stream.
+24628,,Average value is 0. Likely no EPICS entry in the data stream.
+24629,,Average value is 0. Likely no EPICS entry in the data stream.
+24630,,Average value is 0. Likely no EPICS entry in the data stream.
+24631,,Average value is 0. Likely no EPICS entry in the data stream.
+24632,,Average value is 0. Likely no EPICS entry in the data stream.
+24633,,Average value is 0. Likely no EPICS entry in the data stream.
+24634,,Average value is 0. Likely no EPICS entry in the data stream.
+24635,,Average value is 0. Likely no EPICS entry in the data stream.
+24636,,Average value is 0. Likely no EPICS entry in the data stream.
+24637,,Average value is 0. Likely no EPICS entry in the data stream.
+24640,,Average value is 0. Likely no EPICS entry in the data stream.
+24641,,Average value is 0. Likely no EPICS entry in the data stream.
+24642,,Average value is 0. Likely no EPICS entry in the data stream.
+24643,,Average value is 0. Likely no EPICS entry in the data stream.
+24644,,Average value is 0. Likely no EPICS entry in the data stream.
+24645,,Average value is 0. Likely no EPICS entry in the data stream.
+24646,,Average value is 0. Likely no EPICS entry in the data stream.
+24647,,Average value is 0. Likely no EPICS entry in the data stream.
+24648,,Average value is 0. Likely no EPICS entry in the data stream.
+24649,,Average value is 0. Likely no EPICS entry in the data stream.
+24650,,Average value is 0. Likely no EPICS entry in the data stream.
+24651,,Average value is 0. Likely no EPICS entry in the data stream.
+24652,,Average value is 0. Likely no EPICS entry in the data stream.
+24653,,Average value is 0. Likely no EPICS entry in the data stream.
+24654,,Average value is 0. Likely no EPICS entry in the data stream.
+24655,,Average value is 0. Likely no EPICS entry in the data stream.
+24656,,Average value is 0. Likely no EPICS entry in the data stream.
+24657,,Average value is 0. Likely no EPICS entry in the data stream.
+24658,,Average value is 0. Likely no EPICS entry in the data stream.
+24659,,Average value is 0. Likely no EPICS entry in the data stream.
+24660,,Average value is 0. Likely no EPICS entry in the data stream.
+24661,,Average value is 0. Likely no EPICS entry in the data stream.
+24662,,Average value is 0. Likely no EPICS entry in the data stream.
+24663,,Average value is 0. Likely no EPICS entry in the data stream.
+24665,,Average value is 0. Likely no EPICS entry in the data stream.
+24666,,Average value is 0. Likely no EPICS entry in the data stream.
+24667,,Average value is 0. Likely no EPICS entry in the data stream.
+24668,,Average value is 0. Likely no EPICS entry in the data stream.
+24669,,Average value is 0. Likely no EPICS entry in the data stream.
+24670,,Average value is 0. Likely no EPICS entry in the data stream.
+24671,,Average value is 0. Likely no EPICS entry in the data stream.
+24672,,Average value is 0. Likely no EPICS entry in the data stream.
+24673,,Average value is 0. Likely no EPICS entry in the data stream.
+24674,,Average value is 0. Likely no EPICS entry in the data stream.
+24675,,Average value is 0. Likely no EPICS entry in the data stream.
+24676,,Average value is 0. Likely no EPICS entry in the data stream.
+24677,,Average value is 0. Likely no EPICS entry in the data stream.
+24678,,Average value is 0. Likely no EPICS entry in the data stream.
+24679,,Average value is 0. Likely no EPICS entry in the data stream.
+24680,,Average value is 0. Likely no EPICS entry in the data stream.
+24681,,Average value is 0. Likely no EPICS entry in the data stream.
+24682,,Average value is 0. Likely no EPICS entry in the data stream.
+24683,,Average value is 0. Likely no EPICS entry in the data stream.
+24684,,Average value is 0. Likely no EPICS entry in the data stream.
+24685,,Average value is 0. Likely no EPICS entry in the data stream.
+24686,,Average value is 0. Likely no EPICS entry in the data stream.
+24687,,Average value is 0. Likely no EPICS entry in the data stream.
+24688,,Average value is 0. Likely no EPICS entry in the data stream.
+24689,,Average value is 0. Likely no EPICS entry in the data stream.
+24690,,Average value is 0. Likely no EPICS entry in the data stream.
+24691,,Average value is 0. Likely no EPICS entry in the data stream.
+24692,,Average value is 0. Likely no EPICS entry in the data stream.
+24693,,Average value is 0. Likely no EPICS entry in the data stream.
+24694,,Average value is 0. Likely no EPICS entry in the data stream.
+24695,,Average value is 0. Likely no EPICS entry in the data stream.
+24696,,Average value is 0. Likely no EPICS entry in the data stream.
+24697,,Average value is 0. Likely no EPICS entry in the data stream.
+24698,,Average value is 0. Likely no EPICS entry in the data stream.
+24699,,Average value is 0. Likely no EPICS entry in the data stream.
+24701,,Average value is 0. Likely no EPICS entry in the data stream.
+24702,,Average value is 0. Likely no EPICS entry in the data stream.
+24703,,Average value is 0. Likely no EPICS entry in the data stream.
+24705,,Average value is 0. Likely no EPICS entry in the data stream.
+24706,,Average value is 0. Likely no EPICS entry in the data stream.
+24707,,Average value is 0. Likely no EPICS entry in the data stream.
+24708,,Average value is 0. Likely no EPICS entry in the data stream.
+24709,,Average value is 0. Likely no EPICS entry in the data stream.
+24710,,Average value is 0. Likely no EPICS entry in the data stream.
+24711,,Average value is 0. Likely no EPICS entry in the data stream.
+24712,,Average value is 0. Likely no EPICS entry in the data stream.
+24713,,Average value is 0. Likely no EPICS entry in the data stream.
+24714,,Average value is 0. Likely no EPICS entry in the data stream.
+24715,,Average value is 0. Likely no EPICS entry in the data stream.
+24716,,Average value is 0. Likely no EPICS entry in the data stream.
+24717,,Average value is 0. Likely no EPICS entry in the data stream.
+24718,,Average value is 0. Likely no EPICS entry in the data stream.
+24719,,Average value is 0. Likely no EPICS entry in the data stream.
+24720,,Average value is 0. Likely no EPICS entry in the data stream.
+24721,,Average value is 0. Likely no EPICS entry in the data stream.
+24722,,Average value is 0. Likely no EPICS entry in the data stream.
+24723,,Average value is 0. Likely no EPICS entry in the data stream.
+24724,,Average value is 0. Likely no EPICS entry in the data stream.
+24725,,Average value is 0. Likely no EPICS entry in the data stream.
+24726,,Average value is 0. Likely no EPICS entry in the data stream.
+24727,,Average value is 0. Likely no EPICS entry in the data stream.
+24728,,Average value is 0. Likely no EPICS entry in the data stream.
+24729,,Average value is 0. Likely no EPICS entry in the data stream.
+24730,,Average value is 0. Likely no EPICS entry in the data stream.
+24731,,Average value is 0. Likely no EPICS entry in the data stream.
+24732,,Average value is 0. Likely no EPICS entry in the data stream.
+24733,,Average value is 0. Likely no EPICS entry in the data stream.
+24734,,Average value is 0. Likely no EPICS entry in the data stream.
+24736,,Average value is 0. Likely no EPICS entry in the data stream.
+24737,,Average value is 0. Likely no EPICS entry in the data stream.
+24738,,Average value is 0. Likely no EPICS entry in the data stream.
+24739,,Average value is 0. Likely no EPICS entry in the data stream.
+24740,,Average value is 0. Likely no EPICS entry in the data stream.
+24741,,Average value is 0. Likely no EPICS entry in the data stream.
+24742,,Average value is 0. Likely no EPICS entry in the data stream.
+24743,,Average value is 0. Likely no EPICS entry in the data stream.
+24744,,Average value is 0. Likely no EPICS entry in the data stream.
+24745,,Average value is 0. Likely no EPICS entry in the data stream.
+24746,,Average value is 0. Likely no EPICS entry in the data stream.
+24747,,Average value is 0. Likely no EPICS entry in the data stream.
+24748,,Average value is 0. Likely no EPICS entry in the data stream.
+24750,,Average value is 0. Likely no EPICS entry in the data stream.
+24752,,Average value is 0. Likely no EPICS entry in the data stream.
+24753,,Average value is 0. Likely no EPICS entry in the data stream.
+24755,,Average value is 0. Likely no EPICS entry in the data stream.
+24756,,Average value is 0. Likely no EPICS entry in the data stream.
+24758,,Average value is 0. Likely no EPICS entry in the data stream.
+24759,,Average value is 0. Likely no EPICS entry in the data stream.
+24763,,Average value is 0. Likely no EPICS entry in the data stream.
+24765,,Average value is 0. Likely no EPICS entry in the data stream.
+24766,,Average value is 0. Likely no EPICS entry in the data stream.
+24767,,Average value is 0. Likely no EPICS entry in the data stream.
+24768,,Average value is 0. Likely no EPICS entry in the data stream.
+24769,,Average value is 0. Likely no EPICS entry in the data stream.
+24770,,Average value is 0. Likely no EPICS entry in the data stream.
+24772,,Average value is 0. Likely no EPICS entry in the data stream.
+24773,,Average value is 0. Likely no EPICS entry in the data stream.
+24774,,Average value is 0. Likely no EPICS entry in the data stream.
+24775,,Average value is 0. Likely no EPICS entry in the data stream.
+24776,,Average value is 0. Likely no EPICS entry in the data stream.
+24777,,Average value is 0. Likely no EPICS entry in the data stream.
+24778,,Average value is 0. Likely no EPICS entry in the data stream.
+24779,,Average value is 0. Likely no EPICS entry in the data stream.
+24780,,Average value is 0. Likely no EPICS entry in the data stream.
+24781,,Average value is 0. Likely no EPICS entry in the data stream.
+24782,,Average value is 0. Likely no EPICS entry in the data stream.
+24783,,Average value is 0. Likely no EPICS entry in the data stream.
+24784,,Average value is 0. Likely no EPICS entry in the data stream.
+24785,,Average value is 0. Likely no EPICS entry in the data stream.
+24786,,Average value is 0. Likely no EPICS entry in the data stream.
+24787,,Average value is 0. Likely no EPICS entry in the data stream.
+24788,,Average value is 0. Likely no EPICS entry in the data stream.
+24789,,Average value is 0. Likely no EPICS entry in the data stream.
+24790,,Average value is 0. Likely no EPICS entry in the data stream.
+24791,,Average value is 0. Likely no EPICS entry in the data stream.
+24792,,Average value is 0. Likely no EPICS entry in the data stream.
+24793,,Average value is 0. Likely no EPICS entry in the data stream.
+24794,,Average value is 0. Likely no EPICS entry in the data stream.
+24795,,Average value is 0. Likely no EPICS entry in the data stream.
+24796,,Average value is 0. Likely no EPICS entry in the data stream.
+24797,,Average value is 0. Likely no EPICS entry in the data stream.
+24798,,Average value is 0. Likely no EPICS entry in the data stream.
+24800,,Average value is 0. Likely no EPICS entry in the data stream.
+24802,,Average value is 0. Likely no EPICS entry in the data stream.
+24803,,Average value is 0. Likely no EPICS entry in the data stream.
+24804,,Average value is 0. Likely no EPICS entry in the data stream.
+24805,,Average value is 0. Likely no EPICS entry in the data stream.
+24806,,Average value is 0. Likely no EPICS entry in the data stream.
+24807,,Average value is 0. Likely no EPICS entry in the data stream.
+24808,,Average value is 0. Likely no EPICS entry in the data stream.
+24809,,Average value is 0. Likely no EPICS entry in the data stream.
+24810,,Average value is 0. Likely no EPICS entry in the data stream.
+24811,,Average value is 0. Likely no EPICS entry in the data stream.
+24812,,Average value is 0. Likely no EPICS entry in the data stream.
+24813,,Average value is 0. Likely no EPICS entry in the data stream.
+24814,,Average value is 0. Likely no EPICS entry in the data stream.
+24815,,Average value is 0. Likely no EPICS entry in the data stream.
+24816,,Average value is 0. Likely no EPICS entry in the data stream.
+24817,,Average value is 0. Likely no EPICS entry in the data stream.
+24818,,Average value is 0. Likely no EPICS entry in the data stream.
+24819,,Average value is 0. Likely no EPICS entry in the data stream.
+24820,,Average value is 0. Likely no EPICS entry in the data stream.
+24821,,Average value is 0. Likely no EPICS entry in the data stream.
+24822,,Average value is 0. Likely no EPICS entry in the data stream.
+24823,,Average value is 0. Likely no EPICS entry in the data stream.
+24824,,Average value is 0. Likely no EPICS entry in the data stream.
+24825,,Average value is 0. Likely no EPICS entry in the data stream.
+24826,,Average value is 0. Likely no EPICS entry in the data stream.
+24827,,Average value is 0. Likely no EPICS entry in the data stream.
+24828,,Average value is 0. Likely no EPICS entry in the data stream.
+24829,,Average value is 0. Likely no EPICS entry in the data stream.
+24830,,Average value is 0. Likely no EPICS entry in the data stream.
+24831,,Average value is 0. Likely no EPICS entry in the data stream.
+24832,,Average value is 0. Likely no EPICS entry in the data stream.
+24833,,Average value is 0. Likely no EPICS entry in the data stream.
+24834,,Average value is 0. Likely no EPICS entry in the data stream.
+24835,,Average value is 0. Likely no EPICS entry in the data stream.
+24836,,Average value is 0. Likely no EPICS entry in the data stream.
+24837,,Average value is 0. Likely no EPICS entry in the data stream.
+24838,,Average value is 0. Likely no EPICS entry in the data stream.
+24839,,Average value is 0. Likely no EPICS entry in the data stream.
+24840,shms_p : left = -5.594 right = -5.683,Average value is 0. Likely no EPICS entry in the data stream.
+24841,,Average value is 0. Likely no EPICS entry in the data stream.
+24842,,Average value is 0. Likely no EPICS entry in the data stream.
+24843,,Average value is 0. Likely no EPICS entry in the data stream.
+24844,shms_p : left = -5.343 right = -5.424,Average value is 0. Likely no EPICS entry in the data stream.
+24845,,Average value is 0. Likely no EPICS entry in the data stream.
+24846,,Average value is 0. Likely no EPICS entry in the data stream.
+24847,,Average value is 0. Likely no EPICS entry in the data stream.
+24848,,Average value is 0. Likely no EPICS entry in the data stream.
+24849,,Average value is 0. Likely no EPICS entry in the data stream.
+25137,shms_p : left = -4.868 right = -6.538,
+25178,,ecSHB_Set_Current: obs/nom = 1.347.; ecSQ1_Set_Current: obs/nom = 1.340.; ecSQ2_Set_Current: obs/nom = 1.340.; ecSQ3_Set_Current: obs/nom = 1.340.
+25204,shms_p : left = -2.615 right = -3.632,
+25209,,Average value is 0. Likely no EPICS entry in the data stream.
+25279,shms_p : left = 3.632 right = 4.868,
+25399,shms_p : left = -3.632 right = 3.632,
+25400,shms_p : left = -3.632 right = 3.632,
+25401,shms_p : left = -3.632 right = 3.632,
+25402,shms_p : left = -3.632 right = 3.632,
+25403,shms_p : left = -3.632 right = 3.632,
+25404,shms_p : left = -3.632 right = 3.632,
+25405,shms_p : left = -3.632 right = 3.632,
+25406,shms_p : left = -3.632 right = 3.632,
+25407,shms_p : left = -3.632 right = 3.632,
+25408,shms_p : left = -3.632 right = 3.632,
+25409,shms_p : left = -3.632 right = 3.632,
+25410,shms_p : left = -3.632 right = 3.632,
+25411,shms_p : left = -3.632 right = 3.632,
+25412,shms_p : left = -3.632 right = 3.632,
+25413,shms_p : left = -3.632 right = 3.632,
+25414,shms_p : left = -3.632 right = 3.632,Average value is 0. Likely no EPICS entry in the data stream.
+25415,shms_p : left = -3.632 right = 3.632,
+25416,shms_p : left = -3.632 right = 3.632,
+25417,shms_p : left = -3.632 right = 3.632,
+25418,shms_p : left = -3.632 right = 3.632,
+25420,shms_p : left = -3.632 right = 3.632,
+25421,shms_p : left = -3.632 right = 3.632,
+25422,shms_p : left = -3.632 right = 3.632,
+25455,hms_p : left = -3.642 right = 3.642,
+25478,shms_p : left = -6.6048 right = -6.048,
+25524,hms_p : left = -5.983 right = -6.358; shms_p : left = -5.983 right = -6.358,
+25528,hms_p : left = -5.27 right = -5.983; shms_p : left = -5.27 right = -5.983,
+25550,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25551,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25552,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25554,hms_p : left = -2.178 right = -2.198; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25555,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25556,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25557,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25558,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25560,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25562,hms_p : left = -1.802 right = -1.822; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25563,hms_p : left = -1.782 right = -1.802; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25564,hms_p : left = -1.762 right = -1.782; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25565,hms_p : left = -1.742 right = -1.762; shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25566,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25567,shms_p : left = -2.36 right = 3.632,ecSDI_Set_Current: obs/nom = 0.650.; ecSHB_Set_Current: obs/nom = 0.648.; ecSQ1_Set_Current: obs/nom = 0.650.; ecSQ2_Set_Current: obs/nom = 0.650.; ecSQ3_Set_Current: obs/nom = 0.650.
+25575,shms_p : left = -2.24 right = -2.28,
+25577,shms_p : left = -2.0 right = -2.2,
+25580,shms_p : left = -1.6 right = -1.64,
+25581,shms_p : left = -1.56 right = -1.6,
+25582,shms_p : left = -1.52 right = -1.56,
+25583,shms_p : left = -1.48 right = -1.52,
+25584,shms_p : left = -1.44 right = -1.48,
+25585,shms_p : left = -1.4 right = -1.44,
+25591,shms_p : left = -2.26 right = -2.3,
+25592,shms_p : left = -2.22 right = -2.26,
+25595,shms_p : left = -2.1 right = -2.14,
+25596,shms_p : left = -2.06 right = -2.1,
+25597,shms_p : left = -2.02 right = -2.06,
+25599,shms_p : left = -1.94 right = -1.98,
+25601,shms_p : left = -1.86 right = -1.9,Average value is 0. Likely no EPICS entry in the data stream.
+25603,,Average value is 0. Likely no EPICS entry in the data stream.
