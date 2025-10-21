@@ -43,9 +43,10 @@
 | normyield                | Normalized yield from "ransubcoin"                                            |
 | ctmean                   | e-Pi coin time mean from online monitoring script (ROC2)                      |
 | ctsigma                  | e-Pi coin time std dev from online monitoring script (ROC2)                   |
-| fan_mean                 | C                                                                              |
+| fan_mean                 | Average fan frequency from https://epicsweb.jlab.org/myquery/                 |
 | fan_stdev                | Standard deviation from the average during the run from https://epicsweb.jlab.org/myquery/ |
 | fan_current_correction    | Yield correction based on the fan speed and beam current                      |
+| IHWP                     | State of the insertable half-wave plate                                      |
 
 ## Contents of the directories:
 1. `util/make_skimfiles` - Machinery to create skim files out of R-SIDIS hcana ROOT files.
