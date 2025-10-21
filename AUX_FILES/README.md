@@ -53,3 +53,4 @@
 1. `util/make_skimfiles` - Machinery to create skim files out of R-SIDIS hcana ROOT files.
 2. `util/runlist_validation` - Machinery to verify the magnet currents and target types for each run in the R-SIDIS runlist against EPICS.
 3. `util/parse_runlist` - Machinery to create a parsed CSV file out of rsidis_runlist.dat.
+4. `util/make_bigtable` - Machinery to create rsidis_bigtable.csv.
