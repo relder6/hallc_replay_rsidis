@@ -36,7 +36,7 @@
 | ps4                       | Ps4_factor from the report file                                               |
 | ps5                       | Ps5_factor from the report file                                               |
 | ps6                       | Ps6_factor from the report file                                               |
-| comp_livetime             | Computer livetime calculated as (PS*phys_triggers)/hEL_REAL (for coin it just assumes =1) |
+| comp_livetime             | Computer livetime calculated as (PS#*accepted_phys_triggers)/pTRIG# (for coin it just assumes =1) |
 | electr_deadtime          | ROC2 Pre-scaled total live time (EDTM) (no BCM cut)                         |
 | coin                      | e-Pi good coincidences from online monitoring script (ROC2)                   |
 | randoms                   | e-Pi random coincidences from online monitoring script (ROC2)                 |

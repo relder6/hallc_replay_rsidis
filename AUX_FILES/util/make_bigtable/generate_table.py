@@ -1,7 +1,3 @@
-## ************************
-## Julio Gil Gutierrez <jgilguti@vols.utk.edu> CREATED
-## ************************
-
 import csv
 import os
 
@@ -34,6 +30,8 @@ HMS_MAP = {
     "ps4" : (50,12,15),
     "ps5" : (51,12,15),
     "ps6" : (52,12,15),
+    "pTRIG3" : (111,10,20),
+    "pTRIG4" : (112,10,20),
     "phys_triggers": (78,32,41),
     "hEL_REAL": (87,11,19),
     "electr_deadtime": (160,42,50),
@@ -58,6 +56,8 @@ SHMS_MAP = {
     "ps4" : (50,13,15),
     "ps5" : (51,13,15),
     "ps6" : (52,13,15),
+    "pTRIG1" : (106,10,20),
+    "pTRIG2" : (107,10,20),
     "phys_triggers": (75,32,41),
     "hEL_REAL": (102,11,21),
     "electr_deadtime": (157,42,50),
@@ -150,8 +150,7 @@ def load_extra_info(run_number, run_type):
 
 def load_fan_data(run_number, fan_csv_path):
     """
-    Reads a CSV with columns: run,channel,sample_idx,begin,duration,eventCount,updateCount,integration,max,mean,min,rms,stdev
-    Returns mean and stdev for the given run_number.
+    Reads fan_freq.csv and r eturns mean and stdev for the given run_number.
     """
     import csv
     if not os.path.exists(fan_csv_path):
@@ -283,19 +282,44 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             props = {}
             if report_path and os.path.exists(report_path):
                 props = parse_report_file(report_path, mapping)
+
                 if mapping is run_type_map["COIN"]:
                     props["comp_livetime"] = 1.0
                 else:
-                    # Calculate computer livetime
                     phys_triggers = props.get("phys_triggers")
-                    hEL_REAL = props.get("hEL_REAL")
                     ps1, ps2, ps3, ps4, ps5, ps6 = props.get("ps1"), props.get("ps2"), props.get("ps3"), props.get("ps4"), props.get("ps5"), props.get("ps6")
-                    if phys_triggers not in (None, -999) and hEL_REAL not in (None, -999) and hEL_REAL!=0:
-                        props["comp_livetime"] = round((-1 * ps1 * ps2 * ps3 * ps4 * ps5 * ps6 * phys_triggers) / hEL_REAL, 5)
+                    ps_values = [props.get(f"ps{i}", 1) for i in range(1, 7)]
+                    pTRIG1 = props.get("pTRIG1")
+                    pTRIG2 = props.get("pTRIG2")
+                    pTRIG3 = props.get("pTRIG3")
+                    pTRIG4 = props.get("pTRIG4")
+
+                    props["comp_livetime"] = -999
+
+                    if phys_triggers not in (None, -999):
+
+                        ps_product = 1
+                        for ps in ps_values:
+                            if ps in (None,-999):
+                                ps = 1
+                            ps_product *= ps
+
+                        # Determine livetime based on spectrometer type
+                        if mapping is run_type_map["HMS"]:
+                            if pTRIG3 and ps3 > 0:
+                                props["comp_livetime"] = round((-1 * ps_product * phys_triggers) / pTRIG3, 5)
+                            elif pTRIG4 and ps4 > 0:
+                                props["comp_livetime"] = round((-1 * ps_product * phys_triggers) / pTRIG4, 5)
+
+                        elif mapping is run_type_map["SHMS"]:
+                            if pTRIG1 and ps1 > 0:
+                                props["comp_livetime"] = round((-1 * ps_product * phys_triggers) / pTRIG1, 5)
+                            elif pTRIG2 and ps2 > 0:
+                                props["comp_livetime"] = round((-1 * ps_product * phys_triggers) / pTRIG2, 5)
+
                         if props["comp_livetime"] > 1:
                             props["comp_livetime"] = 1.0
-                    else:
-                        props["comp_livetime"] = -999
+
 
                 if mapping is run_type_map["HMS"]:
                     props["pEff"] = -999
