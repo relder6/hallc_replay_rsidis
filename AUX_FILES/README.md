@@ -42,7 +42,7 @@
 | randoms                   | e-Pi random coincidences from online monitoring script (ROC2)                 |
 | ransubcoin               | e-Pi real coincidences from online monitoring script (ROC2)                   |
 | normyield                | Normalized yield from "ransubcoin"                                            |
-| normyield_er             | Statistical error on the "normyield"                                          |
+| normyield_err            | Statistical error on the "normyield"                                          |
 | ctmean                   | e-Pi coin time mean from online monitoring script (ROC2)                      |
 | ctsigma                  | e-Pi coin time std dev from online monitoring script (ROC2)                   |
 | fan_mean                 | Average fan frequency from https://epicsweb.jlab.org/myquery/                 |
