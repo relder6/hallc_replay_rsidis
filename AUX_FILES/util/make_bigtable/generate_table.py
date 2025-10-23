@@ -31,7 +31,7 @@ HMS_MAP = {
     "ps5" : (51,12,15),
     "ps6" : (52,12,15),
     "pTRIG3" : (111,10,20),
-    "pTRIG4" : (112,10,20),
+    "pTRIG4" : (112,10,18),
     "phys_triggers": (78,32,41),
     "hEL_REAL": (87,11,19),
     "electr_deadtime": (160,42,50),
@@ -74,19 +74,19 @@ COIN_MAP = {
     "BCM4B_I": (42,27,34),
     "BCM4C_Q": (50,26,33),
     "BCM4C_I": (43,27,34),
-    "h_esing_Eff": (623,36,43),
-    "h_hadron_Eff": (624,36,43),
-    "p_esing_Eff": (482,35,41),
-    "p_hadron_Eff": (483,35,41),
-    "ps1" : (89,13,15),
-    "ps2" : (90,13,15),
-    "ps3" : (91,13,15),
-    "ps4" : (92,13,15),
-    "ps5" : (93,13,15),
-    "ps6" : (94,13,15),
+    "h_esing_Eff": (626,36,43),
+    "h_hadron_Eff": (627,36,43),
+    "p_esing_Eff": (485,35,41),
+    "p_hadron_Eff": (486,35,41),
+    "ps1" : (89,12,15),
+    "ps2" : (90,12,15),
+    "ps3" : (91,12,15),
+    "ps4" : (92,12,15),
+    "ps5" : (93,12,15),
+    "ps6" : (94,12,15),
     "phys_triggers": (75,32,41),
     "hEL_REAL": (84,11,19),
-    "electr_deadtime": (253,47,55)
+    "electr_deadtime": (256,60,68)
 }
 
 run_type_map = {
@@ -131,7 +131,7 @@ def load_extra_info(run_number, run_type):
     for the given run_number. Only keep selected columns.
     """
     extra_path = f"/work/hallc/c-rsidis/cmorean/replay_pass0a/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
-    keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "ctmean", "ctsigma"]
+    keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "normyield_err" ,"ctmean", "ctsigma"]
 
     if not os.path.exists(extra_path):
         # If file not found, return -999 placeholders
@@ -363,7 +363,7 @@ def collect_run_info(input_csv, output_csv, run_type_map):
     # Write results to CSV
     fieldnames = keep_columns + ["x","Q2","z","thpq","BCM1_Q","BCM1_I","BCM2_Q","BCM2_I","BCM4A_Q","BCM4A_I","BCM4B_Q","BCM4B_I","BCM4C_Q","BCM4C_I","h_esing_Eff","h_hadron_Eff","p_esing_Eff","p_hadron_Eff","ps1","ps2","ps3","ps4","ps5","ps6","comp_livetime","electr_deadtime",
 #get_good_coin_events variables:
-"coin", "randoms", "ransubcoin", "normyield","ctmean","ctsigma",
+"coin", "randoms", "ransubcoin", "normyield", "normyield_err", "ctmean","ctsigma",
 #fan speed variables:
 "fan_mean", "fan_stdev", "fan_current_correction",
 "IHWP"]
