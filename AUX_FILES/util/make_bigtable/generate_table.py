@@ -38,15 +38,15 @@ HMS_MAP = {
 }
 
 SHMS_MAP = {
-    "BCM1_Q": (36,22,33),
+    "BCM1_Q": (36,22,31),
     "BCM1_I": (29,22,29),
-    "BCM2_Q": (37,22,33),
+    "BCM2_Q": (37,22,31),
     "BCM2_I": (30,22,29),
-    "BCM4A_Q": (38,22,33),
+    "BCM4A_Q": (38,22,31),
     "BCM4A_I": (31,23,30),
-    "BCM4B_Q": (39,22,33),
+    "BCM4B_Q": (39,22,31),
     "BCM4B_I": (32,23,30),
-    "BCM4C_Q": (40,22,33),
+    "BCM4C_Q": (40,22,31),
     "BCM4C_I": (33,23,30),
     "p_esing_Eff": (367,35,41),
     "p_hadron_Eff": (368,35,41),
@@ -182,9 +182,12 @@ def load_ihwp_table(ihwp_csv_path):
         for row in reader:
             run = row.get("run_number")
             if run:
-                ihwp_map[str(run)] = row.get("IHWP", "")
+                ihwp_map[str(run)] = {
+                    "IHWP": row.get("IHWP", ""),
+                    "start_time": row.get("start_time", ""),
+                    "stop_time": row.get("stop_time", "")
+                }
     return ihwp_map
-
 
 
 # === New Kinematic Conversion Table ===
@@ -206,6 +209,7 @@ KINEMATIC_TABLE = [
     {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.5,  "thpq": 5.2,  "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 13.505},
     {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.5,  "thpq": 8.5,  "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 16.81},
     {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.36, "thpq": 2.0,    "hms_p": 3.642, "hms_th": 16.75, "shms_p": 2.615, "shms_th": 10.305},
+    {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.36, "thpq": 2.0,    "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 8.11},
 ]
 
 
@@ -343,8 +347,13 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             merged.update(props)
 
             # Include IHWP value
-            merged["IHWP"] = ihwp_map.get(str(run_number), "")
-            
+#            merged["IHWP"] = ihwp_map.get(str(run_number), "")
+
+            ihwp_info = ihwp_map.get(str(run_number),{})
+            merged["IHWP"]=ihwp_info.get("IHWP",-999)
+            merged["start_time"] = ihwp_info.get("start_time", -999)
+            merged["stop_time"] = ihwp_info.get("stop_time", -999)
+
             kin = find_kinematics(
                 float(row["ebeam"]),
                 float(row["hms_p"]),
@@ -366,7 +375,8 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 "coin", "randoms", "ransubcoin", "normyield", "normyield_err", "ctmean","ctsigma",
 #fan speed variables:
 "fan_mean", "fan_stdev", "fan_current_correction",
-"IHWP"]
+#start and stop times
+"IHWP", "start_time", "stop_time"]
 
     for row in results:
         for key in fieldnames:
