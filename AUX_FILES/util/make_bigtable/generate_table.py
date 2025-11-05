@@ -125,11 +125,10 @@ def find_special_report_file(run_number):
 
 
 def load_extra_info(run_number, run_type):
-#    if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP", "HEE"):
-    """
-    Load extra variables from output_get_good_coin_ev_<run>.csv
-    for the given run_number. Only keep selected columns.
-    """
+#    if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
+
+    # Load extra variables from output_get_good_coin_ev_<run>.csv
+    
     extra_path = f"/work/hallc/c-rsidis/cmorean/replay_pass0a/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
     keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "normyield_err" ,"ctmean", "ctsigma"]
 
@@ -149,9 +148,9 @@ def load_extra_info(run_number, run_type):
 
 
 def load_fan_data(run_number, fan_csv_path):
-    """
-    Reads fan_freq.csv and r eturns mean and stdev for the given run_number.
-    """
+    
+#    Reads fan_freq.csv and r eturns mean and stdev for the given run_number.
+
     import csv
     if not os.path.exists(fan_csv_path):
         return {"fan_mean": -999, "fan_stdev": -999}
@@ -209,15 +208,14 @@ KINEMATIC_TABLE = [
     {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.5,  "thpq": 5.2,  "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 13.505},
     {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.5,  "thpq": 8.5,  "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 16.81},
     {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.36, "thpq": 2.0,    "hms_p": 3.642, "hms_th": 16.75, "shms_p": 2.615, "shms_th": 10.305},
-    {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.36, "thpq": 2.0,    "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 8.11},
+    {"ebeam": 10.6716, "x": 0.25, "Q2": 3.3, "z": 0.36, "thpq": -0.2,    "hms_p": 3.642, "hms_th": 16.75, "shms_p": 3.632, "shms_th": 8.11},
 ]
 
 
 def find_kinematics(ebeam, hms_p, hms_th, shms_p, shms_th, tol=0.01):
-    """
-    Returns matching (x, Q2, z, thpq) for the given kinematic settings.
-    If no match found, returns -999 placeholders.
-    """
+    
+    # Returns matching (x, Q2, z, thpq) for the given kinematic settings.
+    
     for row in KINEMATIC_TABLE:
         if (
             abs(row["ebeam"] - abs(float(ebeam))) < tol and
@@ -270,10 +268,10 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             run_type = row["run_type"]
 
             # Figure out report path depending on run type
-            if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP", "HEE"):
+            if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
                 report_path = coin_dir(run_number)
                 mapping = run_type_map["COIN"]
-            elif run_type == "HMSDIS":
+            elif run_type == ("HMSDIS" or "HEE"):
                 report_path = hms_dir(run_number)
                 mapping = run_type_map["HMS"]
             elif run_type == "SHMSDIS":
@@ -347,7 +345,7 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             merged.update(props)
 
             # Include IHWP value
-#            merged["IHWP"] = ihwp_map.get(str(run_number), "")
+            #merged["IHWP"] = ihwp_map.get(str(run_number), "")
 
             ihwp_info = ihwp_map.get(str(run_number),{})
             merged["IHWP"]=ihwp_info.get("IHWP",-999)
@@ -362,9 +360,22 @@ def collect_run_info(input_csv, output_csv, run_type_map):
                 float(row["shms_th"]),
             )
             merged.update(kin)
+
+            # Include fan speed and boiling corrections for LH2 and only boiling correction for LD2
             f = merged.get("fan_mean", -999)
             I = merged.get("BCM2_I", -999)
-            merged["fan_current_correction"] = compute_corr_coeff(f,I)
+            target = merged.get("target", "")
+            
+            if target == "LH2":
+                merged["fan_current_correction"] = compute_corr_coeff(f,I)
+                merged["boil_corr"] = round(1 + 0.07281 * (I / 100), 6)
+            elif target == "LD2":
+                 merged["fan_current_correction"] = 1.0
+                 merged["boil_corr"] = round(1 + 0.03493 * (I / 100), 6)
+            else:
+                merged["fan_current_correction"] = 1.0
+                merged["boil_corr"] = 1.0
+   
             results.append(merged)
 
             
@@ -374,7 +385,7 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 #get_good_coin_events variables:
 "coin", "randoms", "ransubcoin", "normyield", "normyield_err", "ctmean","ctsigma",
 #fan speed variables:
-"fan_mean", "fan_stdev", "fan_current_correction",
+"fan_mean", "fan_stdev", "fan_current_correction", "boil_corr",
 #start and stop times
 "IHWP", "start_time", "stop_time"]
 
@@ -395,4 +406,4 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 
 # ========= MAIN =========
 if __name__ == "__main__":
-    collect_run_info("updated_parsed_runlist_100725.csv", "run_info_pass0.csv", run_type_map)
+    collect_run_info("updated_parsed_runlist_110425.csv", "run_info_pass0.csv", run_type_map)
