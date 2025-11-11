@@ -367,13 +367,10 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             target = merged.get("target", "")
             
             if target == "LH2":
-                merged["fan_current_correction"] = compute_corr_coeff(f,I)
-                merged["boil_corr"] = round(1 + 0.07281 * (I / 100), 6)
+                merged["boil_corr"] = compute_corr_coeff(f,I)
             elif target == "LD2":
-                 merged["fan_current_correction"] = 1.0
                  merged["boil_corr"] = round(1 + 0.03493 * (I / 100), 6)
             else:
-                merged["fan_current_correction"] = 1.0
                 merged["boil_corr"] = 1.0
    
             results.append(merged)
@@ -385,7 +382,7 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 #get_good_coin_events variables:
 "coin", "randoms", "ransubcoin", "normyield", "normyield_err", "ctmean","ctsigma",
 #fan speed variables:
-"fan_mean", "fan_stdev", "fan_current_correction", "boil_corr",
+"fan_mean", "fan_stdev", "boil_corr",
 #start and stop times
 "IHWP", "start_time", "stop_time"]
 
