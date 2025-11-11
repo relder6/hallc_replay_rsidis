@@ -47,8 +47,7 @@
 | ctsigma                  | e-Pi coin time std dev from online monitoring script (ROC2)                   |
 | fan_mean                 | Average fan frequency from https://epicsweb.jlab.org/myquery/                 |
 | fan_stdev                | Standard deviation from the average during the run from https://epicsweb.jlab.org/myquery/ |
-| fan_current_correction    | Yield correction based on the fan speed and beam current for LH2             |
-| boil_corr		    | Boiling correction for liquid targets				           |
+| boil_corr		   | LD2: boiling correction, LH2: yield correction based on fan speed and beam currents       |
 | IHWP                     | State of the insertable half-wave plate                                      |
 
 ## Contents of the directories:
