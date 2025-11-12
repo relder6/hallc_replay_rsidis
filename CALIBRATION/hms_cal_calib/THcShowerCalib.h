@@ -1056,7 +1056,7 @@ void THcShowerCalib::SaveAlphas() {
   //
 
   ofstream output;
-  char* fname = Form("pcal.param.%s_%d_%d", fPrefix.c_str(),
+  char* fname = Form("hcal.param.%s_%d_%d", fPrefix.c_str(),
 		     fNstart, fNstopRequested);
   cout << "SaveAlphas: fname=" << fname << endl;
 
