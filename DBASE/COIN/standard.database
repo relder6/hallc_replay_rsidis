@@ -141,18 +141,18 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p63gev_8p11deg_rsidis.pa
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p00gev_19p00deg_rsidis.param"
 
 # -----------------------------
-# Run dependent HMS CAL params
-# Currently in development; do not modify without contacting Ryan Elder
+# Run dependent HMS CAL params, updated by R. Elder Nov. 2025
 # -----------------------------
 
-20000-23833
-g_ctp_hcal_calib_filename = “PARAM/HMS/CAL/hcal_calib_4p50gev_14p00deg_rsidis.param”
-
-23834-23852, 23853-23860
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_4p50gev_14p00deg_rsidis.param"
+20000-23860
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_4p500gev_14p000deg_rsidis.param"
 
 23861-24874
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p53gev_29p06deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p531gev_29p045deg_rsidis.param"
 
-24875-99999
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_2p28gev_42p00deg_rsidis.param"
+24875-25483
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p750deg_rsidis.param"
+
+25484-99999
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p755deg_rsidis.param"
+
