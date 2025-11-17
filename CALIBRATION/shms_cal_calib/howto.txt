@@ -56,3 +56,13 @@ calibration constants will be written in output file
 pcal.param.<Prefix>, in a format suitable for plugging them into your
 pcal.param file for subsequent use. The representative canvas is saved
 in a pdf file <Prefix>.pdf, and histograms in <Prefix>.root file.
+
+A tool called PROCESS_pcal_param.py was added in Nov. 2025. It  was
+developed by R. Elder for the rsidis collaboration, and its purpose is
+to replace zeroes and negatives in the output .param file. It will not
+consider existing '0.00' gains, negative values, or consider outliers
+when determining the replacement value.  You can run the tool with
+./PROCESS_hcal_param.py <name_of_target_param_file>
+The script will output a new file, moveme.param.  Be careful of extra
+whitespace when copying/pasting, replay and calibration scripts can be
+sensitive to this.
