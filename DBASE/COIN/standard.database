@@ -130,8 +130,7 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_13p510deg_rsidis
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_16p810deg_rsidis.param"
 
 25499-25567
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/option1.param"
-# g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_8p110deg_rsidis.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_8p110deg_rsidis.param"
 
 25568-99999
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p000gev_18p500deg_rsidis.param"
