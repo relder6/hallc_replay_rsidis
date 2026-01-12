@@ -19,14 +19,14 @@ pmin_combos = 4,4
 ; The following four criteria are applied to the stub fit results at the
 ; focal plane position to link stubs to tracks
 ; maximum number of possible focal plane tracks, must be <= 20
-pntracks_max_fp = 10
+  pntracks_max_fp = 10
 
 ; The following four criteria are applied to the stub fit results at the
 ; focal plane position to link stubs to tracks
-  pntracks_max_fp = 10
-  pxt_track_criterion = 100.0
-  pyt_track_criterion = 100.0
-  pxpt_track_criterion = 1.0
+; pntracks_max_fp = 10 ;commenting out repeated criterion
+  pxt_track_criterion = 40.0
+  pyt_track_criterion = 22.0
+  pxpt_track_criterion = 0.8
   pypt_track_criterion = 1.0
 
 ; Make a track of all single stubs normally 0
