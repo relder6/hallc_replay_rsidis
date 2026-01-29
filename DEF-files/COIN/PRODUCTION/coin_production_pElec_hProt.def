@@ -3,7 +3,7 @@ block CTime*
 
 block H.cer.*
 block H.dc.*
-block H.tr.*
+#block H.tr.*
 block H.hod.*
 block H.cal.*
 block H.gtr.*
@@ -13,7 +13,7 @@ block H.react.*
 
 block P.ngcer.*
 block P.dc.*
-block P.tr.*
+#block P.tr.*
 block P.hod.*
 block P.hgcer.*
 block P.aero.*
