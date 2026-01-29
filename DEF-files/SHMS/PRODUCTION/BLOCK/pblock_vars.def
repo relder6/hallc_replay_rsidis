@@ -14,7 +14,7 @@ block P.cal.*
 #block P.tr.*
 block P.gtr.*
 block P.kin.*
-#block P.rb.*
+block P.rb.*
 block P.react.*
-#block P.extcor.*
+block P.extcor.*
 #block P.bcm.*
