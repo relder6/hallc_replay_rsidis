@@ -24,7 +24,7 @@
 
   pxt_track_criterion = 40.0
   pyt_track_criterion = 22.0
-  pxpt_track_criterion = 1.00
+  pxpt_track_criterion = 0.8
   pypt_track_criterion = 1.0
 
 ; Make a track of all single stubs normally 0
