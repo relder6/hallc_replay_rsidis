@@ -20,7 +20,9 @@ cminch=2.54
 
 ; HMS default geometry parameter files 
 #include "PARAM/HMS/CER/hcer_geom.param"
-#include "PARAM/HMS/DC/hdc_geom.param"
+; Jan2026, removed old tracking method param file: "PARAM/HMS/DC/hdc_geom.param"
+; Added new tracking method parameter file, "PARAM/HMS/DC/hdc_newalign_geom.param"
+#include "PARAM/HMS/DC/hdc_newalign_geom.param"
 #include "PARAM/HMS/HODO/hhodo_geom.param"
 #include "PARAM/HMS/AERO/haero_geom.param"
 #include "PARAM/HMS/CAL/hcal_geom.param"
@@ -52,7 +54,9 @@ cminch=2.54
 
 ; SHMS default geometry parameter files
 #include "PARAM/SHMS/NGCER/pngcer_geom.param"
-#include "PARAM/SHMS/DC/pdc_geom.param"
+; Jan2026, removed old tracking method param file: "PARAM/SHMS/DC/pdc_geom.param"
+; Added new tracking method param file, "PARAM/SHMS/DC/pdc_newalign_geom.param"
+#include "PARAM/SHMS/DC/pdc_newalign_geom.param"
 #include "PARAM/SHMS/HODO/phodo_geom.param"
 #include "PARAM/SHMS/HGCER/phgcer_geom.param"
 #include "PARAM/SHMS/AERO/paero_geom.param"
