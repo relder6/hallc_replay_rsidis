@@ -2,13 +2,13 @@ import csv
 import os
 
 def hms_dir(run_number):
-    return f"/work/hallc/c-rsidis/replay/pass0/REPORT_OUTPUT/HMS/PRODUCTION/replay_hms_coin_production_{run_number}_-1.report"
+    return f"/work/hallc/c-rsidis/replay/pass0p1/REPORT_OUTPUT/HMS/PRODUCTION/replay_hms_coin_production_{run_number}_-1.report"
 
 def shms_dir(run_number):
-    return f"/work/hallc/c-rsidis/replay/pass0/REPORT_OUTPUT/SHMS/PRODUCTION/replay_shms_coin_production_{run_number}_-1.report"
+    return f"/work/hallc/c-rsidis/replay/pass0p1/REPORT_OUTPUT/SHMS/PRODUCTION/replay_shms_coin_production_{run_number}_-1.report"
 
 def coin_dir(run_number):
-    return f"/work/hallc/c-rsidis/replay/pass0/REPORT_OUTPUT/COIN/PRODUCTION/replay_coin_production_{run_number}_-1.report"
+    return f"/work/hallc/c-rsidis/replay/pass0p1/REPORT_OUTPUT/COIN/PRODUCTION/replay_coin_production_{run_number}_-1.report"
 
 # Mapping: variable -> (line_index, char_start, char_end)
 HMS_MAP = {
@@ -129,7 +129,7 @@ def load_extra_info(run_number, run_type):
 
     # Load extra variables from output_get_good_coin_ev_<run>.csv
     
-    extra_path = f"/work/hallc/c-rsidis/cmorean/replay_pass0a/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
+    extra_path = f"/work/hallc/c-rsidis/replay/pass0p1/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
     keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "normyield_err" ,"ctmean", "ctsigma"]
 
     if not os.path.exists(extra_path):
@@ -403,4 +403,4 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 
 # ========= MAIN =========
 if __name__ == "__main__":
-    collect_run_info("updated_parsed_runlist_110425.csv", "run_info_pass0.csv", run_type_map)
+    collect_run_info("updated_parsed_runlist_110425.csv", "rsidis_bigtable_pass0p1.csv", run_type_map)
