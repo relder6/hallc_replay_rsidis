@@ -17,49 +17,84 @@
 # 2. run_make_skimfile.sh
 # 3. make_skimmed_rootfile.C
 # ---
-SCRIPT_DIR=/u/group/c-rsidis/pdbforce/analysis/make_skimfiles
+SCRIPT_DIR=/u/group/c-rsidis/pdbforce/analysis/hallc_replay_rsidis/AUX_FILES/util/make_skimfiles
 
 runlist=$1        # run list (single column txt file w/ run numbers to analyze)
 runtype=$2        # run type : SIDIS / HEEP / HMSDIS / SHMSDIS
 indir=$3          # input directory (directory with R-SIDIS hcana ROOT files)
-outdir=$4         # output directory (destination for the generated skim files)
-run_on_ifarm=$5   # want to run on ifarm instead of batch farm? 1 => yes
+run_on_ifarm=$4   # want to run on ifarm instead of batch farm? 1 => yes
 
-workflow_name="rsidis_skim_${runtype}"
+workflowname="rsidis_skim_${runtype}"
+outdirpath=""     # output directory (destination for the generated skim files)
 
 # Job specifications
 jram='2000MB'    # per-job requested RAM
 jtime='1h'       # per-job requested walltime
+jdisk='5GB'      # per-job requested disk space (very important to specify)
+
+# Sanity check 1: Validating the number of arguments provided
+if [[ "$#" -ne 4 ]]; then
+    echo -e "\n--!--\n Illegal number of arguments!!"
+    echo -e " This script expects 4 arguments: <runlist> <runtype> <indir> <run_on_ifarm>\n"
+    exit;
+else 
+    echo -e '\n------'
+    echo -e ' Check the following variable(s):'
+    if [[ $run_on_ifarm -ne 1 ]]; then
+	echo -e ' "workflowname" : '$workflowname''
+    fi
+    echo -e ' "outdirpath"   : '$outdirpath' \n------'
+    while true; do
+	read -p "Do they look good? [y/n] " yn
+	echo -e ""
+	case $yn in
+	    [Yy]*) 
+		break; ;;
+	    [Nn]*) 
+		if [[ $run_on_ifarm -ne 1 ]]; then
+		    read -p "Enter desired workflowname : " temp1
+		    workflowname=$temp1
+		fi
+		read -p "Enter desired outdirpath   : " temp2
+		outdirpath=$temp2		
+		break; ;;
+	esac
+    done
+fi
 
 # Creating the workflow
 if [[ $run_on_ifarm -ne 1 ]]; then
-    swif2 create -workflow ${workflow_name}
+    swif2 create -workflow ${workflowname}
 else
     echo -e "\nRunning all jobs on ifarm!\n"
 fi
 
 while read run; do
-    script=$SCRIPT_DIR'/run_make_skimfile.sh'' '${run}' '${runtype}' '${indir}' '${outdir}' '${run_on_ifarm}' '${SCRIPT_DIR}
-    if [[ $run_on_ifarm -ne 1 ]]; then
-	swif2 add-job \
-	      -workflow ${workflow_name} \
-	      -name rsidis_skim_${runtype}_${run} \
-	      -partition production \
-	      -cores 1 \
-	      -ram $jram \
-	      -time $jtime \
-	      $script
-    else
-	$script
-    fi
+    # Define the base script path
+    script_path=$SCRIPT_DIR'/run_make_skimfile.sh'
+    # Define the arguments
+    args="${run} ${runtype} ${indir} ${outdirpath} ${run_on_ifarm} ${SCRIPT_DIR}"
     
+    if [[ $run_on_ifarm -ne 1 ]]; then
+        swif2 add-job \
+              -workflow ${workflowname} \
+              -name rsidis_skim_${runtype}_${run} \
+              -partition production \
+              -cores 1 \
+              -ram $jram \
+              -time $jtime \
+	      -disk $jdisk \
+              /bin/bash $script_path $args
+    else
+        /bin/bash $script_path $args
+    fi
 done < "$runlist"
 
 # run the workflow and then print status
 if [[ $run_on_ifarm -ne 1 ]]; then
-    swif2 run -workflow ${workflow_name}
+    swif2 run -workflow ${workflowname}
     echo -e "\n Getting workflow status.. [may take a few minutes!] \n"
-    swif2 status -workflow ${workflow_name}
+    swif2 status -workflow ${workflowname}
 fi
 
 # Example execution

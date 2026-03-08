@@ -9,7 +9,8 @@ std::vector<std::string> shmsVars = {
   "P.gtr.x", "P.gtr.y", "P.gtr.dp", "P.gtr.p", "P.gtr.ph", "P.gtr.th", "P.gtr.beta", "P.gtr.index", 
   "P.dc.x_fp", "P.dc.y_fp", "P.dc.xp_fp", "P.dc.yp_fp",
   "P.ngcer.npeSum", "P.hgcer.npeSum", "P.aero.npeSum", "P.cal.etottracknorm",
-  "P.react.x", "P.react.y", "P.react.z"
+  "P.react.x", "P.react.y", "P.react.z",
+  "P.hod.goodstarttime"
 };
 
 // SHMS DIS kin & raster variables
@@ -23,7 +24,8 @@ std::vector<std::string> hmsVars = {
   "H.gtr.x", "H.gtr.y", "H.gtr.dp", "H.gtr.p", "H.gtr.ph", "H.gtr.th", "H.gtr.beta", "H.gtr.index",
   "H.dc.x_fp", "H.dc.y_fp", "H.dc.xp_fp", "H.dc.yp_fp",
   "H.cer.npeSum", "H.cal.etottracknorm",
-  "H.react.x", "H.react.y", "H.react.z"  
+  "H.react.x", "H.react.y", "H.react.z",
+  "H.hod.goodstarttime"
 };
 
 // HMS DIS kin & raster variables
@@ -35,7 +37,9 @@ std::vector<std::string> hmskinVars = {
 // Common coin data (SIDIS) vairiables
 std::vector<std::string> ctimeVars = {
   "CTime.ePiCoinTime_ROC1", "CTime.ePiCoinTime_ROC2",
-  "CTime.epCoinTime_ROC1", "CTime.epCoinTime_ROC2", "T.coin.pRF_tdcTime",  
+  "CTime.epCoinTime_ROC1", "CTime.epCoinTime_ROC2",
+  "CTime.CoinTime_RAW_ROC1", "CTime.CoinTime_RAW_ROC2",
+  "T.coin.hRF_tdcTime", "T.coin.pRF_tdcTime",
   "H.kin.primary.x_bj", "H.kin.primary.Q2", "H.kin.primary.nu", "H.kin.primary.W",
   "P.kin.secondary.th_xq", "P.kin.secondary.ph_xq", "P.kin.secondary.MMpi",
   "T.helicity.helicity", "T.helicity.hel",
@@ -45,7 +49,9 @@ std::vector<std::string> ctimeVars = {
 
 // Common HEEP variables
 std::vector<std::string> heepVars = {
-  "CTime.epCoinTime_ROC1", "CTime.epCoinTime_ROC2", "T.coin.pRF_tdcTime",
+  "CTime.epCoinTime_ROC1", "CTime.epCoinTime_ROC2", 
+  "CTime.CoinTime_RAW_ROC1", "CTime.CoinTime_RAW_ROC2",
+  "T.coin.hRF_tdcTime", "T.coin.pRF_tdcTime",
   "P.kin.primary.x_bj", "P.kin.primary.Q2", "P.kin.primary.nu", "P.kin.primary.W",
   "H.kin.secondary.th_xq", "H.kin.secondary.ph_xq",
   "H.rb.raster.frxaRawAdc", "H.rb.raster.frxbRawAdc", "H.rb.raster.fryaRawAdc", "H.rb.raster.frybRawAdc",
