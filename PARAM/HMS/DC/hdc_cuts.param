@@ -7,11 +7,17 @@ h_using_tzero_per_wire = 1
 ; hdc_tdc_max_win =  1000000,  1000000,  1000000,  1000000,  1000000,  1000000
 ;                    1000000,  1000000,  1000000,  1000000,  1000000,  1000000
 
-; Carlos Determined from Coin Run 7221 (KIN 2-0)  Feb. 16, 2019
-hdc_tdc_min_win = -13800, -13800, -13800, -13800, -13800, -13800
-                  -13800, -13800, -13800, -13800, -13800, -13800
-hdc_tdc_max_win = -11400, -11400, -11400, -11400, -11400, -11400
-                  -11400, -11400, -11400, -11400, -11400, -11400
+; Ryan Elder (relder) determined plane order, Apr. 2026:
+; hdc_tdc_min_win = 1u1, 1u2, 1x1, 1x2, 1v2, 1v1
+;                   2v1, 2v2, 2x2, 2x1, 2u2, 2u1
+; hdc_tdc_max_win = 1u1, 1u2, 1x1, 1x2, 1v2, 1v1
+;                   2v1, 2v2, 2x2, 2x1, 2u2, 2u1
+
+; Ryan Elder (relder) determined from RSIDIS Run 24636, Apr. 2026
+hdc_tdc_min_win = -13300.0, -13300.0, -13300.0, -13300.0, -13400.0, -13200.0
+                  -13300.0, -13200.0, -13300.0, -13300.0, -13400.0, -13200.0
+hdc_tdc_max_win = -11275.0, -11250.0, -11225.0, -11175.0, -11275.0, -11025.0
+                  -11150.0, -11000.0, -11025.0, -11125.0, -11175.0, -11125.0
 
 hdc_fix_lr = 1 ; Let hit have different L/R assignment for different space point
 hdc_fix_propcorr = 1 ; do propagation along wire each time hit appeears
