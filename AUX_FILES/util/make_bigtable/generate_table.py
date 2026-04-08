@@ -403,4 +403,4 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 
 # ========= MAIN =========
 if __name__ == "__main__":
-    collect_run_info("updated_parsed_runlist_110425.csv", "rsidis_bigtable_pass0p1.csv", run_type_map)
+    collect_run_info("parsed_runlist.csv", "rsidis_bigtable_pass0p1.csv", run_type_map)
