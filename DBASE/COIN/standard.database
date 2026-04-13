@@ -84,8 +84,11 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_4p500gev_13p995deg_rsidis
 23861-23875
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_11p070deg_rsidis.param"
 
-23876-23956,24428-24535,24564-24571,24598-24600,24606-24610
+23876-23956
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p615gev_7p865deg_rsidis.param"
+
+24428-24535,24564-24571,24598-24600,24606-24610
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p615gev_7p865deg_run24000+_rsidis.param"
 
 24088-24185,24310-24427,24558-24563,24589-24597,24601-24605
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_7p865deg_rsidis.param"
@@ -93,8 +96,11 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_7p865deg_rsidis.
 23977-24087,24213-24309,24553-24557,24582-24588,24875-24876
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_4p868gev_7p865deg_rsidis.param"
 
-23957-23976,24186-24212,24536-24552,24572-24581
+23957-23976, 24186-24212
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_6p538gev_7p865deg_rsidis.param"
+
+24536-24552,24572-24581
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_6p538gev_7p865deg_run24500+_rsidis.param"
 
 24611-24688,24689-24733,24861-24864,24865-24874
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_11p075deg_rsidis.param"

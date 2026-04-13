@@ -36,3 +36,13 @@ To output the **new** timing window cuts to the screen in hallc_replay format, s
 
 ## Disclaimer
 This code was developed for the EMC/X>1 experiments in Hall C.  Different DAQ configurations may require some changes to this script, specifically the gHcParms.  You can ensure this will work for your experiments purposes by running it over a different experiment's file before your experiment gets on the floor.  Setting the reference times and timing windows has been a major source of pain during experiment startup because the 50k replays and diagnostic histograms may have no events in them!  Familiarize yourself with this code prior to running the experiment.  
+
+## Note on DC time windows (Ryan Elder Apr. 2026):
+Drift chamber time windows are set on the <h,p>.dc.<plane>.rawtdc distributions, NOT on the difference between adc and tdc pulses like other detectors.  Because of this, drift chamber time window plots are not being produced by this script in its current state.
+Recommended procedure to adjust drift chamber time windows:
+0. Look at the <P,H>.dc.<plane>.rawtdc spectra for a low rate run.  See what the distribution looks like.
+1. Go to PARAM/<SPEC>/<h,p>dc_cuts.param and set the minimum and maximum time windows to be wide (including any 'tails', if present).
+2. Replay the low rate run with wide time windows.
+3. Now look at the distribution plane by plane using GOOD pid cuts. This is to be sure you are looking at 'real' events.
+3. Adjust the time window cuts to select the main peak.  Consult with experts in your collaboration.
+4. Test new time windows by running another replay.  If need be, adjust windows and repeat.
