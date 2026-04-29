@@ -234,9 +234,9 @@ def find_kinematics(ebeam, hms_p, hms_th, shms_p, shms_th, tol=0.01):
 
 def compute_corr_coeff(f, I):
     # Fit coefficients:
-    alpha2, alpha1, alpha0 = -4.63644107e-06, 1.30424412e-04, 7.98013139e-05
-    beta2, beta1, beta0 = 4.37559009e-04, -1.09899399e-02, -5.56375520e-03
-    gamma2, gamma1, gamma0 = -9.31940585e-03, 1.15703945e-01, 1.43953881e+02
+    alpha2, alpha1, alpha0 = -4.77805843e-06, 1.47503555e-04,-3.17321158e-04
+    beta2, beta1, beta0 = 4.53147451e-04, -1.26593244e-02, 2.89365318e-02
+    gamma2, gamma1, gamma0 = -1.05667262e-02, 2.17611407e-01, 1.41933284e+02
 
     if any(v in (-999, None) for v in [f, I]):
         return -999
