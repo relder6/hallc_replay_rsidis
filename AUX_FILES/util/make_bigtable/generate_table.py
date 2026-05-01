@@ -86,7 +86,10 @@ COIN_MAP = {
     "ps6" : (94,12,15),
     "phys_triggers": (75,32,41),
     "hEL_REAL": (84,11,19),
-    "electr_deadtime": (256,60,68)
+    "electr_deadtime": (256,60,68),
+    "helicity_C": (1226,28,38),
+    "helicity_A": (1236,38,52)
+    
 }
 
 run_type_map = {
@@ -252,6 +255,22 @@ def compute_corr_coeff(f, I):
     except Exception:
         return -999
 
+# Helicity based charge:
+
+def helicity_charge_hp(C,A):
+    if any(v in (-999,None) for v in [C,A]):
+        return -999
+    else:
+        BCM2_Q_hp = (C/2)*(1+A)
+    return round(BCM2_Q_hp,6)
+
+def helicity_charge_hm(C,A):
+    if any(v in (-999,None) for v in [C,A]):
+        return -999
+    else:
+        BCM2_Q_hm = (C/2)*(1-A)
+    return round(BCM2_Q_hm,6)
+
 
 
 def collect_run_info(input_csv, output_csv, run_type_map):
@@ -287,6 +306,9 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 
                 if mapping is run_type_map["COIN"]:
                     props["comp_livetime"] = 1.0
+                    props["BCM2_Q_hp"] = helicity_charge_hp(props["helicity_C"], props["helicity_A"])
+                    props["BCM2_Q_hm"] = helicity_charge_hm(props["helicity_C"], props["helicity_A"])
+                    
                 else:
                     phys_triggers = props.get("phys_triggers")
                     ps1, ps2, ps3, ps4, ps5, ps6 = props.get("ps1"), props.get("ps2"), props.get("ps3"), props.get("ps4"), props.get("ps5"), props.get("ps6")
@@ -325,12 +347,17 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 
                 if mapping is run_type_map["HMS"]:
                     props["pEff"] = -999
+
                 if mapping is run_type_map["SHMS"]:
                     props["hEff"] = -999
+
             else:
                 if report_path:  # file path expected but missing
                     print(f"⚠️ Report file not found: {report_path}")
                 props = {var: -999 for var in mapping.keys()}
+
+            # Include helicity based charge information:
+ #           props["BCM2_Q_hp"], props["BCM2_Q_hm"] = helicity_charge(props["helicity_C"],props["helicity_A"])
 
             # Load extra info from output_get_good_coin_ev
             extra_props = load_extra_info(run_number,run_type)
@@ -384,7 +411,9 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 #fan speed variables:
 "fan_mean", "fan_stdev", "boil_corr",
 #start and stop times
-"IHWP", "start_time", "stop_time"]
+"IHWP", "start_time", "stop_time",
+#helicity based charge                                 
+"BCM2_Q_hp", "BCM2_Q_hm"]
 
     for row in results:
         for key in fieldnames:
