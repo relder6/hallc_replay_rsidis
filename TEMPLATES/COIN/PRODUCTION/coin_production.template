@@ -3,16 +3,24 @@ Run #: {gen_run_number}
 **************************
 * General Run Information
 **************************
-Beam energy : {gpbeam}
+Beam energy       : {gpbeam}
 Target mass (amu) : {gtargmass_amu} 
 
 HMS Particle Mass : {hpartmass}
-HMS P Central : {hpcentral}
-HMS Angle : {htheta_lab}
+HMS P Central     : {hpcentral:%.3f}
+HMS P Offset (%)  : {hpcentral_offset:%.3f}
+HMS P True        : {hpcentral*(1+hpcentral_offset*0.01):%.3f}
+HMS Angle         : {htheta_lab:%.4f}
+HMS Angle Offset (rad)  : {hthetacentral_offset:%.4f}
+HMS Angle True    : {htheta_lab+hthetacentral_offset*180/pi:%.4f}
 
-SHMS Particle Mass : {ppartmass}
-SHMS P Central : {ppcentral}
-SHMS Angle : {ptheta_lab}
+SHMS Particle Mass: {ppartmass}
+SHMS P Central    : {ppcentral:%.3f}
+SHMS P Offset (%) : {ppcentral_offset:%.3f}
+SHMS P True       : {ppcentral*(1+ppcentral_offset*0.01):%.3f}
+SHMS Angle        : {ptheta_lab:%.4f}
+SHMS Angle Offset (rad) : {pthetacentral_offset:%.4f}
+SHMS Angle True   : {ptheta_lab+pthetacentral_offset*180/pi:%.4f}
 
 SHMS Run Length   : {P.1MHz.scalerTime:%.3f} sec
 HMS  Run Length   : {H.1MHz.scalerTime:%.3f} sec
@@ -81,6 +89,14 @@ SHMS BCM4A Beam Cut Charge: {P.BCM4A.scalerChargeCut/1000.:%.3f} mC
 SHMS BCM4B Beam Cut Charge: {P.BCM4B.scalerChargeCut/1000.:%.3f} mC		 
 SHMS BCM4C Beam Cut Charge: {P.BCM4C.scalerChargeCut/1000.:%.3f} mC		 
 SHMS Unser Beam Cut Charge: {P.Unser.scalerChargeCut/1000.:%.3f} mC
+
+**************************
+* Spectrometer Mispointing
+**************************
+HMS X Mispointing :	{hmispointing_x:%.3f}
+HMS Y Mispointing :	{hmispointing_y:%.3f}
+SHMS X Mispointing:	{pmispointing_x:%.3f}
+SHMS Y Mispointing:	{pmispointing_y:%.3f}
  
 
 ********************
@@ -250,6 +266,9 @@ ROC2 Pre-Scaled Ps3 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_ac
 
 ROC2 Pre-Scaled Ps4 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
 ROC2 Pre-Scaled Ps4 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+
+ROC2 Pre-Scaled Ps5 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[4]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps5 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[4]))*100.0:%3.4f} %
 
 ROC2 Pre-Scaled Ps6 Total Live Time (EDTM) (no BCM cut) : {(SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
 ROC2 Pre-Scaled Ps6 Total Dead Time (EDTM) (no BCM cut) : {100.0 - (SHMS_edtm_accepted.npassed / (P.EDTM.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %

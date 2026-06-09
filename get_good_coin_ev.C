@@ -19,6 +19,8 @@
 #include "TCanvas.h"
 #include "TStopwatch.h"
 
+const double Mp = 0.938272;
+
 // ****
 // To-do
 // 1. Add RF plot (which branch to use?)
@@ -82,8 +84,9 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   TStopwatch *sw = new TStopwatch();
   sw->Start();
   
-  // Reading input ROOT files
+  // Reading input ROOT and REPORT files
   std::string inrfile = Form("%s/coin_replay_production_%d_%d.root",indirroot.c_str(),rnum,nevent); // input ROOT file name with directory path
+  std::string inrepfile = Form("%s/replay_coin_production_%d_%d.report",indirreport.c_str(),rnum,nevent); // input report file name with directory path
   ROOT::EnableImplicitMT();
   ROOT::RDataFrame data_rdf("T",inrfile.c_str());
   // Defining new columns
@@ -91,15 +94,26 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   std::string z = Epi + "/H.kin.primary.nu";
   std::string pt2 = "pow(P.gtr.p,2)*(1.-pow(cos(P.kin.secondary.th_xq),2))";
   std::string pt = "sqrt(pow(P.gtr.p,2)*(1.-pow(cos(P.kin.secondary.th_xq),2)))";  
-  std::string ptxacc = pt + "*cos(P.kin.secondary.ph_xq)";
-  std::string ptyacc = pt + "*sin(P.kin.secondary.ph_xq)";
-  // MMpi^2 = Q2 * ((1-x)/x) * (1-z) + Mp^2 - pt^2/z;
-  std::string mmpi = "sqrt(H.kin.primary.Q2*((1.-H.kin.primary.x_bj)/H.kin.primary.x_bj)*(1.-"+z+")" + "+0.938*0.938-" + pt2+"/"+z+")";
-  //std::string mmpi = "pow(0.938+H.kin.primary.nu-"+Epi+",2.) - H.kin.primary.q3m*(H.kin.primary.q3m-2.*"+pt+")-pow(P.gtr.p,2)"; 
+  std::string ptx = pt + "*cos(P.kin.secondary.ph_xq)";
+  std::string pty = pt + "*sin(P.kin.secondary.ph_xq)";
+  double Ein = ExtractValueFromReportFile(inrepfile, "Beam energy", ':', 0); //GeV
+  auto calc_mm = [Ein](double epx, double epy, double epz, double ep,
+		       double ppx, double ppy, double ppz, double pp)
+  {
+    // Define 4-vectors
+    ROOT::Math::PxPyPzEVector Pe(0, 0, Ein, Ein);
+    ROOT::Math::PxPyPzEVector Peprime(epx, epy, epz, ep);
+    ROOT::Math::PxPyPzEVector Pp(0, 0, 0, Mp);
+    ROOT::Math::PxPyPzEVector Phadron(ppx, ppy, ppz, pp);
+    // Perform 4-vector arithmetic
+    auto Pmiss = (Pe - Peprime + Pp) - Phadron;
+    return Pmiss.M();
+  };  
   auto data_rdf_raw = data_rdf.Define("z",z.c_str())
-    .Define("mmpi",mmpi.c_str())
-    .Define("ptxacc",ptxacc.c_str())
-    .Define("ptyacc",ptyacc.c_str());
+    .Define("ptx",ptx.c_str())
+    .Define("pty",pty.c_str())
+    .Define("mmpi", calc_mm,
+	    {"H.gtr.px", "H.gtr.py", "H.gtr.pz", "H.gtr.p", "P.gtr.px", "P.gtr.py", "P.gtr.pz", "P.gtr.p"});
 
   // defining output ROOT file
   //Form("%s/%s_%d_%d.root",indirroot.c_str(),outfilebase.c_str(),rnum,nevent);
@@ -130,7 +144,7 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
     .Histo1D({"hMMpi_pd","",int(hMMpi_range[0]),hMMpi_range[1],hMMpi_range[2]},"mmpi")->Clone();  
   hMMpi->GetXaxis()->SetTitle("Missing Mass (GeV)"); CustomizeHist(hMMpi);     
   TH2F *h2ptaccp = (TH2F*)data_rdf_raw.Filter(anacuts+"&&abs(P.gtr.p)<10")
-    .Histo2D({"h2ptaccp","",100,-1,1.,100,-1.,1.},"ptxacc","ptyacc")->Clone();
+    .Histo2D({"h2ptaccp","",100,-1,1.,100,-1.,1.},"ptx","pty")->Clone();
   // beta
   TH2F *h2hbetaVScoin = (TH2F*)data_rdf_raw.Filter(anacuts+"&&H.gtr.beta>0")
     .Histo2D({"h2hbetaVScoin","",int(hcoin_range[0]),hcoin_range[1],hcoin_range[2],100,0.2,1.4},coinTbranch.c_str(),"H.gtr.beta")->Clone();
@@ -166,7 +180,7 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   ExtractCoinEvCounts(hcoin,coincutregion,1,counts);
   
   // Predicting the # triggers needed to get 100K good coin events
-  std::string inrepfile = Form("%s/replay_coin_production_%d_%d.report",indirreport.c_str(),rnum,nevent); // input report file name with directory path
+
   std::vector<double> predtrig;
   PredictNoOfTriggersNeeded(inrepfile,counts,descoinev,0,predtrig);
 

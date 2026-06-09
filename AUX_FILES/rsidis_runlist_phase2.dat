@@ -1,0 +1,18 @@
+! RSIDIS PHASE I (6/15/2025-9/03/2025)
+! RSIDIS PHASE II (??? - ???)
+! Runs in numerical order
+! Run types:
+! HOLE = carbon hole checks
+! OPTICS = optics runs with sieve slit or other
+! HEEP = coincidence elastic (both arms used)
+! HEE = single arm elastic
+! HMSDIS = inclusive electrons in HMS
+! SHMSDIS = inclusive electrons in SHMS
+! PI-SIDIS = pi- SIDIS H/D/A(e,e'pi-)X
+! PI+SIDIS = pi+ SIDIS H/D/A(e,epi+)X
+! JUNK = bad
+! BCM = Beam Current Monitoring Run
+! EDTMBCM = Beam Current Monitoring and EDTM?
+!
+! Run#    Date       Start_Time   Ebeam		I-beam Target   HMS_p   HMS_th  SHMS_p  SHMS_th PS1,2,3,4,5,6		Run_type	Comment
+!-------------------------------------------------------------------------------------------------------------------------------------------------------------
