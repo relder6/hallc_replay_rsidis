@@ -3,9 +3,19 @@ Run #: {gen_run_number}
 **************************
 * General Run Information
 **************************
+Beam energy       : {gpbeam:%.3f}
+Target mass (amu) : {gtargmass_amu:%.2f}
 
-1 MhZ Pulses : {P.1MHz.scaler}
-Run Length   : {P.1MHz.scalerTime:%.3f} sec
+SHMS Particle Mass: {ppartmass}
+SHMS P Central    : {ppcentral:%.3f}
+SHMS P Offset (%) : {ppcentral_offset:%.3f}
+SHMS P True       : {ppcentral*(1+ppcentral_offset*0.01):%.3f}
+SHMS Angle        : {ptheta_lab:%.4f}
+SHMS Angle Offset (rad) : {pthetacentral_offset:%.4f}
+SHMS Angle True   : {ptheta_lab+pthetacentral_offset*180/pi:%.4f}
+
+1 MhZ Pulses      : {P.1MHz.scaler}
+Run Length        : {P.1MHz.scalerTime:%.3f} sec
 
 ***********
 * Beamline
@@ -40,6 +50,12 @@ BCM4A Beam Cut Charge: {P.BCM4A.scalerChargeCut:%.3f} uC
 BCM4B Beam Cut Charge: {P.BCM4B.scalerChargeCut:%.3f} uC		 
 BCM4C Beam Cut Charge: {P.BCM4C.scalerChargeCut:%.3f} uC		 
 Unser Beam Cut Charge: {P.Unser.scalerChargeCut:%.3f} uC
+
+**************************
+* Spectrometer Mispointing
+**************************
+SHMS X Mispointing:	{pmispointing_x:%.3f}
+SHMS Y Mispointing:	{pmispointing_y:%.3f}
 
 ********************
 * DAQ Configuration
