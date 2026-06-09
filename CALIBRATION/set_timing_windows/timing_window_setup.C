@@ -2,6 +2,7 @@
 #include "TH1D.h"
 #include <iostream>
 void calc_timing_windows(TString, TString , TString ,TString, Double_t, Double_t[], Double_t[], bool, double);
+void calc_timing_windows_dc(TString, TString , TString ,TString, Double_t[], Double_t[]); //dc
 
 void run_shms_timing_windows(TString file_name, TString out_file, int RunNumber, bool newWindows=false, double width=40., TString spec="shms") {
   gROOT->SetBatch(kTRUE);    //do not display plots
@@ -56,6 +57,10 @@ void run_shms_timing_windows(TString file_name, TString out_file, int RunNumber,
   Double_t* fHGCerAdcTimeWindowMin = new Double_t [fHGCer];
   Double_t* fHGCerAdcTimeWindowMax = new Double_t [fHGCer];
 
+  UInt_t fDC = 12; //dc
+  Double_t* fDCTdcTimeWindowMin = new Double_t[fDC]; //dc
+  Double_t* fDCTdcTimeWindowMax = new Double_t[fDC]; //dc
+ 
   DBRequest windowList[] = {
     {"hodo_PosAdcTimeWindowMin", fHodoPosAdcTimeWindowMin, kDouble, fHodoScin, 1},
     {"hodo_PosAdcTimeWindowMax", fHodoPosAdcTimeWindowMax, kDouble, fHodoScin, 1},
@@ -71,11 +76,17 @@ void run_shms_timing_windows(TString file_name, TString out_file, int RunNumber,
     {"ngcer_adcTimeWindowMax",  fNGCerAdcTimeWindowMax,   kDouble, fNGCer, 1},
     {"hgcer_adcTimeWindowMin",  fHGCerAdcTimeWindowMin,   kDouble, fHGCer, 1},
     {"hgcer_adcTimeWindowMax",  fHGCerAdcTimeWindowMax,   kDouble, fHGCer, 1},
+
+    {"dc_tdc_min_win", fDCTdcTimeWindowMin,   kDouble, fDC, 1}, //dc
+    {"dc_tdc_max_win", fDCTdcTimeWindowMax,   kDouble, fDC, 1}, //dc
     {0},
   };
 
+   
+
   gHcParms->LoadParmValues((DBRequest*)&windowList, prefix);
 
+  cout << "fDCTdcTimewindowMin[2] : " << fDCTdcTimeWindowMin[2] <<endl;
   calc_timing_windows(file_name,out_file,"hodo_1x","p",1,fHodoPosAdcTimeWindowMin, fHodoPosAdcTimeWindowMax,newWindows,width);
   calc_timing_windows(file_name,out_file,"hodo_1x","p",2,fHodoNegAdcTimeWindowMin, fHodoNegAdcTimeWindowMax,newWindows,width);
   calc_timing_windows(file_name,out_file,"hodo_1y","p",1,fHodoPosAdcTimeWindowMin, fHodoPosAdcTimeWindowMax,newWindows,width);
@@ -89,6 +100,19 @@ void run_shms_timing_windows(TString file_name, TString out_file, int RunNumber,
   calc_timing_windows(file_name,out_file,"cal_shwr","p",0,fCaloArrAdcTimeWindowMin,fCaloArrAdcTimeWindowMax,newWindows,width);
   calc_timing_windows(file_name,out_file,"hgcer","p",0,fHGCerAdcTimeWindowMin,fHGCerAdcTimeWindowMax,newWindows,width);
   calc_timing_windows(file_name,out_file,"ngcer","p",0,fNGCerAdcTimeWindowMin,fNGCerAdcTimeWindowMax,newWindows,width);
+
+  calc_timing_windows_dc(file_name,out_file,"dc_1u1","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax); 
+  calc_timing_windows_dc(file_name,out_file,"dc_1u2","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1x1","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1x2","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1v1","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1v2","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2v2","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax); 
+  calc_timing_windows_dc(file_name,out_file,"dc_2v1","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2x2","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2x1","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2u2","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2u1","p",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax); 
 }
 
 void run_hms_timing_windows(TString file_name, TString out_file, int RunNumber, bool newWindows=false, double width=40., TString spec="hms") {
@@ -141,6 +165,10 @@ void run_hms_timing_windows(TString file_name, TString out_file, int RunNumber, 
   Double_t* fCerAdcTimeWindowMin = new Double_t [fCer];
   Double_t* fCerAdcTimeWindowMax = new Double_t [fCer];
 
+  UInt_t fDC = 12; //dc
+  Double_t* fDCTdcTimeWindowMin = new Double_t[fDC]; //dc
+  Double_t* fDCTdcTimeWindowMax = new Double_t[fDC]; //dc
+
   DBRequest windowList[] = {
     {"hodo_PosAdcTimeWindowMin", fHodoPosAdcTimeWindowMin, kDouble, fHodoScin, 1},
     {"hodo_PosAdcTimeWindowMax", fHodoPosAdcTimeWindowMax, kDouble, fHodoScin, 1},
@@ -152,6 +180,9 @@ void run_hms_timing_windows(TString file_name, TString out_file, int RunNumber, 
     {"cal_neg_AdcTimeWindowMax", fCaloNegAdcTimeWindowMax, kDouble, fShwr, 1},
     {"cer_adcTimeWindowMin",     fCerAdcTimeWindowMin    , kDouble, fCer, 1},
     {"cer_adcTimeWindowMax",     fCerAdcTimeWindowMax    , kDouble, fCer, 1},
+
+    {"dc_tdc_min_win", fDCTdcTimeWindowMin,   kDouble, fDC, 1}, //dc
+    {"dc_tdc_max_win", fDCTdcTimeWindowMax,   kDouble, fDC, 1}, //dc
     {0},
   };
 
@@ -170,7 +201,20 @@ void run_hms_timing_windows(TString file_name, TString out_file, int RunNumber, 
   calc_timing_windows(file_name,out_file,"cal_hC","h",1,fCaloPosAdcTimeWindowMin,fCaloPosAdcTimeWindowMax,newWindows,width);
   calc_timing_windows(file_name,out_file,"cal_hD","h",1,fCaloPosAdcTimeWindowMin,fCaloPosAdcTimeWindowMax,newWindows,width);
   calc_timing_windows(file_name,out_file,"cal_hA","h",2,fCaloNegAdcTimeWindowMin,fCaloNegAdcTimeWindowMax,newWindows,width);
-  calc_timing_windows(file_name,out_file,"cal_hB","h",2,fCaloNegAdcTimeWindowMin,fCaloNegAdcTimeWindowMax,newWindows,width);
+  calc_timing_windows(file_name,out_file,"cal_hB","h",2,fCaloNegAdcTimeWindowMin,fCaloNegAdcTimeWindowMax,newWindows,width); 
+
+  calc_timing_windows_dc(file_name,out_file,"dc_1u1","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1u2","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1x1","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1x2","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1v2","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_1v1","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax); 
+  calc_timing_windows_dc(file_name,out_file,"dc_2v1","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2v2","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2x2","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2x1","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2u2","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
+  calc_timing_windows_dc(file_name,out_file,"dc_2u1","h",fDCTdcTimeWindowMin,fDCTdcTimeWindowMax);
 
 }
 
@@ -280,6 +324,7 @@ void calc_timing_windows(TString golden_file = "", TString out_file = "",
     offset = 13;
   }
 
+  
   TH2F* H1_adctdc_diff_time_vs_pmt;
 
   TFile* f1 = new TFile(golden_file, "READ");
@@ -433,4 +478,217 @@ void calc_timing_windows(TString golden_file = "", TString out_file = "",
   f2->cd();
   currentCanvas->Write();
   f2->Close();
+}
+
+
+void calc_timing_windows_dc(TString golden_file = "", TString out_file = "",
+			    TString detector = "", TString spect = "",
+			    Double_t *minArr = 0, Double_t *maxArr = 0
+			    ){
+  
+  if (golden_file == "") {
+    cout << "Enter golden run root file name: " << endl;
+    cin >> golden_file;
+  }
+  if (out_file == "") {
+    cout << "Enter golden run root file name: " << endl;
+    cin >> out_file;
+  }
+  if (detector == "") {
+    cout << "Enter detector prefix (hodo_1x (etc.), hgcer, aero, cal_prshwr, "
+      "cal_shwr, ngcer, cal_hA (etc.)): "
+         << endl;
+    cin >> detector;
+  }
+  if (spect == "") {
+    cout << "Enter a spectrometer (p or h): " << endl;
+    cin >> spect;
+  }
+
+  TH1F* H1_rawtdc;
+  TLine *minLine, *maxLine;
+  double ymax, maxVal, minVal;
+   
+  TString histname = Form("%s%s", spect.Data(), detector.Data());
+  
+  if (histname.Contains("dc") && histname.Contains("1u1")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[0];
+      maxVal = maxArr[0];
+    }else if(spect == "h"){
+      minVal = minArr[0];
+      maxVal = maxArr[0];
+    }
+  }
+
+  if (histname.Contains("dc") && histname.Contains("1u2")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[1];
+      maxVal = maxArr[1];
+    }else if(spect == "h"){
+      minVal = minArr[1];
+      maxVal = maxArr[1];
+    }
+  }
+  
+  if (histname.Contains("dc") && histname.Contains("1x1")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[2];
+      maxVal = maxArr[2];
+    }else if(spect == "h"){
+      minVal = minArr[2];
+      maxVal = maxArr[2];
+    }
+  }
+
+  if (histname.Contains("dc") && histname.Contains("1x2")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[3];
+      maxVal = maxArr[3];
+    }else if(spect == "h"){
+      minVal = minArr[3];
+      maxVal = maxArr[3]; 
+    }
+  }
+
+   if (histname.Contains("dc") && histname.Contains("1v1")) {
+     histname = Form("%s%s", histname.Data(), "_rawtdc");
+     if(spect == "p"){
+       minVal = minArr[4];
+       maxVal = maxArr[4];
+     }else if(spect == "h"){
+       minVal = minArr[5];
+       maxVal = maxArr[5];
+     }
+   }
+   
+  if (histname.Contains("dc") && histname.Contains("1v2")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[5];
+      maxVal = maxArr[5];
+    }else if(spect == "h"){
+      minVal = minArr[4];
+      maxVal = maxArr[4];
+    }
+  }
+
+   if (histname.Contains("dc") && histname.Contains("2v2")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[6];
+      maxVal = maxArr[6];
+    }else if(spect == "h"){
+      minVal = minArr[7];
+      maxVal = maxArr[7];
+    }
+  }
+
+  if (histname.Contains("dc") && histname.Contains("2v1")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[7];
+      maxVal = maxArr[7];
+    }else if(spect == "h"){
+      minVal = minArr[6];
+      maxVal = maxArr[6];
+    }
+  }
+  
+  if (histname.Contains("dc") && histname.Contains("2x2")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[8];
+      maxVal = maxArr[8];
+    }else if(spect == "h"){
+      minVal = minArr[8];
+      maxVal = maxArr[8];
+    }
+  }
+
+  if (histname.Contains("dc") && histname.Contains("2x1")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[9];
+      maxVal = maxArr[9];
+    }else if(spect == "h"){
+      minVal = minArr[9];
+      maxVal = maxArr[9];
+    }
+  }
+
+  if (histname.Contains("dc") && histname.Contains("2u2")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[10];
+      maxVal = maxArr[10];
+    }else if(spect == "h"){
+      minVal = minArr[10];
+      maxVal = maxArr[10];
+    }
+  }
+  
+  if (histname.Contains("dc") && histname.Contains("2u1")) {
+    histname = Form("%s%s", histname.Data(), "_rawtdc");
+    if(spect == "p"){
+      minVal = minArr[11];
+      maxVal = maxArr[11];
+    }else if(spect == "h"){
+      minVal = minArr[11];
+      maxVal = maxArr[11];
+    }
+  }
+  
+  
+ 
+  
+  
+  TFile* f1 = new TFile(golden_file, "READ");
+  if (f1->IsZombie()) {
+    cout << "Cannot find : " << golden_file << endl;
+    return;
+  }
+  cout << histname.Data() << endl;
+  f1->GetObject(histname.Data(), H1_rawtdc);
+
+  if (!H1_rawtdc) { std::cerr << "not found"; return; }
+
+  H1_rawtdc->GetXaxis()->SetRangeUser(-13500, -10000);
+
+  ymax = H1_rawtdc->GetBinContent(H1_rawtdc->GetMaximumBin());
+
+  
+  minLine = new TLine(minVal,0,minVal,ymax);
+  maxLine = new TLine(maxVal,0,maxVal,ymax);
+
+  cout <<"min val  : " << minVal <<endl;
+  cout <<"max val  : " << maxVal <<endl;
+  
+  minLine->SetLineColor(kGreen);
+  maxLine->SetLineColor(kGreen);
+  
+  
+  TFile* f2 = new TFile(out_file, "Update");
+  if (f2->IsZombie()) {
+    cout << "Cannot find : " << out_file << endl;
+    return;
+  }
+  
+  TCanvas *currentCanvas_1 = nullptr;
+  currentCanvas_1 = new TCanvas(Form("%s",histname.Data()), Form("%s",histname.Data()));
+  H1_rawtdc->Draw("hist");
+
+  //minLine->Draw("same l "); //uncomment to draw the current value of window min 
+  //maxLine->Draw("same l "); //uncomment to draw the current value of window max
+  
+  currentCanvas_1->Update();
+  
+  f2->cd();
+  currentCanvas_1->Write();
+  f2->Close();
+
 }
