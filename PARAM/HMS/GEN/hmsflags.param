@@ -16,7 +16,7 @@
   hdelta_offset = 0.       ; (%)   hdelta_tar = hdelta_tar + hdelta_offset
   htheta_offset = 0.  ; (rad) hyp_tar = hyp_tar + htheta_offset
 ;  hphi_offset   = -4.946337367e-3 ; (rad) hxp_tar = hxp_tar + hphi_offset
-hphi_offset = 0.
+hphi_offset = 2.85e-3 ; (rad) hxp_tar = hxp_tar + hphi_offset (Adapted from /u/group/c-xem2/software/XEM_vPass2.6/hallc_replay_XEM/PARAM/HMS/GEN/hmsflags_sp18.param)
 ;
 
 ;saturation correction flag
