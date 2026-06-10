@@ -18,7 +18,7 @@ gBCM_SatOffset =         50.,       50.,    1000.,       1000.,     1000.,    10
 gBCM_SatQuadratic =  0.00175,     0.002,       0.,          0.,       0.0,       0.0 
 ;
 ; DJM The experimenters need to own this current threshold. Data were taken down to 5 muA. I'm setting the threshold to half that. 
-gBCM_Current_threshold = 2.5
+gBCM_Current_threshold = 1.0
 ;
 ; index = 0 to gNumBCMs-1
-gBCM_Current_threshold_index = 5
+gBCM_Current_threshold_index = 1
