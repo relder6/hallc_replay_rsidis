@@ -82,9 +82,6 @@ HMS 3/4 Trigger Rate           : {H.hTRIG1.scalerCut/H.1MHz.scalerTimeCut/1000.:
 Accepted HMS Triggers          : {hcut_TRIG1.npassed}
 HMS Event Types                : {HMS_Pretrig.npassed}
 
-HMS Computer Live Time : {(hcut_TRIG1.npassed / H.hTRIG1.scaler)*100.0:%3.4f} % [ {(hcut_TRIG1.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[0]))*100.0:%3.4f} %  ]
-HMS Computer Dead Time : {100.0 - (hcut_TRIG1.npassed / H.hTRIG1.scaler)*100.0:%3.4f} % [ {100.0 - (hcut_TRIG1.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[0]))*100.0:%3.4f} %  ]
-
 =:=:=:=:=:=:=:=:=:=:=:=:
 = Physics 3/4 Triggers
 =:=:=:=:=:=:=:=:=:=:=:=:
@@ -97,13 +94,14 @@ Accepted Physics Triggers      : {hcut_physics_accepted.npassed}
 =:=:=:=:=:=:=:=:
 = HMS Triggers
 =:=:=:=:=:=:=:=:
+With cut on BCM{gBCM_Current_threshold_index+1} current of {gBCM_Current_threshold} uA:
 
 hEL_LO_LO :	{H.hEL_LO_LO.scalerCut}	[ {(H.hEL_LO_LO.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 hEL_LO    :	{H.hEL_LO.scalerCut}	[ {(H.hEL_LO.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 hEL_HI    :	{H.hEL_HI.scalerCut}	[ {(H.hEL_HI.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 hEL_REAL  :	{H.hEL_REAL.scalerCut}	[ {(H.hEL_REAL.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 hEL_CLEAN :	{H.hEL_CLEAN.scalerCut}	[ {(H.hEL_CLEAN.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
-hSTOF     :  	{H.hSTOF.scalerCut}	[ {(H.hSTOF.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
+hSTOF     : {H.hSTOF.scalerCut}	[ {(H.hSTOF.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 
 hTRIG1 :  	{H.hTRIG1.scalerCut} 	[ {(H.hTRIG1.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 hTRIG2 :  	{H.hTRIG2.scalerCut} 	[ {(H.hTRIG2.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
@@ -115,6 +113,7 @@ hTRIG6 :  	{H.hTRIG6.scalerCut} 	[ {(H.hTRIG6.scalerCut/H.1MHz.scalerTimeCut)/10
 =:=:=:=:=:=:=:=:
 = SHMS Triggers
 =:=:=:=:=:=:=:=:
+With cut on BCM{gBCM_Current_threshold_index+1} current of {gBCM_Current_threshold} uA:
 
 pEL_LO_LO :	{H.pEL_LO_LO.scalerCut}	[ {(H.pEL_LO_LO.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 pEL_LO    :	{H.pEL_LO.scalerCut}	[ {(H.pEL_LO.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
@@ -133,8 +132,9 @@ pTRIG6 :  	{H.pTRIG6.scalerCut} 	[ {(H.pTRIG6.scalerCut/H.1MHz.scalerTimeCut)/10
 =:=:=:=:
 = EDTM
 =:=:=:=:
+With cut on BCM{gBCM_Current_threshold_index+1} current of {gBCM_Current_threshold} uA:
 
-EDTM Triggers           : {H.EDTM.scaler}
+EDTM Triggers           : {H.EDTM.scalerCut}
 Estimated EDTM Triggers : {H.EDTM.scaler*(H.1MHz.scalerTime):%.0f}
 EDTM Trigger Rate       : {H.EDTM.scaler/H.1MHz.scalerTime/1000.:%.3f} kHz
 Accepted EDTM Triggers  : {hcut_edtm_accepted.npassed}
@@ -153,26 +153,25 @@ HMS TRIG3 Computer Live Time : {(hms_trigs.npassed / (H.hTRIG3.scaler/ghconfig_t
 HMS Computer Live Time : {(hcut_TRIG1.npassed / H.hTRIG1.scaler)*100.0:%3.4f} % 
 HMS Computer Dead Time : {100.0 - (hcut_TRIG1.npassed / H.hTRIG1.scaler)*100.0:%3.4f} % 
 
-Pre-Scaled Ps1 HMS Computer Live Time : {(hcut_TRIG1.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[0]))*100.0:%3.4f} %
-Pre-Scaled Ps1 HMS Computer Dead Time : {100.0 - (hcut_TRIG1.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[0]))*100.0:%3.4f} %
+-------------------------------------------------------------
+== The livetime mapping apply only for R-SIDIS (2025-26)   ==
+== SHMS DAQ was used and ps3 = HMS 3/4 & ps4 = HMS EL_REAL ==
+-------------------------------------------------------------
+Pre-Scaled Ps3 HMS Computer Live Time : {(hcut_physics_accepted.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
+Pre-Scaled Ps3 HMS Computer Dead Time : {100.0 - (hcut_physics_accepted.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
 
-Pre-Scaled Ps2 HMS Computer Live Time : {(hcut_TRIG2.npassed / (H.hTRIG2.scaler/ghconfig_ti_ps_factors[1]))*100.0:%3.4f} %
-Pre-Scaled Ps2 HMS Computer Dead Time : {100.0 - (hcut_TRIG2.npassed / (H.hTRIG2.scaler/ghconfig_ti_ps_factors[1]))*100.0:%3.4f} %
-
-Pre-Scaled Ps3 HMS Computer Live Time : {(hcut_TRIG3.npassed / (H.hTRIG3.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
-Pre-Scaled Ps3 HMS Computer Dead Time : {100.0 - (hcut_TRIG3.npassed / (H.hTRIG3.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
+Pre-Scaled Ps4 HMS Computer Live Time : {(hcut_physics_accepted.npassed / (H.hTRIG2.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
+Pre-Scaled Ps4 HMS Computer Dead Time : {100.0 - (hcut_physics_accepted.npassed / (H.hTRIG2.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
 
 Total Live Time (EDTM) : {(hcut_edtm_accepted.npassed / H.EDTM.scaler)*100.0:%3.4f} %
 Total Dead Time (EDTM) : {100.0 - (hcut_edtm_accepted.npassed / H.EDTM.scaler)*100.0:%3.4f} %
 
-Pre-Scaled Ps1 Total Live Time (EDTM) : {(hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[0]))*100.0:%3.4f} %
-Pre-Scaled Ps1 Total Dead Time (EDTM) : {100.0 - (hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[0]))*100.0:%3.4f} %
-
-Pre-Scaled Ps2 Total Live Time (EDTM) : {(hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[1]))*100.0:%3.4f} %
-Pre-Scaled Ps2 Total Dead Time (EDTM) : {100.0 - (hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[1]))*100.0:%3.4f} %
-
 Pre-Scaled Ps3 Total Live Time (EDTM) : {(hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
 Pre-Scaled Ps3 Total Dead Time (EDTM) : {100.0 - (hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
+
+Pre-Scaled Ps4 Total Live Time (EDTM) : {(hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
+Pre-Scaled Ps4 Total Dead Time (EDTM) : {100.0 - (hcut_edtm_accepted.npassed / (H.EDTM.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
+-------------------------------------------------------------
 
 OG 6 GeV Electronic Live Time (100, 150) : {100.0*(1. - ((H.pPRE100.scalerCut - H.pPRE150.scalerCut)/H.pPRE100.scalerCut)):%3.4f} %
 OG 6 GeV Electronic Dead Time (100, 150) : {100*((H.pPRE100.scalerCut - H.pPRE150.scalerCut)/H.pPRE100.scalerCut):%3.4f} %

@@ -172,6 +172,7 @@ All Triggers           :  {ALL_events.npassed}
 =:=:=:=:=:=:=:=:=:=:=:=: 
 = SHMS Trigger Scalers
 =:=:=:=:=:=:=:=:=:=:=:=: 
+With cut on BCM{gBCM_Current_threshold_index+1} current of {gBCM_Current_threshold} uA:
 
 SHMS_pEL_LO_LO :    {P.pEL_LO_LO.scalerCut}    [ {(P.pEL_LO_LO.scalerCut/P.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 SHMS_pEL_LO    :    {P.pEL_LO.scalerCut}   [ {(P.pEL_LO.scalerCut/P.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
@@ -197,6 +198,7 @@ SHMS_pTRIG6 Pre-scaled Pre-triggers :  {(P.pTRIG6.scalerCut/gHC_ti_ps_factors[5]
 =:=:=:=:=:=:=:=:=:=:=:  
 = HMS Trigger Scalers
 =:=:=:=:=:=:=:=:=:=:=: 
+With cut on BCM{gBCM_Current_threshold_index+1} current of {gBCM_Current_threshold} uA:
 
 HMS_hEL_LO_LO : {H.hEL_LO_LO.scalerCut}    [ {(H.hEL_LO_LO.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
 HMS_hEL_LO    : {H.hEL_LO.scalerCut}   [ {(H.hEL_LO.scalerCut/H.1MHz.scalerTimeCut)/1000.:%.3f} kHz ]
@@ -222,6 +224,7 @@ HMS_pTRIG6 Pre-scaled Pre-triggers :  {(H.pTRIG6.scalerCut/gHC_ti_ps_factors[5])
 =:=:=:=:
 = EDTM
 =:=:=:=:
+With cut on BCM{gBCM_Current_threshold_index+1} current of {gBCM_Current_threshold} uA:
 
 SHMS EDTM Triggers           : {P.EDTM.scalerCut}
 SHMS Estimated EDTM Triggers : {P.EDTM.scalerCutRate*(P.1MHz.scalerCut/1000000.):%.0f}
@@ -249,8 +252,8 @@ ROC2 Pre-Scaled Ps3 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG3_ROC2
 ROC2 Pre-Scaled Ps4 ROC2 Computer Live Time (no BCM cut) : {(pTRIG4_ROC2.npassed / (P.pTRIG4.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
 ROC2 Pre-Scaled Ps4 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG4_ROC2.npassed / (P.pTRIG4.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
 
-ROC2 Pre-Scaled Ps5 ROC2 Computer Live Time (no BCM cut) : {(pTRIG5_ROC2.npassed / (P.pTRIG5.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
-ROC2 Pre-Scaled Ps5 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG5_ROC2.npassed / (P.pTRIG5.scaler/gHC_ti_ps_factors[3]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps5 ROC2 Computer Live Time (no BCM cut) : {(pTRIG5_ROC2.npassed / (P.pTRIG5.scaler/gHC_ti_ps_factors[4]))*100.0:%3.4f} %
+ROC2 Pre-Scaled Ps5 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG5_ROC2.npassed / (P.pTRIG5.scaler/gHC_ti_ps_factors[4]))*100.0:%3.4f} %
 
 ROC2 Pre-Scaled Ps6 ROC2 Computer Live Time (no BCM cut) : {(pTRIG6_ROC2.npassed / (P.pTRIG6.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
 ROC2 Pre-Scaled Ps6 ROC2 Computer Dead Time (no BCM cut) : {100.0 - (pTRIG6_ROC2.npassed / (P.pTRIG6.scaler/gHC_ti_ps_factors[5]))*100.0:%3.4f} %
