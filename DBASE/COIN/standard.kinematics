@@ -22842,3 +22842,13 @@ ppcentral = 1.820
 hpartmass = 0.000511
 ppartmass = 0.000511
 
+### Start of R-SIDIS Phase-II
+27086 - 99999
+gpbeam = 6.5
+gtargmass_amu = 1.007825032
+htheta_lab = -47.91
+hpcentral = 1.670
+ptheta_lab = 13.000
+ppcentral = 5.520
+hpartmass = 0.938272
+ppartmass = 0.000511

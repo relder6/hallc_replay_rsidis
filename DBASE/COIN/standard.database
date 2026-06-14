@@ -63,7 +63,7 @@ g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin_spring19.param"
 # Beginning of R-SIDIS (Summer 2025)
 # ----- ****************** --------
 # ----- ****************** --------
-20000-99999
+20000-25604
 g_ctp_parm_filename       = "DBASE/COIN/general_rsidis.param"
 g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
 g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"
@@ -138,7 +138,7 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_16p810deg_rsidis
 25499-25567
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p632gev_8p110deg_rsidis.param"
 
-25568-99999
+25568-25604
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p000gev_18p500deg_rsidis.param"
 
 25475-25483
@@ -160,6 +160,20 @@ g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p531gev_29p045deg_rsidis.
 24875-25483
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p750deg_rsidis.param"
 
-25484-99999
+25484-25604
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p755deg_rsidis.param"
 
+
+# ----- ****************** --------
+# ----- ****************** --------
+# Beginning of R-SIDIS-II (Summer 2026)
+# ----- ****************** --------
+# ----- ****************** --------
+20000-99999
+g_ctp_parm_filename       = "DBASE/COIN/general_rsidis_phaseII.param"
+g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
+g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"
+g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin.param"
+
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p000gev_18p500deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p755deg_rsidis.param"
