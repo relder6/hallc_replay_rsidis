@@ -33,7 +33,7 @@ const double Mp = 0.938272;
 // 1. list of analysis cuts to apply
 std::string anacuts = "(P.gtr.p<=2.9||P.hgcer.npeSum>1)&&P.aero.npeSum>2&&H.cer.npeSum>2&&H.cal.etottracknorm>0.7&&P.cal.etottracknorm<0.8&&abs(P.gtr.dp-5.)<15.&&abs(H.gtr.dp)<8.";
 // 2. histo ranges - Convention: {nbin,hmin,hmax}
-std::vector<double> hcoin_range{200,10,90};
+std::vector<double> hcoin_range{160,10,90};
 std::vector<double> hQ2_range{200,0.1,10},hx_range{200,0.01,1.2},hW_range{200,0.1,5},hz_range{200,0.01,1.2},hMMpi_range{200,-0.5,8};
 // ---
 // --- Advanced (for experts) ---
@@ -41,11 +41,11 @@ std::vector<double> hQ2_range{200,0.1,10},hx_range{200,0.01,1.2},hW_range{200,0.
 // 1. ROOT tree branch to get coin time
 std::string coinTbranch = "CTime.ePiCoinTime_ROC2"; 
 // 2. ns, Distance of the center of the block to choose randoms from the mean of the main coin peak
-double rndmscutdist = 18.;                  
+double rndmscutdist = 16.;                  
 // 3. Ratio of randoms cut region width to good coin cut region width
-double rndmscutfactor = 6.;
+double rndmscutfactor = 13.;
 // 4. Beam bunch structure (should be either 2 or 4 ns)
-double beambunchstruct = 4.;
+double beambunchstruct = 2.;
 // --- **** ---
 // --- **** ---
 
@@ -141,8 +141,8 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   TH1F *hMMpi = (TH1F*)data_rdf_raw.Filter(anacuts+"&&abs(P.kin.secondary.MMpi)<10")
     .Histo1D({"hMMpi","",int(hMMpi_range[0]),hMMpi_range[1],hMMpi_range[2]},"P.kin.secondary.MMpi")->Clone();
   TH1F *hMMpi_pd = (TH1F*)data_rdf_raw.Filter(anacuts+"&&abs(P.gtr.p)<10")
-    .Histo1D({"hMMpi_pd","",int(hMMpi_range[0]),hMMpi_range[1],hMMpi_range[2]},"mmpi")->Clone();  
-  hMMpi->GetXaxis()->SetTitle("Missing Mass (GeV)"); CustomizeHist(hMMpi);     
+    .Histo1D({"hMMpi_pd","",int(hMMpi_range[0]),hMMpi_range[1],hMMpi_range[2]},"mmpi")->Clone();
+  hMMpi_pd->GetXaxis()->SetTitle("Missing Mass (GeV)"); CustomizeHist(hMMpi_pd);     
   TH2F *h2ptaccp = (TH2F*)data_rdf_raw.Filter(anacuts+"&&abs(P.gtr.p)<10")
     .Histo2D({"h2ptaccp","",100,-1,1.,100,-1.,1.},"ptx","pty")->Clone();
   // beta
@@ -219,8 +219,8 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   hW->Write("",TObject::kOverwrite);
   //
   cphys->cd(5);
-  hMMpi->Draw();
-  hMMpi->Write("",TObject::kOverwrite);
+  hMMpi_pd->Draw();
+  hMMpi_pd->Write("",TObject::kOverwrite);
   hMMpi_pd->Write("",TObject::kOverwrite);    
   //
   cphys->cd(6);
