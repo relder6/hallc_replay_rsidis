@@ -1,0 +1,27 @@
+; Utilize per wire tzero offsets, 1 means true
+p_using_tzero_per_wire = 1
+
+; Infinite TDC window limits for each plane.
+; pdc_tdc_min_win = -1000000, -1000000, -1000000, -1000000, -1000000, -1000000
+;                   -1000000, -1000000, -1000000, -1000000, -1000000, -1000000
+; pdc_tdc_max_win =  1000000,  1000000,  1000000,  1000000,  1000000,  1000000
+;                    1000000,  1000000,  1000000,  1000000,  1000000,  1000000
+
+; Ryan Elder (relder) determined plane order, Apr. 2026:
+; pdc_tdc_min_win = 1u1, 1u2, 1x1, 1x2, 1v1, 1v2
+;                   2v2, 2v1, 2x2, 2x1, 2u2, 2u1
+; pdc_tdc_min_win = 1u1, 1u2, 1x1, 1x2, 1v1, 1v2
+;                   2v2, 2v1, 2x2, 2x1, 2u2, 2u1
+
+; Ryan Elder (relder) determined from RSIDIS Run 25153, Apr. 2026
+pdc_tdc_min_win = -12650.0, -12600.0, -12700.0, -12650.0, -12650.0, -12650.0
+                  -12600.0, -12600.0, -12650.0, -12600.0, -12650.0, -12600.0
+pdc_tdc_max_win = -10250.0, -10250.0, -10250.0, -10250.0, -10250.0, -10250.0
+                  -10250.0, -10250.0, -10250.0, -10250.0, -10250.0, -10250.0
+
+pdc_fix_lr = 1
+pdc_fix_propcorr = 1
+
+; Zero time correction for each plane in ns that is added to TDC time.
+pdc_plane_time_zero = 1270.0+45., 1270.0+45., 1270.0+45., 1270.0+45., 1270.0+45., 1270.0+45.
+                      1270.0+45., 1270.0+45., 1270.0+45., 1270.0+45., 1270.0+45., 1270.0+45.
