@@ -173,7 +173,7 @@ g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p755deg_rsidis.
 g_ctp_parm_filename       = "DBASE/COIN/general_rsidis_phaseII.param"
 g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
 g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"
-g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin.param"
+g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin_phaseII.param"
 
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_5p670gev_19p340deg_rsidis.param"
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p531gev_29p045deg_rsidis.param"
