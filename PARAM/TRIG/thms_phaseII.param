@@ -8,7 +8,7 @@ t_hms_tdcchanperns = 0.09766
 
 ; determined by R. Elder for rsidis2025
 ; cut variable is hT1
-t_hms_trig_tdcrefcut = -28400.
+t_hms_trig_tdcrefcut = -5500.
 ; cut variable is hFADC_TREF_ROC1
 t_hms_trig_adcrefcut = -2600.
 
