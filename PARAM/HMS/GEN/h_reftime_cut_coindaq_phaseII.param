@@ -26,7 +26,7 @@
 ;Trigger change: PS3 is HMS CLEAN and PS5 SHMS 3/4 & HMS ELREAL
 hdc_tdcrefcut=-18400
 ; Cut variable = hTRef2
-hhodo_tdcrefcut=-28400
+hhodo_tdcrefcut=-5500
 ; Cut variables = hFADC_TREF_ROC1 --> CHANGE ALL OF THE FOLLOWING!
 hhodo_adcrefcut=-2600
 hcer_adcrefcut=-2600
