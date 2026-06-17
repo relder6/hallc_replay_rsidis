@@ -65,7 +65,7 @@ cminch=2.54
 ; SHMS default cut parameter files
 #include "PARAM/SHMS/NGCER/pngcer_cuts.param"
 #include "PARAM/SHMS/DC/pdc_cuts_phaseII.param"
-#include "PARAM/SHMS/HODO/phodo_cuts.param"
+#include "PARAM/SHMS/HODO/phodo_cuts_phaseII.param"
 #include "PARAM/SHMS/HGCER/phgcer_cuts.param"
 #include "PARAM/SHMS/AERO/paero_cuts.param"
 #include "PARAM/SHMS/CAL/pcal_cuts_phaseII.param"
