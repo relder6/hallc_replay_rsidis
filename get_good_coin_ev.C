@@ -540,7 +540,7 @@ void CalcNormYield(std::string const &inrepfile, // Input report file name with 
 /* Calculates charge normalized and efficiency corrected yeild from random subtracted coin events */
 {
   //double charge = ExtractValueFromReportFile(inrepfile, "HMS BCM4A Beam Cut Charge", ':'); //mC
-  double charge = ExtractValueFromReportFile(inrepfile, "SHMS BCM4B Beam Cut Charge", ':', 0); //mC  
+  double charge = ExtractValueFromReportFile(inrepfile, "SHMS BCM2 Beam Cut Charge", ':', 0); //mC  
   double compdeadtime = ExtractValueFromReportFile(inrepfile, "HMS Computer Dead Time", ':', 0)/100.0;
   double treffiHMS = ExtractValueFromReportFile(inrepfile, "E SING FID TRACK EFFIC", ':', 1);  
   double treffiSHMS = ExtractValueFromReportFile(inrepfile, "HADRON SING FID TRACK EFFIC", ':', 0);
