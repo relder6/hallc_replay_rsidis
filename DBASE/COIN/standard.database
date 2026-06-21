@@ -188,4 +188,4 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p615gev_7p865deg_rsidis.
 # Run dependent HMS CAL params, updated by R. Elder Jun. 2026
 # -----------------------------
 25604-99999
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p531gev_29p045deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p165gev_rsidis_phaseII.param"
