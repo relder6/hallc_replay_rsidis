@@ -179,7 +179,7 @@ g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin_phaseII.param"
 # Run dependent SHMS CAL params, updated by R. Elder Jun. 2026
 # -----------------------------
 25604-27112
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_5p670gev_19p340deg_rsidis.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_5p520gev_rsidis_phaseII.param"
 
 27113-99999
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p766gev_rsidis_phaseII.param"
