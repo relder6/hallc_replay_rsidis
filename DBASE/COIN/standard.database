@@ -187,8 +187,11 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p766gev_rsidis_phaseII.p
 27201-27235,27351-27397
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p837gev_rsidis_phaseII.param"
 
-27398-99999
+27398-27402
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p987gev_rsidis_phaseII.param"
+
+27403-99999
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p978gev_rsidis_phaseII.param"
 
 # -----------------------------
 # Run dependent HMS CAL params, updated by R. Elder Jun. 2026
