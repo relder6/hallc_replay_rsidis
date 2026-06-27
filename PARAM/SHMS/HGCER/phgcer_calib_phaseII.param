@@ -1,0 +1,4 @@
+; R-SIDIS phaseI calibration:
+;phgcer_adc_to_npe = 1.0/4.29318, 1.0/4.64297, 1.0/5.4199, 1.0/4.10877
+; Early calibration for phaseII (based on runs 27360-27430):
+phgcer_adc_to_npe = 1.0/5.33120, 1.0/4.79450, 1.0/4.61733, 1.0/4.95459

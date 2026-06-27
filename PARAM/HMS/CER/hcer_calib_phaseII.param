@@ -1,0 +1,4 @@
+; Calibration used in R-sidis phaseI:
+; hcer_adc_to_npe = 1./7.61389, 1./9.05543
+; Early calibration for phaseII:
+hcer_adc_to_npe = 1./7.81079, 1./9.2002
