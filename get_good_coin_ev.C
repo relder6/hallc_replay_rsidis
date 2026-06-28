@@ -46,6 +46,9 @@ double rndmscutdist = 16.;
 double rndmscutfactor = 13.;
 // 4. Beam bunch structure (should be either 2 or 4 ns)
 double beambunchstruct = 2.;
+// 5. Fixed mean mode (especially useful for e+ runs)
+bool isfixedmean = true;
+double fixedcmean = 51.3; //ns
 // --- **** ---
 // --- **** ---
 
@@ -53,7 +56,7 @@ double beambunchstruct = 2.;
 TF1* FitCoinPeak(TH1F *h);
 void CustomizeHist(TH1F *h);
 void PlotPtAccHisto(TH2* h2);
-void DetermineCoinCutRegion(TH1F* hcoin, double *fitparams, int verbosity, std::vector<double> &cutregion);
+void DetermineCoinCutRegion(TH1F* hcoin, double ctmean, int verbosity, std::vector<double> &cutregion);
 void PlotCutRegion(double xmin, double xmax, EColor fcolor, double alpha);
 void ExtractCoinEvCounts(TH1F *hcoin, std::vector<double> const &cutregion, int verbosity, std::vector<double> &counts);
 double ExtractValueFromReportFile(const std::string& filename, const std::string& key, const char delimiter, int skipCount);
@@ -164,14 +167,19 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   gStyle->SetOptStat("e");
   gStyle->SetOptFit(1);
   // fitting the coin histo
-  TF1 *fcoin = FitCoinPeak(hcoin);
   double fitparams[3];
-  fcoin->GetParameters(&fitparams[0]);
+  TF1 *fcoin;
+  hcoin->Draw();
+  if (!isfixedmean) {
+    fcoin = FitCoinPeak(hcoin);
+    fcoin->GetParameters(&fitparams[0]);
+  }
   hcoin->Write("",TObject::kOverwrite);
 
   // determining and plotting the coin time cut regions
   std::vector<double> coincutregion;
-  DetermineCoinCutRegion(hcoin,fitparams,0,coincutregion);
+  double ctmean = !isfixedmean ? fitparams[1] : fixedcmean;
+  DetermineCoinCutRegion(hcoin,ctmean,0,coincutregion);
   PlotCutRegion(coincutregion[0],coincutregion[1],kGreen,0.3); // main coin peak
   PlotCutRegion(coincutregion[2],coincutregion[3],kRed,0.3);   // randoms to the left of main peak
 
@@ -347,7 +355,7 @@ double FindMinAfterPeak(TH1F* hist)
   }
 }
 //----------------------------------------------------------
-void DetermineCoinCutRegion(TH1F* hcoin, double * fitparams, int verbosity, std::vector<double> &cutregion)
+void DetermineCoinCutRegion(TH1F* hcoin, double ctmean, int verbosity, std::vector<double> &cutregion)
 /* Determines the coin cut regions
 */
 {
@@ -370,15 +378,15 @@ void DetermineCoinCutRegion(TH1F* hcoin, double * fitparams, int verbosity, std:
   // -- 3rd approach    
   // double firstminima = FindMinAfterPeak(hcoin); // minima immediately after the main peak
   // cutwidth = firstminima - fitparams[1]; 
-  double xlowgood = fitparams[1] - cutwidth;
-  double xhigood = fitparams[1] + cutwidth;
+  double xlowgood = ctmean - cutwidth;
+  double xhigood = ctmean + cutwidth;
   // ---
   // determining the cut widths for randoms
   // ---
   // Distance of the center of the block to choose randoms from the mean of the good coin time peak  
   double dist = rndmscutdist; 
-  double xlowrndm = fitparams[1] - dist - rndmscutfactor*cutwidth;
-  double xhirndm = fitparams[1] - dist + rndmscutfactor*cutwidth;
+  double xlowrndm = ctmean - dist - rndmscutfactor*cutwidth;
+  double xhirndm = ctmean - dist + rndmscutfactor*cutwidth;
 
   cutregion = {xlowgood,xhigood,xlowrndm,xhirndm};
 
@@ -555,7 +563,7 @@ void CalcNormYield(std::string const &inrepfile, // Input report file name with 
   
   if (verbosity>0) {
     std::cout << "\n--- Normalized Yield ---\n";
-    std::cout << "Real Coin Ev            : " << (int)Nrealcoinev << "\n";    
+    std::cout << "Real Coin Ev            : " << (int)Nrealcoinev << " +/- " << Nrealcoinev_err << "\n";    
     std::cout << "Charge (mC)             : " << charge << "\n";
     std::cout << "Computer dead time      : " << compdeadtime << "\n";
     std::cout << "Tracking Effi. HMS      : " << treffiHMS << "\n";

@@ -32,17 +32,17 @@ std::vector<double> heOVp_range{200,0.3,2.0};
 std::vector<double> hQ2_range{200,0.1,10},hx_range{200,0.01,1.2},hW_range{200,0.1,5};
 // 4. E/p cut lower limit
 double cutrangeHMS = 0.7;
-double cutrangeSHMS = 0.8;
+double cutrangeSHMS = 0.7;
 // --- **** ---
 // --- **** ---
 
 void CustomizeHist(TH1F *h);
 void PlotCutRegion(double xmin, double xmax, EColor fcolor, double alpha);
-double CalcNormYield(std::string const &inrepfile, double Nrealcoinev, std::string spec, int verbosity);
+void CalcNormYield(std::string const &inrepfile, double discount, double discount_err, std::string spec, int verbosity, std::vector<double> &NormYield);
 std::vector<std::string> SplitString(char const delim, std::string const myStr);
 double ExtractValueFromReportFile(const std::string& filename, const std::string& key, const char delimiter, int skipCount);
 TPaveText* CreateSummaryPaveText(int rnum, ULong64_t totevintree, const std::string& anacuts, const double counts, double normyield, TStopwatch* sw);
-void PrintCSVLine(std::ofstream &out, int runnum, double gooddis, double normyield);
+void PrintCSVLine(std::ofstream &out, int runnum, double gooddis,  double gooddis_err, double normyield, double normyield_err);
 
 // global variables
 bool is_50k = false;
@@ -103,18 +103,20 @@ int get_good_dis_ev(int rnum,                  // Run number to analyze
   heOVp->Write("",TObject::kOverwrite);  
   double cutrange = spec.compare("HMS")==0 ? cutrangeHMS : cutrangeSHMS;
   double counts = heOVp->Integral(heOVp->FindBin(cutrange),heOVp->FindBin(heOVp_range[2]));  
+  double counts_err = sqrt(counts);
   PlotCutRegion(cutrange,heOVp_range[2],kGreen,0.3); // main coin peak
 
   //std::cout << counts << "\n";
 
   // Calculate charge normalized and efficiency ccorrected yield
   std::string inrepfile = Form("%s/replay_%s_coin_production_%d_%d.report",indirreport.c_str(),speclower.c_str(),rnum,nevent); // input report file name with directory path  
-  double normyield = CalcNormYield(inrepfile,counts,spec,1);
+  std::vector<double> normyield{0.,0.};
+  CalcNormYield(inrepfile,counts,counts_err,spec,1,normyield);
   // Write important stuff to a summary canvas
   ceOVp->cd(2);
   ULong64_t nEntries = *data_rdf_raw.Count();
   //std::cout << nEntries << "\n";  
-  TPaveText* pvtxt = CreateSummaryPaveText(rnum, nEntries, anacuts, counts, normyield, sw);
+  TPaveText* pvtxt = CreateSummaryPaveText(rnum, nEntries, anacuts, counts, normyield[0], sw);
   pvtxt->Draw();
   ceOVp->Update();
   ceOVp->Write("",TObject::kOverwrite);
@@ -146,7 +148,7 @@ int get_good_dis_ev(int rnum,                  // Run number to analyze
   // Writing out some useful stuff
   std::string outcsv = Form("%s/%s_%d_%d.csv",indirreport.c_str(),outfilebase.c_str(),rnum,nevent);
   std::ofstream outcsv_data(outcsv.c_str());
-  PrintCSVLine(outcsv_data,rnum,counts,normyield);
+  PrintCSVLine(outcsv_data,rnum,counts,counts_err,normyield[0],normyield[1]);
 
   std::cout << "------" << std::endl;
   std::cout << " Output CSV file  : " << outcsv << std::endl;
@@ -252,45 +254,66 @@ double ExtractValueFromReportFile(const std::string& filename, const std::string
   return -1;  // Indicate failure
 }
 //----------------------------------------------------------
-double CalcNormYield(std::string const &inrepfile, // Input report file name with path
+void CalcNormYield(std::string const &inrepfile, // Input report file name with path
 		     double discount,          // No. of good DIS count
+		     double discount_err,      // No. of good DIS count error 
 		     std::string spec,         // HMS or SHMS
-		     int verbosity)
+		     int verbosity,
+        std::vector<double> &NormYield)
 /* Calculates charge normalized and efficiency corrected yeild from random subtracted coin events */
 {
-  //double charge = ExtractValueFromReportFile(inrepfile, "HMS BCM4A Beam Cut Charge", ':'); //mC
+  //double charge = ExtractValueFromReportFile(inrepfile, "HMS BCM2 Beam Cut Charge", ':'); //mC
   double charge;
-  double compdeadtime;
+  double livetime;
   double treffi;
   double trigeffi;
+  double psfactor;
 
   if (spec.compare("HMS")==0) {
-    charge = ExtractValueFromReportFile(inrepfile, "BCM4C Beam Cut Charge", ':', 0); //uC  
-    compdeadtime = ExtractValueFromReportFile(inrepfile, "HMS Computer Dead Time", ':', 0)/100.0;
+    double ps3 = ExtractValueFromReportFile(inrepfile, "Ps3_factor", '=', 0);
+    double ps4 = ExtractValueFromReportFile(inrepfile, "Ps4_factor", '=', 0);
+    psfactor = ps3==-1 ? ps4 : ps3;
+    charge = ExtractValueFromReportFile(inrepfile, "BCM2 Beam Cut Charge", ':', 0); //uC  
+    //compdeadtime = ExtractValueFromReportFile(inrepfile, "HMS Computer Dead Time", ':', 0)/100.0;
+    livetime = ExtractValueFromReportFile(inrepfile, "Pre-Scaled Ps4 HMS Computer Live Time", ':', 0);
+    if (psfactor == ps3)
+      livetime = ExtractValueFromReportFile(inrepfile, "Pre-Scaled Ps3 HMS Computer Live Time", ':', 0);
     treffi = ExtractValueFromReportFile(inrepfile, "E SING FID TRACK EFFIC", ':', 0);  
     trigeffi = 1.0; // assuming 100% efficiency for the moment
   } else {
-    charge = ExtractValueFromReportFile(inrepfile, "BCM4C Beam Cut Charge", ':', 0); //uC  
-    compdeadtime = ExtractValueFromReportFile(inrepfile, "SHMS Computer Dead Time", ':', 0)/100.0;
+    double ps1 = ExtractValueFromReportFile(inrepfile, "Ps1_factor", '=', 0);
+    double ps2 = ExtractValueFromReportFile(inrepfile, "Ps2_factor", '=', 0);
+    psfactor = ps1==-1 ? ps2 : ps1;    
+    charge = ExtractValueFromReportFile(inrepfile, "BCM2 Beam Cut Charge", ':', 0); //uC  
+    //compdeadtime = ExtractValueFromReportFile(inrepfile, "SHMS Computer Dead Time", ':', 0)/100.0;
+    livetime = ExtractValueFromReportFile(inrepfile, "Pre-Scaled Ps1 HMS Computer Live Time", ':', 0);
+    if (psfactor == ps2)
+      livetime = ExtractValueFromReportFile(inrepfile, "Pre-Scaled Ps2 HMS Computer Live Time", ':', 0);
     treffi = ExtractValueFromReportFile(inrepfile, "E SING FID TRACK EFFIC", ':', 0);
     trigeffi = 1.0; // assuming 100% efficiency for the moment
   }
+  livetime /= 100.0;
+  if (livetime>1) livetime = 1.0;    
 
-  double normyield = discount / (charge * compdeadtime * treffi * trigeffi); // 1/mC
+  double normfac = psfactor / (charge * livetime * treffi * trigeffi);
+
+  double normyield = discount * normfac; // 1/uC
+  double normyield_err = discount_err * normfac;
   
   if (verbosity>0) {
     std::cout << "\n--- Normalized Yield ---\n";
     std::cout << "Spectrometer            : " << spec << "\n";    
-    std::cout << "Good DIS Ev             : " << (int)discount << "\n";    
+    std::cout << "Good DIS Ev             : " << (int)discount << " +/- " << (int)discount_err << "\n";    
     std::cout << "Charge (uC)             : " << charge << "\n";
-    std::cout << "Computer dead time      : " << compdeadtime << "\n";
+    std::cout << "PS factor (uC)          : " << psfactor << "\n";
+    std::cout << "Computer live time      : " << livetime << "\n";
     std::cout << "Tracking Effi.   S      : " << treffi << "\n";
     std::cout << "Trigger Effi.           : " << trigeffi << "\n";
-    std::cout << "Normalized Yield (1/uC) : " << (int)normyield << "\n";            
+    std::cout << "Normalized Yield (1/uC) : " << normyield << " +/- " << normyield_err  << "\n";            
     std::cout << "-------\n";
   }
 
-  return normyield;
+  NormYield = {normyield,normyield_err};
 }
 //----------------------------------------------------------
 std::vector<std::string> SplitString(char const delim, std::string const myStr)
@@ -367,13 +390,15 @@ TPaveText* CreateSummaryPaveText(int rnum,
   return pvtxt;
 }
 //----------------------------------------------------------
-void PrintCSVLine(std::ofstream &out, int runnum, double gooddis, double normyield) {
+void PrintCSVLine(std::ofstream &out, int runnum, double gooddis, double gooddis_err, double normyield, double normyield_err) {
 
   std::ostringstream oss;
-  oss << "runnum,gooddis,normyield\n";
+  oss << "runnum,gooddis,gooddis_err,normyield,normyield_err\n";
   oss << runnum << ","
       << gooddis << ","
-      << normyield;
+      << gooddis_err << ","
+      << normyield << ","
+      << normyield_err;
 
   out << oss.str() << std::endl;
 }
