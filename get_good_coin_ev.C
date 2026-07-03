@@ -65,7 +65,7 @@ void CalcNormYield(std::string const &inrepfile, double Nrealcoinev, double Nrea
 std::vector<std::string> SplitString(char const delim, std::string const myStr);
 TPaveText* CreateSummaryPaveText(int rnum, ULong64_t totevintree, const std::string& anacuts, const std::vector<double>& counts, double normyield, double descoinev, const std::vector<double>& predtrig, TStopwatch* sw);
 TPaveText* CreateSummaryPaveText_new(int rnum, const std::string& anacuts, const std::vector<double>& counts, double normyield, double descoinev, const std::vector<double>& predtrig, TStopwatch* sw);
-void PrintCSVLine(std::ofstream &out, int runnum, std::vector<double> const counts, std::vector<double> const normyield, double * coinfitparams);
+void PrintCSVLine(std::ofstream &out, int runnum, std::vector<double> const counts, std::vector<double> const normyield, double ctmean, double ctsigma);
 
 // global variables
 bool is_50k = false;
@@ -179,6 +179,7 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   // determining and plotting the coin time cut regions
   std::vector<double> coincutregion;
   double ctmean = !isfixedmean ? fitparams[1] : fixedcmean;
+  double ctsigma = !isfixedmean ? fitparams[2] : 0.5; //0.5 ns is an educated guess
   DetermineCoinCutRegion(hcoin,ctmean,0,coincutregion);
   PlotCutRegion(coincutregion[0],coincutregion[1],kGreen,0.3); // main coin peak
   PlotCutRegion(coincutregion[2],coincutregion[3],kRed,0.3);   // randoms to the left of main peak
@@ -261,7 +262,7 @@ int get_good_coin_ev(int rnum,                 // Run number to analyze
   // Writing out some useful stuff
   std::string outcsv = Form("%s/%s_%d_%d.csv",indirreport.c_str(),outfilebase.c_str(),rnum,nevent);
   std::ofstream outcsv_data(outcsv.c_str());
-  PrintCSVLine(outcsv_data,rnum,counts,normyield,fitparams);  
+  PrintCSVLine(outcsv_data,rnum,counts,normyield,ctmean,ctsigma);  
 
   std::cout << "------" << std::endl;
   std::cout << " Output CSV file  : " << outcsv << std::endl;  
@@ -745,7 +746,7 @@ TPaveText* CreateSummaryPaveText(int rnum,
   return pvtxt;
 }
 //----------------------------------------------------------
-void PrintCSVLine(std::ofstream &out, int runnum, std::vector<double> const counts, std::vector<double> const normyield, double * ctfitparams) {
+void PrintCSVLine(std::ofstream &out, int runnum, std::vector<double> const counts, std::vector<double> const normyield, double ctmean, double ctsigma) {
   
   std::ostringstream oss;
   oss << "runnum,coin,randoms,ransubcoin,ransubcoin_err,normyield,normyield_err,";
@@ -757,8 +758,8 @@ void PrintCSVLine(std::ofstream &out, int runnum, std::vector<double> const coun
       << counts[5] << ","        
       << normyield[0] << ","
       << normyield[1] << ","
-      << ctfitparams[1] << ","
-      << ctfitparams[2];
+      << ctmean << ","
+      << ctsigma;
 
   out << oss.str() << std::endl;
 }
