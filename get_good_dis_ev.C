@@ -305,7 +305,7 @@ void CalcNormYield(std::string const &inrepfile, // Input report file name with 
     std::cout << "Spectrometer            : " << spec << "\n";    
     std::cout << "Good DIS Ev             : " << (int)discount << " +/- " << (int)discount_err << "\n";    
     std::cout << "Charge (uC)             : " << charge << "\n";
-    std::cout << "PS factor (uC)          : " << psfactor << "\n";
+    std::cout << "PS factor               : " << psfactor << "\n";
     std::cout << "Computer live time      : " << livetime << "\n";
     std::cout << "Tracking Effi.   S      : " << treffi << "\n";
     std::cout << "Trigger Effi.           : " << trigeffi << "\n";

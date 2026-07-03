@@ -46,7 +46,7 @@ double rndmscutdist = 16.;
 double rndmscutfactor = 13.;
 // 4. Beam bunch structure (should be either 2 or 4 ns)
 double beambunchstruct = 2.;
-// 5. Fixed mean mode (especially useful for e+ runs)
+// 5. Fixed mean mode (set "true" for e+ runs)
 bool isfixedmean = true;
 double fixedcmean = 51.3; //ns
 // --- **** ---
@@ -548,16 +548,20 @@ void CalcNormYield(std::string const &inrepfile, // Input report file name with 
 		   std::vector<double> &NormYield)
 /* Calculates charge normalized and efficiency corrected yeild from random subtracted coin events */
 {
-  //double charge = ExtractValueFromReportFile(inrepfile, "HMS BCM4A Beam Cut Charge", ':'); //mC
+  double psfactor = -999;
+  double ps5 = ExtractValueFromReportFile(inrepfile, "Ps5_factor", '=', 0);
+  double ps6 = ExtractValueFromReportFile(inrepfile, "Ps6_factor", '=', 0);  
+  psfactor =  ps5==-1 ? ps6 : ps5;
+  double livetime = ExtractValueFromReportFile(inrepfile, "ROC2 Pre-Scaled Ps5 ROC2 Computer Live Time (no BCM cut)", ':', 0)/100.0;
+  if (psfactor == ps6)
+    livetime = ExtractValueFromReportFile(inrepfile, "ROC2 Pre-Scaled Ps6 ROC2 Computer Live Time (no BCM cut)", ':', 0)/100.0;
   double charge = ExtractValueFromReportFile(inrepfile, "SHMS BCM2 Beam Cut Charge", ':', 0); //mC  
-  double compdeadtime = ExtractValueFromReportFile(inrepfile, "HMS Computer Dead Time", ':', 0)/100.0;
   double treffiHMS = ExtractValueFromReportFile(inrepfile, "E SING FID TRACK EFFIC", ':', 1);  
   double treffiSHMS = ExtractValueFromReportFile(inrepfile, "HADRON SING FID TRACK EFFIC", ':', 0);
   double trigeffi = 1.0; // assuming 100% efficiency for the moment
 
-  //double normyield = Nrealcoinev / (charge * compdeadtime * treffiHMS * treffiSHMS * trigeffi);
-  
-  double normfac = 1. / (charge * compdeadtime * treffiHMS * treffiSHMS * trigeffi);
+  if (livetime>1) livetime = 1.0;    
+  double normfac = psfactor / (charge * livetime * treffiHMS * treffiSHMS * trigeffi);
   
   double normyield = Nrealcoinev * normfac ; // 1/mC
   double normyield_err = Nrealcoinev_err * normfac; 
@@ -566,7 +570,8 @@ void CalcNormYield(std::string const &inrepfile, // Input report file name with 
     std::cout << "\n--- Normalized Yield ---\n";
     std::cout << "Real Coin Ev            : " << (int)Nrealcoinev << " +/- " << Nrealcoinev_err << "\n";    
     std::cout << "Charge (mC)             : " << charge << "\n";
-    std::cout << "Computer dead time      : " << compdeadtime << "\n";
+    std::cout << "PS factor               : " << psfactor << "\n";
+    std::cout << "Computer live time      : " << livetime << "\n";
     std::cout << "Tracking Effi. HMS      : " << treffiHMS << "\n";
     std::cout << "Tracking Effi. SHMS     : " << treffiSHMS << "\n";        
     std::cout << "Trigger Effi.           : " << trigeffi << "\n";
