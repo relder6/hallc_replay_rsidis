@@ -24,7 +24,7 @@
 // --- Basic ---
 // ---
 // 1. list of analysis cuts for HMS DIS
-std::string anacutsHMS = "abs(H.gtr.dp)<8&&H.cer.npeSum>1";
+std::string anacutsHMS = "abs(H.gtr.dp)<8&&H.cer.npeSum>2";
 // 2. list of analysis cuts for SHMS DIS
 std::string anacutsSHMS = "abs(P.gtr.dp-5.)<15.&&P.aero.npeSum>4";
 // 3. histo ranges - Convention: {nbin,hmin,hmax}
