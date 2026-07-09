@@ -94,8 +94,7 @@ COIN_MAP = {
     "helicity_C": (1234,28,38),
     "helicity_A": (1244,38,52),
     "h_EL_CLEAN": (206,27,33),
-    "p_EL_CLEAN": (180,34,42),
-    
+    "p_EL_CLEAN": (180,34,40),
 }
 
 run_type_map = {
