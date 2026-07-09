@@ -47,7 +47,7 @@ double rndmscutfactor = 13.;
 // 4. Beam bunch structure (should be either 2 or 4 ns)
 double beambunchstruct = 2.;
 // 5. Fixed mean mode (set "true" for e+ runs)
-bool isfixedmean = true;
+bool isfixedmean = false;
 double fixedcmean = 51.3; //ns
 // --- **** ---
 // --- **** ---
