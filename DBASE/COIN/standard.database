@@ -116,7 +116,7 @@ g_ctp_parm_filename       = "DBASE/COIN/general_rsidis_phaseII.param"
 g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
 g_ctp_map_filename        = "MAPS/COIN/DETEC/coin_phaseII.map"
 g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"
-g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack.map"
+g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack_phaseII.map"
 g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin_phaseII.param"
 
 # -----------------------------
