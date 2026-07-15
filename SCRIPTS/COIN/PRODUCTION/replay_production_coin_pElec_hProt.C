@@ -295,7 +295,8 @@ void replay_production_coin_pElec_hProt (Int_t RunNumber = 0, Int_t MaxEvent = 0
   // Define output ROOT file
   analyzer->SetOutFile(ROOTFileName.Data());
   // Define DEF-file+
-  analyzer->SetOdefFile("DEF-files/COIN/PRODUCTION/coin_production_pElec_hProt.def");
+  // analyzer->SetOdefFile("DEF-files/COIN/PRODUCTION/coin_production_pElec_hProt.def");
+    analyzer->SetOdefFile("DEF-files/COIN/PRODUCTION/coin_production_pElec_hProt_light.def");
   // Define cuts file
   analyzer->SetCutFile("DEF-files/COIN/PRODUCTION/CUTS/coin_production_cuts.def");  // optional
   // File to record accounting information for cuts

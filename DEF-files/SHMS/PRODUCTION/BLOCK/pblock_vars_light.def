@@ -1,0 +1,39 @@
+#********************
+# Block Definitions *
+#********************
+block T.shms.*
+
+block P.ngcer.*
+# block P.dc.*
+# block P.tr.*
+# block P.hod.*
+block P.hgcer.*
+block P.aero.*
+block P.cal.*
+block P.gtr.*
+block P.kin.*
+# block P.rb.*
+block P.react.*
+
+# SHMS Hodoscope light
+block P.hod.Time*
+variable P.hod.adctdc_offset
+block P.hod.bet*
+variable P.hod.fpHitsTime
+block P.hod.good*
+block P.hod.starttime
+
+# SHMS Drift Chamber light
+block P.dc.dist*
+block P.dc.lr*
+block P.dc.pos*
+block P.dc.res*
+block P.dc.t*
+block P.dc.wire*
+block P.dc.x*
+block P.dc.y*
+block P.dc.In*
+block P.dc.chi*
+block P.dc.g*
+block P.dc.n*
+block P.dc.s*
