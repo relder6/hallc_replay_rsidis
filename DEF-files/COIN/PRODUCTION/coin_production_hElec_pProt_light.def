@@ -1,6 +1,7 @@
 # Standard blocks, pretty small
 block T.helicity.*
 block CTime*
+block *EDTM*
 
 # Coincidence time stuff
 variable T.coin.hRF_tdcTime

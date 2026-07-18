@@ -1,6 +1,7 @@
 #********************
 # Block Definitions *
 #********************
+block *EDTM*
 
 # Reference times
 variable = T.hms.hFADC_TREF_ROC1_adcPulseTimeRaw
