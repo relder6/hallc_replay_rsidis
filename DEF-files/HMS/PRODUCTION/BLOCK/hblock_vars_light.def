@@ -41,4 +41,6 @@ variable H.dc.chisq
 # hcal light
 variable H.cal.etottracknorm
 variable H.cal.nclust
+variable H.cal.etotnorm
+variable H.cal.eprtracknorm
 block H.cal.*good*AdcPulseInt
