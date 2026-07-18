@@ -136,11 +136,16 @@ def load_extra_info(run_number, run_type):
 #    if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
 
     # Load extra variables from output_get_good_coin_ev_<run>.csv
+    if run_type in ("HMSDIS", "HEE"):
+        extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_dis_ev_{run_number}_-1.csv"
+    else:
+    #if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
+        extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
+        
     
-    extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
     keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "normyield_err" ,"ctmean", "ctsigma"]
 
-    if not os.path.exists(extra_path):
+    if not (run_type in ("HMSDIS", "HEE") or (os.path.exists(extra_path))):
         # If file not found, return -999 placeholders
         print(f"file get_good_coin_events for run: {run_number} not found - {run_type} run")
         return {col: -999 for col in keep_cols}
@@ -157,7 +162,7 @@ def load_extra_info(run_number, run_type):
 
 def load_fan_data(run_number, fan_csv_path):
     
-#    Reads fan_freq.csv and r eturns mean and stdev for the given run_number.
+#    Reads fan_freq.csv and returns mean and stdev for the given run_number.
 
     import csv
     if not os.path.exists(fan_csv_path):
