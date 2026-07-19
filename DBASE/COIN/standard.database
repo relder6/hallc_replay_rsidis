@@ -6,9 +6,9 @@
 20000-25603
 g_ctp_parm_filename       = "DBASE/COIN/general_rsidis.param"
 g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
-g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"
-g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"
-g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack.map"
+#g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"
+#g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"
+#g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack.map"
 g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin.param"
 
 # -----------------------------
@@ -143,8 +143,11 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p738gev_rsidis_phaseII.p
 # -----------------------------
 # Run dependent HMS CAL params, updated by R. Elder Jun. 2026
 # -----------------------------
-25604-27350,27358-99999
+25604-27350,27358-27755
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p165gev_rsidis_phaseII.param"
 
 27351-27357
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_5p390gev_rsidis_phaseII.param"
+
+27756-99999
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p254gev_rsidis_phaseII.param"
