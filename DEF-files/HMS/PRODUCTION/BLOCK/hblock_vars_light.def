@@ -4,10 +4,10 @@
 block *EDTM*
 
 # Reference times
-variable = T.hms.hFADC_TREF_ROC1_adcPulseTimeRaw
-variable = T.hms.hT1_tdcTimeRaw
-variable = T.hms.hT2_tdcTimeRaw
-block = T.hms.hDCREF*tdcTimeRaw
+variable T.hms.hFADC_TREF_ROC1_adcPulseTimeRaw
+variable T.hms.hT1_tdcTimeRaw
+variable T.hms.hT2_tdcTimeRaw
+block T.hms.hDCREF*tdcTimeRaw
 
 # Small blocks
 block H.cer.*
@@ -37,6 +37,7 @@ block H.dc.*.time
 block H.dc.*.dist
 variable H.dc.InsideDipoleExit
 variable H.dc.chisq
+variable H.dc.ntrack
 
 # ------------------------------
 # hcal light

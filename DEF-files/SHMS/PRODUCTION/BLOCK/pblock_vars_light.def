@@ -1,22 +1,29 @@
 #********************
 # Block Definitions *
 #********************
-block T.shms.*
 block *EDTM*
 
+# Reference times
+variable T.shms.pFADC_TREF_ROC2_adcPulseTimeRaw
+variable T.shms.pT1_tdcTimeRaw
+variable T.shms.pT2_tdcTimeRaw
+block T.shms.pDCREF*tdcTimeRaw
+
+# ------------------------------
+# Small blocks
 block P.ngcer.*
-# block P.dc.*
-# block P.tr.*
-# block P.hod.*
 block P.hgcer.*
 block P.aero.*
-block P.cal.*
 block P.gtr.*
 block P.kin.*
-# block P.rb.*
 block P.react.*
+block P.rb.*
 
-# SHMS Hodoscope light
+# Commented out prior to light.def
+# block P.tr.*
+
+# ------------------------------
+# phodo light
 block P.hod.Time*
 variable P.hod.adctdc_offset
 block P.hod.bet*
@@ -24,17 +31,24 @@ variable P.hod.fpHitsTime
 block P.hod.good*
 block P.hod.starttime
 
-# SHMS Drift Chamber light
-block P.dc.dist*
-block P.dc.lr*
-block P.dc.pos*
+# ------------------------------
+# pdc light
+block P.dc.*best
 block P.dc.res*
-block P.dc.t*
-block P.dc.wire*
 block P.dc.x*
 block P.dc.y*
-block P.dc.In*
-block P.dc.chi*
-block P.dc.g*
-block P.dc.n*
-block P.dc.s*
+block P.dc.*.wirenum
+block P.dc.*.time
+block P.dc.*.dist
+variable P.dc.InsideDipoleExit
+variable P.dc.chisq
+variable P.dc.ntrack
+
+# ------------------------------
+# pcal light
+variable P.cal.etottracknorm
+block P.cal.n*
+block P.cal.fly.n*
+block P.cal.*good*AdcPulseInt
+variable P.cal.etotnorm
+varibale P.cal.eprtracknorm

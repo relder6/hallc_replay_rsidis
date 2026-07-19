@@ -51,6 +51,7 @@ block H.dc.*.time
 block H.dc.*.dist
 variable H.dc.InsideDipoleExit
 variable H.dc.chisq
+variable H.dc.ntrack
 
 # ------------------------------
 # hcal light
@@ -96,6 +97,7 @@ block P.dc.*.time
 block P.dc.*.dist
 variable P.dc.InsideDipoleExit
 variable P.dc.chisq
+variable P.dc.ntrack
 
 # ------------------------------
 # pcal light
