@@ -104,8 +104,16 @@ def process_run(run_number, start_time, stop_time, variables, output_dir, faillo
         json.dump(run_json, f, indent=4)
     print(f"✅ Saved {output_path}")
 
-def main(run_csv, variables, output_dir, faillog_path="read_epics_archiver.faillog"):
+def main(run_csv, variables, output_dir, faillog_path="read_epics_archiver.faillog", min_run=None, max_run=None):  # ADDED
     df_runs = read_run_csv(run_csv)
+
+    # ADDED: Filter run range if provided
+    if min_run is not None:
+        df_runs = df_runs[df_runs["run_number"] >= min_run]
+
+    if max_run is not None:
+        df_runs = df_runs[df_runs["run_number"] <= max_run]
+
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     
     faillog_list = []
@@ -128,4 +136,6 @@ if __name__ == "__main__":
                  "ecSQ2_I_coarse", "ecSQ2_Set_Current", "ecSQ3_I_coarse", "ecSQ3_Set_Current",
                  "ecHMS_Angle", "ecSHMS_Angle", "hcBDSPOS", "hcL1_Fan_Freq_R", "hcL2_Fan_Freq_R"]
     output_dir = "output/read_epics_archiver"
-    main(run_csv, variables, output_dir)
+
+    # ADDED: choose run range here
+    main(run_csv, variables, output_dir, min_run=27873, max_run=27918)
