@@ -43,6 +43,7 @@ block P.dc.*.dist
 variable P.dc.InsideDipoleExit
 variable P.dc.chisq
 variable P.dc.ntrack
+block P.dc.*rawtdc
 
 # ------------------------------
 # pcal light
@@ -51,4 +52,4 @@ block P.cal.n*
 block P.cal.fly.n*
 block P.cal.*good*AdcPulseInt
 variable P.cal.etotnorm
-varibale P.cal.eprtracknorm
+variable P.cal.eprtracknorm

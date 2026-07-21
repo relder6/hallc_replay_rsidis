@@ -38,6 +38,7 @@ block H.dc.*.dist
 variable H.dc.InsideDipoleExit
 variable H.dc.chisq
 variable H.dc.ntrack
+block H.dc.*rawtdc
 
 # ------------------------------
 # hcal light
