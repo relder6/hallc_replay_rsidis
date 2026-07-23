@@ -191,6 +191,22 @@ def load_ihwp_table(ihwp_csv_path):
                 }
     return ihwp_map
 
+def load_coin_block_ratios(coin_block_ratios_csv_path):
+    coin_block_ratios_map = {}
+    if not os.path.exists(coin_block_ratios_csv_path):
+        print(f"⚠️ Coin block ratios file not found: {coin_block_ratios_csv_path}")
+        return coin_block_ratios_map
+
+    with open(coin_block_ratios_csv_path, newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            run = row.get("run")
+            if run:
+                coin_block_ratios_map[str(run)] = {
+                    "coinblock_ratio": row.get("ratio", "")
+                }
+    return coin_block_ratios_map
+
 
 # === New Kinematic Conversion Table ===
 KINEMATIC_TABLE = [
@@ -278,6 +294,9 @@ def collect_run_info(input_csv, output_csv, run_type_map):
     results = []
 
     ihwp_map = load_ihwp_table("updated_merged_run_start_stop_log_100625.csv")
+
+    coin_block_ratios_map = load_coin_block_ratios("coin_block_ratios_goodstart.csv")
+    
 
     with open(input_csv, newline="") as f:
         reader = csv.DictReader(f)
@@ -379,6 +398,9 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             merged["start_time"] = ihwp_info.get("start_time", -999)
             merged["stop_time"] = ihwp_info.get("stop_time", -999)
 
+            coin_block_ratio_info = coin_block_ratios_map.get(str(run_number), {})
+            merged["coinblock_ratio"] = coin_block_ratio_info.get("coinblock_ratio", -999)
+
             kin = find_kinematics(
                 float(row["ebeam"]),
                 float(row["hms_p"]),
@@ -412,6 +434,8 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 "fan_mean", "fan_stdev", "boil_corr",
 #start and stop times
 "IHWP", "start_time", "stop_time",
+#coin block ratio
+"coinblock_ratio",
 #helicity based charge                                 
 "BCM2_Q_hp", "BCM2_Q_hm"]
 
