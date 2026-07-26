@@ -1,4 +1,7 @@
-void replay_production_shms_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0, Int_t FirstEvent = 1) {
+#include "MultiFileRun.h"
+
+void replay_production_shms_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0,
+				      Int_t FirstEvent = 1, Int_t MaxSegment = -1) {
 
   // Get RunNumber and MaxEvent if not provided.
   if(RunNumber == 0) {
@@ -18,8 +21,8 @@ void replay_production_shms_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0, Int_t
   // Create file name patterns.
   // const char* RunFileNamePattern = "shms_all_%05d.dat";
   // const char* RunFileNamePattern = "lad_Production_%05d.dat.0";
-  const char* RunFileNamePattern = "rsidis_production_%05d.dat.0";      
-  vector<TString> pathList;
+  const char* RunFileNamePattern = "rsidis_production_%05d.dat.%u";      
+  vector<string> pathList;
   pathList.push_back(".");
   pathList.push_back("./raw");
   pathList.push_back("./raw/../raw.copiedtotape");
@@ -145,9 +148,47 @@ void replay_production_shms_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0, Int_t
   // defining and controlling the output.
   THaEvent* event = new THaEvent;
 
-  // Define the run(s) that we want to analyze.
-  // We just set up one, but this could be many.
-  THcRun* run = new THcRun( pathList, Form(RunFileNamePattern, RunNumber) );
+  // Define the run(s) that we want to analyze. Segment 0 is mandatory because
+  // it initializes global counters needed by later segments. By default,
+  // discover all contiguous segments; a nonnegative MaxSegment overrides this.
+  vector<string> fileNames = {};
+  Int_t iseg = 0;
+  while(MaxSegment < 0 || iseg <= MaxSegment) {
+    TString codafilename;
+    codafilename.Form(RunFileNamePattern, RunNumber, iseg);
+
+    Bool_t foundSegment = kFALSE;
+    for(UInt_t ipath = 0; ipath < pathList.size(); ipath++) {
+      TString fullPath = TString(pathList[ipath]) + "/" + codafilename;
+      if(!gSystem->AccessPathName(fullPath)) {
+	foundSegment = kTRUE;
+	break;
+      }
+    }
+
+    if(!foundSegment) {
+      if(iseg == 0) {
+	cerr << "ERROR: Required segment 0 file " << codafilename
+	     << " was not found in the replay path list. "
+	     << "Segment 0 is required to initialize global counters." << endl;
+	cerr << "Searched paths:" << endl;
+	for(UInt_t ipath = 0; ipath < pathList.size(); ipath++) {
+	  cerr << "  " << pathList[ipath] << endl;
+	}
+	return;
+      }
+
+      cout << "Segment " << iseg << " file " << codafilename
+	   << " not found. Finished building input file list." << endl;
+      break;
+    }
+
+    cout << "codafilename = " << codafilename << endl;
+    fileNames.emplace_back(codafilename.Data());
+    iseg++;
+  }
+
+  auto* run = new Podd::MultiFileRun( pathList, fileNames );
 
   // Set to read in Hall C run database parameters
   run->SetRunParamClass("THcRunParameters");
