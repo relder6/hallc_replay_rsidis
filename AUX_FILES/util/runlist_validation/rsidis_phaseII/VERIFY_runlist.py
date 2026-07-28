@@ -12,7 +12,8 @@ import json
 # --------------------------------------------------------------------------
 exceptions = {27504: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},
               27505: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},
-              27506: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},}
+              27506: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},
+              27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},}
 
 
 # --------------------------------------------------------------------------
