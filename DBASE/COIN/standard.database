@@ -10,6 +10,8 @@ g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"			# Don't comment these l
 g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"	# Don't comment these lines out!!!  Our replay script now has nothing it can point to for last year's runs! --Ryan E
 g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack.map"	# Don't comment these lines out!!!  Our replay script now has nothing it can point to for last year's runs! --Ryan E
 g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin.param"
+g_ctp_htrigdet_filename	  = "PARAM/TRIG/thms.param"
+g_ctp_ptrigdet_filename	  = "PARAM/TRIG/tshms.param"
 
 # -----------------------------
 # Run dependent SHMS CAL params, updated by R. Elder Nov. 2025
@@ -118,27 +120,29 @@ g_ctp_map_filename        = "MAPS/COIN/DETEC/coin_phaseII.map"
 g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"
 g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack_phaseII.map"
 g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin_phaseII.param"
+g_ctp_htrigdet_filename	  = "PARAM/TRIG/thms_phaseII.param"
+g_ctp_ptrigdet_filename	  = "PARAM/TRIG/tshms.param"
 
 # -----------------------------
 # Run dependent SHMS CAL params, updated by R. Elder Jun. 2026
 # -----------------------------
 25604-27112
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_5p520gev_rsidis_phaseII.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_5p520gev_3pass.param"
 
 27113-27200,27236-27350,
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p766gev_rsidis_phaseII.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p766gev_3pass.param"
 
 27201-27235,27351-27397
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_3p837gev_rsidis_phaseII.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_3p837gev_3pass.param"
 
 27398-27402
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p987gev_rsidis_phaseII.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p987gev_3pass.param"
 
 27403-27441
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p978gev_rsidis_phaseII.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p978gev_3pass.param"
 
 27442-99999
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/pcal_calib_2p738gev_rsidis_phaseII.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p738gev_3pass.param"
 
 # -----------------------------
 # Run dependent HMS CAL params, updated by R. Elder Jun. 2026
