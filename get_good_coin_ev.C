@@ -41,11 +41,11 @@ std::vector<double> hQ2_range{200,0.1,10},hx_range{200,0.01,1.2},hW_range{200,0.
 // 1. ROOT tree branch to get coin time
 std::string coinTbranch = "CTime.ePiCoinTime_ROC2"; 
 // 2. ns, Distance of the center of the block to choose randoms from the mean of the main coin peak
-double rndmscutdist = 16.;                  
+double rndmscutdist = 18.; //16.;                  
 // 3. Ratio of randoms cut region width to good coin cut region width
-double rndmscutfactor = 13.;
+double rndmscutfactor = 6.; //13.;
 // 4. Beam bunch structure (should be either 2 or 4 ns)
-double beambunchstruct = 2.;
+double beambunchstruct = 4.; //2.;
 // 5. Fixed mean mode (set "true" for e+ runs)
 bool isfixedmean = false;
 double fixedcmean = 51.3; //ns
