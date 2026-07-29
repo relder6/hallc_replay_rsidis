@@ -39,7 +39,8 @@ void replay_production_shms_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0,
   gHcParms->Load(gHcParms->GetString("g_ctp_pcal_calib_filename"));
   gHcParms->Load(gHcParms->GetString("g_ctp_hcal_calib_filename"));
   // Load parameters for SHMS trigger configuration
-  gHcParms->Load("PARAM/TRIG/tshms.param");
+  //gHcParms->Load("PARAM/TRIG/tshms.param");
+  gHcParms->Load(gHcParms->GetString("g_ctp_ptrigdet_filename"));
   // Load fadc debug parameters
   gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");
 

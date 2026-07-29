@@ -41,7 +41,8 @@ void replay_production_coin_hElec_pProt (Int_t RunNumber = 0, Int_t MaxEvent = 0
   gHcParms->Load(gHcParms->GetString("g_ctp_hcal_calib_filename"));
   // Load params for COIN trigger configuration
   //gHcParms->Load("PARAM/TRIG/tcoin.param");
-  gHcParms->Load("PARAM/TRIG/tcoin_phaseII.param");   
+  //gHcParms->Load("PARAM/TRIG/tcoin_phaseII.param");
+  gHcParms->Load(gHcParms->GetString("g_ctp_trigdet_filename"));
   // Load fadc debug parameters
   gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
   gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");

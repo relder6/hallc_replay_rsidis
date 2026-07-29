@@ -42,7 +42,8 @@ void replay_production_hms_coin(Int_t RunNumber=0, Int_t MaxEvent=0,
   // Load params for HMS trigger configuration
 
   //gHcParms->Load("PARAM/TRIG/thms.param"); // for phaseI
-  gHcParms->Load("PARAM/TRIG/thms_phaseII.param");  
+  //gHcParms->Load("PARAM/TRIG/thms_phaseII.param");
+  gHcParms->Load(gHcParms->GetString("g_ctp_htrigdet_filename"));
   // Load fadc debug parameters
   gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
 
