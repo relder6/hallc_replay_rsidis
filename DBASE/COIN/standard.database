@@ -153,5 +153,8 @@ g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p165gev_rsidis_phaseII.pa
 27351-27357
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_5p390gev_rsidis_phaseII.param"
 
-27756-99999
+27756-28106
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p254gev_rsidis_phaseII.param"
+
+28107-99999
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_5p343gev_rsidis_phaseII.param"
