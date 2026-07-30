@@ -107,7 +107,6 @@ g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p750deg_rsidis.
 25484-25603
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p755deg_rsidis.param"
 
-
 # ----- ****************** --------
 # ----- ****************** --------
 # Beginning of R-SIDIS-II (Summer 2026)
@@ -124,37 +123,65 @@ g_ctp_htrigdet_filename	  = "PARAM/TRIG/thms_phaseII.param"
 g_ctp_ptrigdet_filename	  = "PARAM/TRIG/tshms.param"
 
 # -----------------------------
-# Run dependent SHMS CAL params, updated by R. Elder Jun. 2026
+# Run dependent SHMS CAL params, created by R. Elder Jun. 2026, updated Jul. 2026
 # -----------------------------
-25604-27112
+25604-27112,27156-27161,27189-27200,27467-27472,27490-27494,27507-27512,27516-27533,27558-27580,27642-27644,
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_5p520gev_3pass.param"
 
-27113-27200,27236-27350,
+27113-27155,27162-27188,27236-27350,27503-27506,27513-27515,
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p766gev_3pass.param"
 
-27201-27235,27351-27397
+27201-27235,27351-27397,27544-27548,27581-27588,27733-27744,
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_3p837gev_3pass.param"
 
 27398-27402
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p987gev_3pass.param"
 
-27403-27441
+27403-27441,27549-27557,27589-27641,27745-27748,
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p978gev_3pass.param"
 
-27442-99999
+27442-27466,27473-27489,27495-27502,
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p738gev_3pass.param"
 
+27534-27543,27645-27732,27749-27755
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p806gev_3pass.param"
+
+27756-27757
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p661gev_4pass.param"
+
+27758-27771,27774-27786,28067-28082,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p738gev_4pass.param"
+
+27772-27773,27787-27788,27841-27843,27858-27874,27932-27955,28025-28027,28091-28106,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_3p837gev_4pass.param"
+
+27789-27827,28056-28066,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p766gev_4pass.param"
+
+27828-27840,27844-27857,28041-28055,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p806gev_4pass.param"
+
+27875-27931,27956-28024,28028-28040,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p978gev_4pass.param"
+
+28083-28090,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_7p070gev_4pass.param"
+
+# Start of 5pass is pi+; need pi- to calibrate
+28107-99999
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_7p070gev_4pass.param"
+
 # -----------------------------
-# Run dependent HMS CAL params, updated by R. Elder Jun. 2026
+# Run dependent HMS CAL params, created by R. Elder Jun. 2026, updated Jul. 2026
 # -----------------------------
 25604-27350,27358-27755
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p165gev_rsidis_phaseII.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_1p165gev_3pass.param"
 
 27351-27357
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_5p390gev_rsidis_phaseII.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_5p390gev_3pass.param"
 
 27756-28106
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p254gev_rsidis_phaseII.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_3p254gev_4pass.param"
 
 28107-99999
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_5p343gev_rsidis_phaseII.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_5p343gev_5pass.param"
