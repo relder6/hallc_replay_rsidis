@@ -6,9 +6,9 @@
 20000-25603
 g_ctp_parm_filename       = "DBASE/COIN/general_rsidis.param"
 g_ctp_kinematics_filename = "DBASE/COIN/standard.kinematics"
-g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"			# Don't comment these lines out!!!  Our replay script now has nothing it can point to for last year's runs! --Ryan E
-g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"	# Don't comment these lines out!!!  Our replay script now has nothing it can point to for last year's runs! --Ryan E
-g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack.map"	# Don't comment these lines out!!!  Our replay script now has nothing it can point to for last year's runs! --Ryan E
+g_ctp_map_filename        = "MAPS/COIN/DETEC/coin.map"			# Don't comment these lines out!!!  --Ryan E
+g_ctp_hmap_filename       = "MAPS/HMS/DETEC/STACK/hms_stack.map"	# Don't comment these lines out!!!  --Ryan E
+g_ctp_pmap_filename       = "MAPS/SHMS/DETEC/STACK/shms_stack.map"	# Don't comment these lines out!!!  --Ryan E
 g_ctp_trigdet_filename    = "PARAM/TRIG/tcoin.param"
 g_ctp_htrigdet_filename	  = "PARAM/TRIG/thms.param"
 g_ctp_ptrigdet_filename	  = "PARAM/TRIG/tshms.param"
@@ -96,16 +96,16 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEI/pcal_calib_5p869gev_12
 # -----------------------------
 
 20000-23860
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_4p500gev_14p000deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEI/hcal_calib_4p500gev_14p000deg_rsidis.param"
 
 23861-24874
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_1p531gev_29p045deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEI/hcal_calib_1p531gev_29p045deg_rsidis.param"
 
 24875-25483
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p750deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEI/hcal_calib_3p642gev_16p750deg_rsidis.param"
 
 25484-25603
-g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/hcal_calib_3p642gev_16p755deg_rsidis.param"
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEI/hcal_calib_3p642gev_16p755deg_rsidis.param"
 
 # ----- ****************** --------
 # ----- ****************** --------
@@ -168,8 +168,9 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p978gev_4
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_7p070gev_4pass.param"
 
 # Start of 5pass is pi+; need pi- to calibrate
+# 28107-28109,28155-28156,28171,28268-28270 <-- Leaving this commented out and making below default for now
 28107-99999
-g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_7p070gev_4pass.param"
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_5p154gev_5pass.param"
 
 # -----------------------------
 # Run dependent HMS CAL params, created by R. Elder Jun. 2026, updated Jul. 2026
