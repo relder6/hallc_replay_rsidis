@@ -147,7 +147,7 @@ df2 = runlist.merge(df, left_on="run", right_on="runnum", how="outer", indicator
 df2["run"] = df2["run"].fillna(df2["runnum"]).astype(int)
 
 target_dict = {"Loop 2 10cm": "LH2",
-               "10cm Dummy": "DUMMY",
+               "10cm Dummy": "Dummy",
                "Loop 1 10cm": "LD2",
                "Carbon 3%": "C",
                "Copper 6%": "Cu",
