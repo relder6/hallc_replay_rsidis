@@ -1448,7 +1448,7 @@
 28379	08/03/26	22:10	  10.676	 70	LD2	-5.343	15.970	 +5.154	    16.875    -1,-1,-1,-1,-1,0		 PI+SIDIS	
 ! === ---------------- ===
 ! Starting 10.7 GeV HEE Elastics
-28380   08/03/26    	23:47	  10.676         70	LH2	-5.380	23.985   +6.163     20.790    -1,-1,-1,0,-1,-1		 HEEP		SHMS dipole interlocked while switching to this setting; no more coincidence runs tonight
+28380   08/03/26    	23:47	  10.676         70	LH2	-5.380	23.985   +6.163     20.790    -1,-1,-1,0,-1,-1		 HEE		SHMS dipole interlocked while switching to this setting; no more coincidence runs tonight
 28381	08/04/26	00:21	  10.676	 70	LH2	-5.380	23.985   +6.163     20.790    -1,-1,-1,0,-1,-1		 HEE		SHMS dipole still interlocked
 28382	08/04/26	00:48	  10.676	 70	LH2	-5.380	23.985   +6.163     20.790    -1,-1,-1,0,-1,-1		 HEE		SHMS dipole still interlocked
 28383	08/04/26	01:18	  10.676	 70	LH2	-5.380	23.985   +6.163     20.790    -1,-1,-1,0,-1,-1		 HEE		SHMS dipole still interlocked
