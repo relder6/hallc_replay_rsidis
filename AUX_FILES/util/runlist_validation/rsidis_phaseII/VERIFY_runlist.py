@@ -10,11 +10,14 @@ import json
 # --------------------------------------------------------------------------
 # Exceptions list of KNOWN and DOCUMENTED problems
 # --------------------------------------------------------------------------
-exceptions = {27504: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},
-              27505: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},
-              27506: {"checks": ["CHECK_SHMS_TH"], "reason": "Mismatch between tv and gui, hclog 4517645"},
-              27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},}
+# Use this kind of template for singe-run acknowledged problems
+exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},}
 
+# Use this kind of template for run-ranges of problems              
+exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
+                         "reason": "Mismatch between tv and gui, hclog 4517645",} for run in range(27504, 27507)})
+exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
+                         "reason": "Mismatch between tv and gui, hclog  4536541",} for run in range(28310, 28407)})
 
 # --------------------------------------------------------------------------
 # Running some scripts via subprocess
@@ -207,9 +210,40 @@ for i in range(1, 7):
 comp["rcdb_target_mapped"] = comp["rcdb_target"].map(target_dict)
 comp.loc[both & (comp["rcdb_target_mapped"] != comp["target"]), "status"] += "CHECK_TARGET,"
 
+# This is logic for checking duration.
 duration_tolerance = 0.10
 comp.loc[both, "duration_rat"] = comp.loc[both, "rf_duration"] / comp.loc[both, "rcdb_duration"]
 comp.loc[both & (abs(1-abs(comp["duration_rat"])) > duration_tolerance), "status"] += "DURATION_MISMATCH,"
+
+# Adding logic here to check run type
+comp["num_active_ps"] = 0
+for i in range(1, 7):
+    comp.loc[comp[f"rcdb_ps{i}"] != -1, "num_active_ps"] +=1
+comp.loc[both & (comp["num_active_ps"] > 1), "status"] += "CHECK_MULTIPLE_PS_USED,"
+
+comp["run_type_check"] = ""
+mask = both & (comp["num_active_ps"] == 1) & ((comp["rcdb_ps1"] != -1) | (comp["rcdb_ps2"] !=-1))
+comp.loc[mask, "run_type_check"] = "SHMSDIS"
+comp.loc[mask & (abs(comp["rcdb_shms_p"] - (-5.52)) < 0.01), "run_type_check"] = "HEE"
+comp.loc[mask & (abs(comp["rcdb_shms_p"] - (-7.07)) < 0.01), "run_type_check"] = "HEE"
+
+mask = both & (comp["num_active_ps"] == 1) & ((comp["rcdb_ps3"] != -1) | (comp["rcdb_ps4"] !=-1))
+comp.loc[mask, "run_type_check"] = "HMSDIS"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-5.39)) < 0.01), "run_type_check"] = "HEE"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-3.70)) < 0.01), "run_type_check"] = "HEE"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-3.318)) < 0.01), "run_type_check"] = "HEE"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-5.44)) < 0.01), "run_type_check"] = "HEE"
+
+mask = both & (comp["num_active_ps"] == 1) & ((comp["rcdb_ps5"] != -1) | (comp["rcdb_ps6"] !=-1))
+comp.loc[mask & (comp["rcdb_shms_p"] > 0), "run_type_check"] = "PI+SIDIS"
+comp.loc[mask & (comp["rcdb_shms_p"] < 0), "run_type_check"] = "PI-SIDIS"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (1.67)) < 0.01) & (abs(comp["rcdb_shms_p"] - (-5.52)) < 0.01), "run_type_check"] = "HEEP"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-3.7)) < 0.01) & (abs(comp["rcdb_shms_p"] - (3.61)) < 0.01), "run_type_check"] = "HEEP"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-3.318)) < 0.01) & (abs(comp["rcdb_shms_p"] - (4.01)) < 0.01), "run_type_check"] = "HEEP"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (2.28)) < 0.01) & (abs(comp["rcdb_shms_p"] - (-7.07)) < 0.01), "run_type_check"] = "HEEP"
+comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-5.44)) < 0.01) & (abs(comp["rcdb_shms_p"] - (3.99)) < 0.01), "run_type_check"] = "HEEP"
+
+comp.loc[both & (comp["run_type_check"] != "") & (comp["run_type"] != comp["run_type_check"]), "status"] += "CHECK_RUN_TYPE,"
 
 # Reading in the exceptions here
 for run, info in exceptions.items():
