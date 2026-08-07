@@ -11,13 +11,17 @@ import json
 # Exceptions list of KNOWN and DOCUMENTED problems
 # --------------------------------------------------------------------------
 # Use this kind of template for singe-run acknowledged problems
-exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},}
+exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},
+              27571: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},
+              28435: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},}
 
 # Use this kind of template for run-ranges of problems              
 exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
                          "reason": "Mismatch between tv and gui, hclog 4517645",} for run in range(27504, 27507)})
 exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
                          "reason": "Mismatch between tv and gui, hclog  4536541",} for run in range(28310, 28407)})
+exceptions.update({run: {"checks": ["CHECK_HMS_TH"],
+                         "reason": "Apparent mismatch between tv and gui",} for run in range(28403, 28407)})
 
 # --------------------------------------------------------------------------
 # Running some scripts via subprocess
@@ -177,11 +181,11 @@ rcdb_missing = (comp["rcdb_ebeam"].isna() |
 comp.loc[both & rcdb_missing, "status"] += "RCDB_MISSING_INFO,"
 both = (comp["_merge"] == "both") & (~rcdb_missing)
 
-ebeam_tolerance = 0.01 # percent
+ebeam_tolerance = 0.01
 comp.loc[both, "ebeam_rat"] = comp.loc[both, "ebeam"] * 1000 / comp.loc[both, "rcdb_ebeam"]
 comp.loc[both & (abs(1 - abs(comp["ebeam_rat"])) > ebeam_tolerance ), "status"] += "CHECK_EBEAM,"
 
-ibeam_tolerance = 8.0  #uA
+ibeam_tolerance = 5.0
 comp.loc[both, "ibeam_comp"] = comp.loc[both, "current"] - comp.loc[both, "rcdb_ibeam"]
 comp.loc[both & (abs(comp["ibeam_comp"]) > ibeam_tolerance), "status"] += "CHECK_CURRENT,"
 
@@ -215,7 +219,7 @@ duration_tolerance = 0.10
 comp.loc[both, "duration_rat"] = comp.loc[both, "rf_duration"] / comp.loc[both, "rcdb_duration"]
 comp.loc[both & (abs(1-abs(comp["duration_rat"])) > duration_tolerance), "status"] += "DURATION_MISMATCH,"
 
-# Adding logic here to check run type
+# Adding logic here to check run type, I think most of this is ok.  Elastics runs would need to be hard coded in.
 comp["num_active_ps"] = 0
 for i in range(1, 7):
     comp.loc[comp[f"rcdb_ps{i}"] != -1, "num_active_ps"] +=1
@@ -280,10 +284,10 @@ for check in minor_warn:
     for _, row in comp.iterrows():
         if check in row["status"]:
             runs.append(str(row["run"]))
-
     if runs:
         print(f"\n{check}:")
-        print(", ".join(runs))
+        for i in range(0, len(runs), 10):
+            print(", ".join(runs[i:i+10]))
 
 minor_count = comp["status"].apply(lambda s: any(check in s for check in minor_warn)).sum()
 minor_pct = 100 * minor_count / len(comp)
@@ -299,12 +303,67 @@ else:
 
 print("\nSEVERE WARNINGS")
 print("-" * 60)
+print(f"{'Run':<8} {'Warning':<22} {'Runlist_val':<18} {'RCDB_val':<18}")
+print("-" * 60)
+
 for _, row in comp.iterrows():
-    if row["status"] and not any(check in row["status"] for check in minor_warn):
-        print(f"☢️  Run {row['run']}: {row['status']}")
-severe_count = comp["status"].apply(lambda s: s != "" and not any(check in s for check in minor_warn)).sum()
+    checks = [c for c in row["status"].split(",") if c]
+
+    for check in checks:
+        if check in minor_warn:
+            continue
+
+        runlist_val = ""
+        rcdb_val = ""
+
+        if check == "CHECK_EBEAM":
+            runlist_val = row["ebeam"]
+            rcdb_val = row["rcdb_ebeam"]
+
+        elif check == "CHECK_HMS_P":
+            runlist_val = row["hms_p"]
+            rcdb_val = row["rcdb_hms_p"]
+
+        elif check == "CHECK_HMS_TH":
+            runlist_val = row["hms_th"]
+            rcdb_val = row["rcdb_hms_th"]
+
+        elif check == "CHECK_SHMS_P":
+            runlist_val = row["shms_p"]
+            rcdb_val = row["rcdb_shms_p"]
+
+        elif check == "CHECK_SHMS_TH":
+            runlist_val = row["shms_th"]
+            rcdb_val = row["rcdb_shms_th"]
+
+        elif check == "CHECK_TARGET":
+            runlist_val = row["target"]
+            rcdb_val = row["rcdb_target_mapped"]
+
+        elif check == "CHECK_RUN_TYPE":
+            runlist_val = row["run_type"]
+            rcdb_val = row["run_type_check"]
+
+        elif check.startswith("CHECK_PS"):
+            ps = check[-1]
+            runlist_val = row[f"ps{ps}"]
+            rcdb_val = row[f"rcdb_ps{ps}"]
+
+        elif check == "CHECK_MULTIPLE_PS_USED":
+            runlist_val = row["num_active_ps"]
+            rcdb_val = 1
+
+        elif check == "CHECK_MISSING_REPLAY":
+            runlist_val = "Missing replay"
+            rcdb_val = "Exists"
+
+        print(f"{int(row['run']):<8} {check:<22} {str(runlist_val):<18} {str(rcdb_val):<18}")
+
+severe_count = comp["status"].apply(lambda s: any(c and c not in minor_warn for c in s.split(","))).sum()
+
 if not severe_count:
     print("None")
+
 severe_pct = 100 * severe_count / len(comp)
 
 print("\n")
