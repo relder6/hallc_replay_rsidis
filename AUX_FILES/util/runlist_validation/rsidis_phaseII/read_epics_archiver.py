@@ -138,4 +138,4 @@ if __name__ == "__main__":
     output_dir = "output/read_epics_archiver"
 
     # ADDED: choose run range here
-    main(run_csv, variables, output_dir, min_run=27873, max_run=27918)
+    main(run_csv, variables, output_dir, min_run=28351, max_run=28427)

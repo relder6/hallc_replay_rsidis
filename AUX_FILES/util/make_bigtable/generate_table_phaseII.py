@@ -35,8 +35,8 @@ HMS_MAP = {
     "phys_triggers": (91,32,41),
     "hEL_REAL": (101,11,19),
     "electr_deadtime": (175,42,50),
-    "h_EL_CLEAN": (102,20,27),
-    "p_EL_CLEAN": (121,23,31),
+    "h_EL_CLEAN": (102,21,27),
+    "p_EL_CLEAN": (121,22,27),
 }
 
 SHMS_MAP = {
@@ -93,8 +93,10 @@ COIN_MAP = {
     "electr_deadtime": (264,60,68),
     "helicity_C": (1234,28,38),
     "helicity_A": (1244,38,52),
-    "h_EL_CLEAN": (206,27,33),
-    "p_EL_CLEAN": (180,34,40),
+    "h_EL_CLEAN": (206,29,35),
+    "p_EL_CLEAN": (180,33,40),
+    "ps5_comp_livetime": (254, 58, 67),
+    "ps6_comp_livetime": (257, 58, 67),
 }
 
 run_type_map = {
@@ -132,31 +134,38 @@ def find_special_report_file(run_number):
         return shms_dir(run_number), run_type_map["SHMS"]
 
 
-def load_extra_info(run_number, run_type):
-#    if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
+def load_extra_info(run_number, run_type, issues=None):
+    keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "normyield_err", "ctmean", "ctsigma"]
 
-    # Load extra variables from output_get_good_coin_ev_<run>.csv
-    if run_type in ("HMSDIS", "HEE"):
-        extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_dis_ev_{run_number}_-1.csv"
+    hms_run_types = ("HMSDIS", "HEE", "HMSHEE")
+    shms_run_types = ("SHMSDIS" "SHMSHEE")
+
+    if run_type in hms_run_types:
+        extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/HMS/PRODUCTION/output_get_good_dis_ev_{run_number}_-1.csv"
+        issue_text = "missing get_good_dis_ev file"
+    elif run_type in shms_run_types:
+        extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/SHMS/PRODUCTION/output_get_good_dis_ev_{run_number}_-1.csv"
+        issue_text = "missing get_good_dis_ev file"
     else:
-    #if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
         extra_path = f"/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/COIN/PRODUCTION/output_get_good_coin_ev_{run_number}_-1.csv"
-        
-    
-    keep_cols = ["coin", "randoms", "ransubcoin", "normyield", "normyield_err" ,"ctmean", "ctsigma"]
+        issue_text = "missing get_good_coin_ev file"
 
-    if not (run_type in ("HMSDIS", "HEE") or (os.path.exists(extra_path))):
-        # If file not found, return -999 placeholders
-        print(f"file get_good_coin_events for run: {run_number} not found - {run_type} run")
+    if not os.path.exists(extra_path):
+        print(f"file not found for run {run_number} ({run_type}): {extra_path}")
+        if issues is not None:
+            issues.append({
+                "run": run_number,
+                "run_type": run_type,
+                "issue": issue_text
+            })
         return {col: -999 for col in keep_cols}
-        
+
     with open(extra_path, newline="") as f:
         reader = csv.DictReader(f)
         try:
-            row = next(reader)  # should only be one row
+            row = next(reader)
             return {col: float(row[col]) for col in keep_cols}
         except (StopIteration, KeyError, ValueError):
-            # If empty or malformed, return -999 placeholders
             return {col: -999 for col in keep_cols}
 
 
@@ -228,8 +237,10 @@ KINEMATIC_TABLE = [
     {"ebeam": 6.449, "x": 0.44, "Q2": 4.4, "z": 0.67, "thpq": 2.0,   "hms_p": 1.165, "hms_th": 44.830, "shms_p": 3.837, "shms_th": 10.240},
     {"ebeam": 6.449, "x": 0.44, "Q2": 4.4, "z": 0.52, "thpq": 2.0,   "hms_p": 1.165, "hms_th": 44.830, "shms_p": 2.978, "shms_th": 10.240},
     {"ebeam": 6.449, "x": 0.44, "Q2": 4.4, "z": 0.67, "thpq": 2.0,   "hms_p": 1.165, "hms_th": 44.830, "shms_p": 3.837, "shms_th": 10.240},
-    {"ebeam": 6.449, "x": 0.44, "Q2": 4.4, "z": 0.52, "thpq": 2.0,   "hms_p": 1.165, "hms_th": 44.830, "shms_p": 2.978, "shms_th": 10.240}
-    
+    {"ebeam": 6.449, "x": 0.44, "Q2": 4.4, "z": 0.52, "thpq": 2.0,   "hms_p": 1.165, "hms_th": 44.830, "shms_p": 2.978, "shms_th": 10.240},
+    {"ebeam": 10.6716, "x": 0.44, "Q2": 4.4, "z": 0.52, "thpq": -2.0,   "hms_p": 5.343, "hms_th": 15.97, "shms_p": 2.978, "shms_th": 12.87},
+    {"ebeam": 10.6716, "x": 0.44, "Q2": 4.4, "z": 0.52, "thpq": 0.0,   "hms_p": 5.343, "hms_th": 15.97, "shms_p": 2.978, "shms_th": 14.87},
+    {"ebeam": 10.6716, "x": 0.44, "Q2": 4.4, "z": 0.52, "thpq": 2.0,   "hms_p": 5.343, "hms_th": 15.97, "shms_p": 2.978, "shms_th": 16.87}
 ]
 
 
@@ -294,6 +305,7 @@ def helicity_charge_hm(C,A):
 def collect_run_info(input_csv, output_csv, run_type_map):
     keep_columns = ["run", "ebeam", "target", "hms_p", "hms_th", "shms_p", "shms_th", "run_type"] 
     results = []
+    issues = []
 
     # ihwp_map = load_ihwp_table("updated_merged_run_start_stop_log_100625.csv")
 
@@ -308,10 +320,10 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             if run_type in ("PI-SIDIS", "PI+SIDIS", "HOLE", "HEEP"):
                 report_path = coin_dir(run_number)
                 mapping = run_type_map["COIN"]
-            elif run_type == ("HMSDIS" or "HEE"):
+            elif run_type in ("HMSDIS", "HEE", "HMSHEE"):
                 report_path = hms_dir(run_number)
                 mapping = run_type_map["HMS"]
-            elif run_type == ("SHMSDIS" or "SHMSHEE"):
+            elif run_type in ("SHMSDIS", "SHMSHEE"):
                 report_path = shms_dir(run_number)
                 mapping = run_type_map["SHMS"]
             else:
@@ -323,7 +335,21 @@ def collect_run_info(input_csv, output_csv, run_type_map):
                 props = parse_report_file(report_path, mapping)
 
                 if mapping is run_type_map["COIN"]:
-                    props["comp_livetime"] = 1.0
+                    ps1, ps2, ps3, ps4, ps5, ps6 = props.get("ps1"), props.get("ps2"), props.get("ps3"), props.get("ps4"), props.get("ps5"), props.get("ps6")
+                    ps5_comp_livetime = props.get("ps5_comp_livetime")
+                    ps6_comp_livetime = props.get("ps6_comp_livetime")
+
+                    props["comp_livetime"] = -999
+
+                    if ps5 not in (None, -999) and ps5 > 0:
+                        if ps5_comp_livetime not in (None, -999):
+                            props["comp_livetime"] = round(ps5_comp_livetime / 100, 5)
+
+                    elif ps6 not in (None, -999) and ps6 > 0:
+                        if ps6_comp_livetime not in (None, -999):
+                            props["comp_livetime"] = round(ps6_comp_livetime / 100, 5)
+                    
+#                    props["comp_livetime"] = 1.0
                     props["BCM2_Q_hp"] = helicity_charge_hp(props["helicity_C"], props["helicity_A"])
                     props["BCM2_Q_hm"] = helicity_charge_hm(props["helicity_C"], props["helicity_A"])
                     
@@ -346,7 +372,7 @@ def collect_run_info(input_csv, output_csv, run_type_map):
                                 ps = 1
                             ps_product *= ps
 
-                        # Determine livetime based on spectrometer type
+                        # Determine livetime based on spectrometer type                          
                         if mapping is run_type_map["HMS"]:
                             if pTRIG3 and ps3 > 0:
                                 props["comp_livetime"] = round((-1 * ps_product * phys_triggers) / pTRIG3, 5)
@@ -372,13 +398,18 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             else:
                 if report_path:  # file path expected but missing
                     print(f"⚠️ Report file not found: {report_path}")
+                    issues.append({
+                        "run": run_number,
+                        "run_type": run_type,
+                        "issue": "missing report file"
+                    })
                 props = {var: -999 for var in mapping.keys()}
 
             # Include helicity based charge information:
  #           props["BCM2_Q_hp"], props["BCM2_Q_hm"] = helicity_charge(props["helicity_C"],props["helicity_A"])
 
             # Load extra info from output_get_good_coin_ev
-            extra_props = load_extra_info(run_number,run_type)
+            extra_props = load_extra_info(run_number, run_type, issues)
             props.update(extra_props)
 
             # Load fan speed table
@@ -449,6 +480,13 @@ def collect_run_info(input_csv, output_csv, run_type_map):
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(results)
+
+    issue_csv = output_csv.replace(".csv", "_missing_files.csv")
+
+    with open(issue_csv, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["run", "run_type", "issue"])
+        writer.writeheader()
+        writer.writerows(issues)
 
 
 

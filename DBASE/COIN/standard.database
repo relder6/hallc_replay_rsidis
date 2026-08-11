@@ -168,9 +168,19 @@ g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p978gev_4
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_7p070gev_4pass.param"
 
 # Start of 5pass is pi+; need pi- to calibrate
-# 28107-28109,28155-28156,28171,28268-28270 <-- Leaving this commented out and making below default for now
-28107-99999
+28107-28109,28155-28156,28171,28268-28270,28379-28389,28417-28424,
 g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_5p154gev_5pass.param"
+
+28110-28154,28407-28416,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p806gev_5pass.param"
+
+28157-28170,28172-28186,28271-28318,28425-28458,
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_3p837gev_5pass.param"
+
+28187-28267,28319-28378,28390-28406,28459-99999
+g_ctp_pcal_calib_filename = "PARAM/SHMS/CAL/RSIDIS_PHASEII/pcal_calib_2p978gev_5pass.param"
+
+
 
 # -----------------------------
 # Run dependent HMS CAL params, created by R. Elder Jun. 2026, updated Jul. 2026
@@ -181,8 +191,17 @@ g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_1p165gev_3p
 27351-27357
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_5p390gev_3pass.param"
 
-27756-28106
+27756-28090
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_3p254gev_4pass.param"
 
-28107-99999
+28091-28106
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_5p440gev_4pass.param"
+
+28107-28379,28385-28424,28459-99999
 g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_5p343gev_5pass.param"
+
+28380-28384
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_5p380gev_5pass.param"
+
+28425-28458
+g_ctp_hcal_calib_filename = "PARAM/HMS/CAL/RSIDIS_PHASEII/hcal_calib_3p642gev_5pass.param"
