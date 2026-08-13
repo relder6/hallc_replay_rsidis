@@ -34,8 +34,10 @@ void replay_helicity_and_scalers (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
   gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
   gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
+  gHcParms->Load(gHcParms->GetString("g_ctp_pcal_calib_filename"));
+  gHcParms->Load(gHcParms->GetString("g_ctp_hcal_calib_filename"));
   // Load params for COIN trigger configuration
-  gHcParms->Load("PARAM/TRIG/tcoin_phaseII.param");
+  gHcParms->Load(gHcParms->GetString("g_ctp_trigdet_filename"));
   // Load fadc debug parameters
   gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
   gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");
@@ -45,7 +47,7 @@ void replay_helicity_and_scalers (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
 
   // Load the Hall C detector map
   gHcDetectorMap = new THcDetectorMap();
-  gHcDetectorMap->Load("MAPS/COIN/DETEC/coin.map");
+  gHcDetectorMap->Load(gHcParms->GetString("g_ctp_map_filename"));
 
      // Dec data
   //   gHaApps->Add(new Podd::DecData("D","Decoder raw data"));
