@@ -6,10 +6,10 @@ import rcdb
 
 def get_rcdb():
     # Connect to DB
-    if "RCDB_CONNECTION" in os.environ:
-        con_str = os.environ["RCDB_CONNECTION"]
-    else:
-        con_str = "mysql://rcdb@hallcdb.jlab.org/rsidis"
+    # if "RCDB_CONNECTION" in os.environ:
+    #     con_str = os.environ["RCDB_CONNECTION"]
+    # else:
+    con_str = "mysql://rcdb@hallcdb.jlab.org/rsidis"
     return rcdb.RCDBProvider(con_str)    
 
 def main():
@@ -30,3 +30,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# rcdb = rcdb.RCDBProvider("mysql://rcdb@hallcdb.jlab.org/rsidis")
+# run = rcdb.get_run(27106)
+# print(run.start_time)

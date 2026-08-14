@@ -11,8 +11,8 @@ from typing import Any, Dict, List
 
 def get_rcdb(rcdb_server):
     '''Connect to DB'''
-    if "RCDB_CONNECTION" in os.environ:
-        rcdb_server = os.environ["RCDB_CONNECTION"]
+    # if "RCDB_CONNECTION" in os.environ:
+    #     rcdb_server = os.environ["RCDB_CONNECTION"]
     return rcdb.RCDBProvider(rcdb_server)    
 
 def read_runlist(runlist, rmin, rmax):
