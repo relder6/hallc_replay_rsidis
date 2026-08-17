@@ -11,27 +11,29 @@ import json
 # Exceptions list of KNOWN and DOCUMENTED problems
 # --------------------------------------------------------------------------
 # Use this kind of template for singe-run acknowledged problems
-exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},
-              27571: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},
-              28435: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},}
 
-# Use this kind of template for run-ranges of problems              
-exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
-                         "reason": "Mismatch between tv and gui, hclog 4517645",} for run in range(27504, 27507)})
-exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
-                         "reason": "Mismatch between tv and gui, hclog  4536541",} for run in range(28310, 28407)})
-exceptions.update({run: {"checks": ["CHECK_HMS_TH"],
-                         "reason": "Apparent mismatch between tv and gui",} for run in range(28403, 28407)})
+exceptions = {0: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "Excuse."}}
+# exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},
+#               27571: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},
+#               28435: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},}
+
+# # Use this kind of template for run-ranges of problems              
+# exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
+#                          "reason": "Mismatch between tv and gui, hclog 4517645",} for run in range(27504, 27507)})
+# exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
+#                          "reason": "Mismatch between tv and gui, hclog  4536541",} for run in range(28310, 28407)})
+# exceptions.update({run: {"checks": ["CHECK_HMS_TH"],
+#                          "reason": "Apparent mismatch between tv and gui",} for run in range(28403, 28407)})
 
 # --------------------------------------------------------------------------
 # Running some scripts via subprocess
 # --------------------------------------------------------------------------
-print("Running parse_runlist.py...")
+# print("Running parse_runlist.py...")
 
-subprocess.run(["python", "parse_runlist.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/parse_runlist", stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+# subprocess.run(["python", "parse_runlist.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/parse_runlist", stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
-print("Running gen_run_info_tables.py...")
-subprocess.run(["python", "gen_run_info_tables.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/runlist_validation/rsidis_phaseII", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+# print("Running gen_run_info_tables.py...")
+# subprocess.run(["python", "gen_run_info_tables.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/runlist_validation/rsidis_phaseII", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 # --------------------------------------------------------------------------
 # Defining directories and files and such,
@@ -45,6 +47,8 @@ report_dir_hms = "/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPU
 report_dir_shms = "/net/cdaq/cdaql3data/cdaq/hallc-online-rsidis2025/REPORT_OUTPUT/SHMS/PRODUCTION"
 
 rcdb_json = "/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/runlist_validation/rsidis_phaseII/output/rsidis_phaseII_rcdb_info.json"
+
+stand_kin = "/home/cdaq/rsidis-2025/hallc_replay_rsidis/DBASE/COIN/standard.kinematics"
 
 outfile = "/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/runlist_validation/rsidis_phaseII/output/verify_runlist_out.csv"
 
@@ -134,24 +138,81 @@ for report_file in sorted(report_files):
 
 df = pd.DataFrame(rows, columns=["runnum", "rf_duration", "rcdb_ebeam", "rcdb_ibeam", "rcdb_target", "rcdb_hms_p", "rcdb_hms_th", "rcdb_shms_p", "rcdb_shms_th", "rcdb_duration", "rcdb_ps1", "rcdb_ps2", "rcdb_ps3", "rcdb_ps4", "rcdb_ps5", "rcdb_ps6", "rcdb_valid"])
 
-#DEBUGGING
-# print("DF duplicates:")
-# print(df[df["runnum"].duplicated(keep=False)].sort_values("runnum"))
-
-# print("DF rows:", len(df))
-# print("DF unique runnum:", df["runnum"].nunique())
-
 df2 = runlist.merge(df, left_on="run", right_on="runnum", how="outer", indicator=True, suffixes=("_rlist", "_repfile"))
 
-#DEBUGGING
-# print("\nAfter merge:")
-# print("df2 rows:", len(df2))
-# print("df2 unique runs:", df2["run"].nunique())
-
-# print("\nDuplicate runs after merge:")
-# print(df2[df2["run"].duplicated(keep=False)].sort_values("run"))
-
 df2["run"] = df2["run"].fillna(df2["runnum"]).astype(int)
+
+# --------------------------------------------------------------------------
+# Reading in the standard.kinematics file
+# --------------------------------------------------------------------------
+
+kin_val = []
+
+with open(stand_kin) as infile:
+    lines = infile.readlines()
+
+    for i, line in enumerate(lines):
+        m = re.match(r"^(\d+)\s*-\s*(\d+)", line.strip())
+
+        if m:
+            run_start = int(m.group(1))
+            run_end = int(m.group(2))
+
+            kin = {}
+
+            for kin_line in lines[i+1:]:
+                if not kin_line.strip():
+                    break
+
+                m2 = re.match(r"^(\w+)\s*=\s*([-+0-9.eE]+)", kin_line.strip())
+
+                if m2:
+                    key = m2.group(1)
+                    value = m2.group(2)
+
+                    try:
+                        kin[key] = float(value)
+                    except ValueError:
+                        print(f"WARNING: Could not parse kinematic value: {kin_line.strip()}")
+
+            for run in range(run_start, run_end + 1):
+                kin_val.append([run,
+                kin.get("gpbeam"),
+                kin.get("htheta_lab"),
+                kin.get("hpcentral"),
+                kin.get("ptheta_lab"),
+                kin.get("ppcentral"),
+                kin.get("gtargmass_amu"),
+                kin.get("hpartmass"),
+                kin.get("ppartmass")])
+
+df_kin = pd.DataFrame(kin_val,columns=["runnum","kin_ebeam","kin_hms_th","kin_hms_p","kin_shms_th","kin_shms_p","kin_targmass","kin_hms_partmass","kin_shms_partmass"])
+
+df2 = df2.merge(df_kin, left_on="run", right_on="runnum", how="left", suffixes=("", "_kin"))
+
+# --------------------------------------------------------------------------
+# Tolerances
+# --------------------------------------------------------------------------
+ebeam_tolerance = 0.01          # 1%
+ibeam_tolerance = 1.0           # uA
+hms_p_tolerance = 0.001          # 1%
+hms_th_tolerance = 0.005         # 1%
+shms_p_tolerance = 0.001         # 1%
+shms_th_tolerance = 0.005        # 1%
+target_mass_tolerance = 0.001    # amu
+duration_tolerance = 0.010       # 10%
+particle_mass_tolerance = 0.01
+
+# --------------------------------------------------------------------------
+# Comparison logic
+# --------------------------------------------------------------------------
+def three_way_check(a, b, c, tolerance):
+    values = [abs(a), abs(b), abs(c)]
+
+    if any(pd.isna(x) for x in values):
+           return False
+           
+    return max(values) / min(values) > 1 + tolerance
 
 target_dict = {"Loop 2 10cm": "LH2",
                "10cm Dummy": "Dummy",
@@ -160,6 +221,14 @@ target_dict = {"Loop 2 10cm": "LH2",
                "Copper 6%": "Cu",
                "Aluminum 1.5%": "Al",
                "Out of Beam": "NONE"}
+
+target_mass_dict = {"LH2": 1.007825032,
+                    "Dummy": 26.981539,
+                    "LD2": 2.014101778,
+                    "C": 12.007825032,
+                    "Cu": 63.507825032,
+                    "Al": 26.981539,
+                    "NONE": 0.0}
 
 comp = df2.copy()
 
@@ -181,29 +250,43 @@ rcdb_missing = (comp["rcdb_ebeam"].isna() |
 comp.loc[both & rcdb_missing, "status"] += "RCDB_MISSING_INFO,"
 both = (comp["_merge"] == "both") & (~rcdb_missing)
 
-ebeam_tolerance = 0.01
-comp.loc[both, "ebeam_rat"] = comp.loc[both, "ebeam"] * 1000 / comp.loc[both, "rcdb_ebeam"]
-comp.loc[both & (abs(1 - abs(comp["ebeam_rat"])) > ebeam_tolerance ), "status"] += "CHECK_EBEAM,"
+for idx in comp.index[both]:
+    if three_way_check(comp.loc[idx, "ebeam"],
+                       comp.loc[idx, "rcdb_ebeam"] / 1000,
+                       comp.loc[idx, "kin_ebeam"],
+                       ebeam_tolerance):
+        comp.loc[idx, "status"] += "CHECK_EBEAM,"
 
-ibeam_tolerance = 5.0
 comp.loc[both, "ibeam_comp"] = comp.loc[both, "current"] - comp.loc[both, "rcdb_ibeam"]
 comp.loc[both & (abs(comp["ibeam_comp"]) > ibeam_tolerance), "status"] += "CHECK_CURRENT,"
 
-hms_p_tolerance = 0.01
-comp.loc[both, "hms_p_rat"] = comp.loc[both, "hms_p"] / comp.loc[both, "rcdb_hms_p"]
-comp.loc[both & (abs(1-abs(comp["hms_p_rat"])) > hms_p_tolerance), "status"] += "CHECK_HMS_P,"
+for idx in comp.index[both]:
+    if three_way_check(comp.loc[idx, "hms_p"],
+                       comp.loc[idx, "rcdb_hms_p"],
+                       comp.loc[idx, "kin_hms_p"],
+                       hms_p_tolerance):
+        comp.loc[idx, "status"] += "CHECK_HMS_P,"
+        
+for idx in comp.index[both]:
+    if three_way_check(comp.loc[idx, "hms_th"],
+                       comp.loc[idx, "rcdb_hms_th"],
+                       comp.loc[idx, "kin_hms_th"],
+                       hms_th_tolerance):
+        comp.loc[idx, "status"] += "CHECK_HMS_TH,"
 
-hms_th_tolerance = 0.01
-comp.loc[both, "hms_th_rat"] = comp.loc[both, "hms_th"] / comp.loc[both, "rcdb_hms_th"]
-comp.loc[both & (abs(1-abs(comp["hms_th_rat"])) > hms_th_tolerance), "status"] += "CHECK_HMS_TH,"
+for idx in comp.index[both]:
+    if three_way_check(comp.loc[idx, "shms_p"],
+                       comp.loc[idx, "rcdb_shms_p"],
+                       comp.loc[idx, "kin_shms_p"],
+                       shms_p_tolerance):
+        comp.loc[idx, "status"] += "CHECK_SHMS_P,"
 
-shms_p_tolerance = 0.01
-comp.loc[both, "shms_p_rat"] = comp.loc[both, "shms_p"] / comp.loc[both, "rcdb_shms_p"]
-comp.loc[both & (abs(1-abs(comp["shms_p_rat"])) > shms_p_tolerance), "status"] += "CHECK_SHMS_P,"
-
-shms_th_tolerance = 0.01
-comp.loc[both, "shms_th_rat"] = comp.loc[both, "shms_th"] / comp.loc[both, "rcdb_shms_th"]
-comp.loc[both & (abs(1-abs(comp["shms_th_rat"])) > shms_th_tolerance), "status"] += "CHECK_SHMS_TH,"
+for idx in comp.index[both]:
+    if three_way_check(comp.loc[idx, "shms_th"],
+                       comp.loc[idx, "rcdb_shms_th"],
+                       comp.loc[idx, "kin_shms_th"],
+                       shms_th_tolerance):
+        comp.loc[idx, "status"] += "CHECK_SHMS_TH,"
 
 # This is logic for checking prescales.  They have to match exactly.
 for i in range(1, 7):
@@ -214,8 +297,12 @@ for i in range(1, 7):
 comp["rcdb_target_mapped"] = comp["rcdb_target"].map(target_dict)
 comp.loc[both & (comp["rcdb_target_mapped"] != comp["target"]), "status"] += "CHECK_TARGET,"
 
+
+comp["target_mapped"] = comp["target"].map(target_dict)
+comp["target_mass_expected"] = comp["target_mapped"].map(target_mass_dict)
+comp.loc[both & (abs(comp["target_mass_expected"] - comp["kin_targmass"]) > target_mass_tolerance), "status"] += "CHECK_TARGET_MASS,"
+
 # This is logic for checking duration.
-duration_tolerance = 0.10
 comp.loc[both, "duration_rat"] = comp.loc[both, "rf_duration"] / comp.loc[both, "rcdb_duration"]
 comp.loc[both & (abs(1-abs(comp["duration_rat"])) > duration_tolerance), "status"] += "DURATION_MISMATCH,"
 
@@ -248,6 +335,45 @@ comp.loc[mask & (abs(comp["rcdb_hms_p"] - (2.28)) < 0.01) & (abs(comp["rcdb_shms
 comp.loc[mask & (abs(comp["rcdb_hms_p"] - (-5.44)) < 0.01) & (abs(comp["rcdb_shms_p"] - (3.99)) < 0.01), "run_type_check"] = "HEEP"
 
 comp.loc[both & (comp["run_type_check"] != "") & (comp["run_type"] != comp["run_type_check"]), "status"] += "CHECK_RUN_TYPE,"
+
+# Adding logic here to check particle types in standard.kinematics.  Thinking I need combination of run type and prescale for elastics.
+
+elec_mass = 0.000511
+pion_mass = 0.139570
+prot_mass = 0.938272
+
+comp["expected_hms_part"] = np.nan
+comp["expected_shms_part"] = np.nan
+
+mask = both & (comp["run_type"] == "HMSDIS")
+comp.loc[mask, "expected_hms_part"] = elec_mass
+
+mask = both & (comp["run_type"] == "SHMSDIS")
+comp.loc[mask, "expected_shms_part"] = elec_mass
+
+mask = both & (comp["run_type"] == "PI+SIDIS")
+comp.loc[mask, "expected_hms_part"] = elec_mass
+comp.loc[mask, "expected_shms_part"] = pion_mass
+
+mask = both & (comp["run_type"] == "PI-SIDIS")
+comp.loc[mask, "expected_hms_part"] = elec_mass
+comp.loc[mask, "expected_shms_part"] = pion_mass
+
+mask = both & (comp["run_type"] == "HEEP")
+comp.loc[mask, "expected_hms_part"] = prot_mass
+comp.loc[mask, "expected_shms_part"] = elec_mass
+
+mask = both & (comp["run_type_check"] == "HEE") & ((comp["rcdb_ps1"] != -1) | (comp["rcdb_ps2"] != -1))
+comp.loc[mask, "expected_shms_part"] = elec_mass
+
+mask = both & (comp["run_type_check"] == "HEE") & ((comp["rcdb_ps3"] != -1) | (comp["rcdb_ps4"] != -1))
+comp.loc[mask, "expected_hms_part"] = elec_mass
+
+# Now comparing the particle masses to standard.kinematics...
+comp.loc[both & (comp["expected_hms_part"] != "") & (abs(comp["kin_hms_partmass"] - comp["expected_hms_part"]) > particle_mass_tolerance), "status"] += "CHECK_HMS_PARTICLE,"
+
+comp.loc[both & (comp["expected_shms_part"] != "") & (abs(comp["kin_shms_partmass"] - comp["expected_shms_part"]) > particle_mass_tolerance), "status"] += "CHECK_SHMS_PARTICLE,"
+
 
 # Reading in the exceptions here
 for run, info in exceptions.items():
@@ -303,7 +429,7 @@ else:
 
 print("\nSEVERE WARNINGS")
 print("-" * 60)
-print(f"{'Run':<8} {'Warning':<22} {'Runlist_val':<18} {'RCDB_val':<18}")
+print(f"{'Run':<8} {'Warning':<22} {'Runlist_val':<18} {'RCDB_val':<18} {'KIN_val':<18}")
 print("-" * 60)
 
 for _, row in comp.iterrows():
@@ -315,22 +441,27 @@ for _, row in comp.iterrows():
 
         runlist_val = ""
         rcdb_val = ""
+        kin_val = ""
 
         if check == "CHECK_EBEAM":
             runlist_val = row["ebeam"]
             rcdb_val = row["rcdb_ebeam"]
+            kin_val = row["kin_ebeam"]
 
         elif check == "CHECK_HMS_P":
             runlist_val = row["hms_p"]
             rcdb_val = row["rcdb_hms_p"]
+            kin_val = row["kin_hms_p"]
 
         elif check == "CHECK_HMS_TH":
             runlist_val = row["hms_th"]
             rcdb_val = row["rcdb_hms_th"]
+            kin_val = row["kin_hms_th"]
 
         elif check == "CHECK_SHMS_P":
             runlist_val = row["shms_p"]
             rcdb_val = row["rcdb_shms_p"]
+            kin_val = row["kin_shms_p"]
 
         elif check == "CHECK_SHMS_TH":
             runlist_val = row["shms_th"]
@@ -357,7 +488,19 @@ for _, row in comp.iterrows():
             runlist_val = "Missing replay"
             rcdb_val = "Exists"
 
-        print(f"{int(row['run']):<8} {check:<22} {str(runlist_val):<18} {str(rcdb_val):<18}")
+        elif check == "CHECK_TARGET_MASS":
+            runlist_val = row["target_mass_expected"]
+            rcdb_val = row["kin_targmass"]
+
+        elif check == "CHECK_HMS_PARTICLE":
+            runlist_val = row["expected_hms_part"]
+            kin_val = row["kin_hms_partmass"]
+
+        elif check == "CHECK_SHMS_PARTICLE":
+            runlist_val = row["expected_shms_part"]
+            kin_val = row["kin_shms_partmass"]
+
+        print(f"{int(row['run']):<8} {check:<22} {str(runlist_val):<18} {str(rcdb_val):<18} {str(kin_val):<18}")
 
 severe_count = comp["status"].apply(lambda s: any(c and c not in minor_warn for c in s.split(","))).sum()
 
