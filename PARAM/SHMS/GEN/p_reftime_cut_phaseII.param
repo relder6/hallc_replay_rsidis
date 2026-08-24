@@ -8,15 +8,6 @@
 ;     reference time is used and warning message is produced.
 ; Cut is on reference time per detector.
 
-; no cuts
-; pdc_tdcrefcut=-19000
-; phodo_tdcrefcut=-8000
-; phodo_adcrefcut=-3000
-; pngcer_adcrefcut=-4500
-; phgcer_adcrefcut=-4500
-; paero_adcrefcut=-4500
-; pcal_adcrefcut=-4500
-
 ; determined by R. Elder for rsidis2025
 ; cut variable = pDCREF(min)
  pdc_tdcrefcut=-18950

@@ -1,4 +1,7 @@
-void replay_no_reference_times_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
+#include "MultiFileRun.h"
+
+void replay_no_reference_times_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0,
+                                     Int_t FirstEvent = 1, Int_t MaxSegment = -1) {
 
   // Get RunNumber and MaxEvent if not provided.
   if(RunNumber == 0) {
@@ -11,7 +14,7 @@ void replay_no_reference_times_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
     cin >> MaxEvent;
     if(MaxEvent == 0) {
       cerr << "...Invalid entry\n";
-      exit;
+      return;
     }
   }
 
@@ -19,7 +22,7 @@ void replay_no_reference_times_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   // const char* RunFileNamePattern = "shms_all_%05d.dat";
   const char* RunFileNamePattern = "rsidis_production_%05d.dat.0";
   vector<TString> pathList;
-  pathList.push_back("/net/cdaq/cdaql4data/hccoda/data/raw");
+  // pathList.push_back("/net/cdaq/cdaql4data/hccoda/data/raw");
   pathList.push_back(".");
   pathList.push_back("./raw");
   pathList.push_back("./raw/../raw.copiedtotape");
@@ -29,12 +32,16 @@ void replay_no_reference_times_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
 
   // Load global parameters
   gHcParms->Define("gen_run_number", "Run Number", RunNumber);
-  gHcParms->AddString("g_ctp_database_filename", "DBASE/SHMS/standard.database");
+  gHcParms->AddString("g_ctp_database_filename", "DBASE/COIN/standard.database");
   gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
   gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
   gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
+  gHcParms->Load(gHcParms->GetString("g_ctp_pcal_calib_filename"));
+
   // Load parameters for SHMS trigger configuration
-  gHcParms->Load("PARAM/TRIG/tshms.param");
+  //gHcParms->Load("PARAM/TRIG/tshms.param");
+  gHcParms->Load(gHcParms->GetString("g_ctp_ptrigdet_filename"));
+
   // Load fadc debug parameters
   gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");
 
@@ -58,7 +65,9 @@ void replay_no_reference_times_shms (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
 
   // Load the Hall C detector map
   gHcDetectorMap = new THcDetectorMap();
-  gHcDetectorMap->Load("MAPS/SHMS/DETEC/STACK/shms_stack.map");
+  //gHcDetectorMap->Load("MAPS/SHMS/DETEC/STACK/shms_stack.map");
+  gHcDetectorMap->Load(gHcParms->GetString("g_ctp_pmap_filename"));
+
 
   // Add trigger apparatus
   THaApparatus* TRG = new THcTrigApp("T", "TRG");
