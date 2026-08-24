@@ -85,8 +85,8 @@
 
 ; Jan2026, Adding flags to use new tracking method: <p/h>UseNewLinkStubs and <p/h>UseFindSpacePoints
 ; For both of these flags, =1 means use the new method, =0 means do not use the new method
-  pUseNewLinkStubs = 1.
-  pUseFindSpacePoints = 1.
+  pUseNewLinkStubs = 1
+  pUseFindSpacePoints = 1
 
 ; Jan2026, Introducing <p/h>TrackLargeResidCut, this parameter is being read by THcDC.cxx
 ; Starting with 0.075 at Mark Jones' suggestion, need to look at residual later to correct cut
