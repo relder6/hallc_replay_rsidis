@@ -1,16 +1,16 @@
 t_hms_numAdc = 13
 t_hms_numTdc = 57
 
-t_hms_tdcoffset = 300.
-t_hms_adc_tdc_offset = 300.
+t_hms_tdcoffset = 300
+t_hms_adc_tdc_offset = 300
 
 t_hms_tdcchanperns = 0.09766
 
 ; determined by R. Elder for rsidis2025
 ; cut variable is hT1
-t_hms_trig_tdcrefcut = -5500.
+t_hms_trig_tdcrefcut = -5500
 ; cut variable is hFADC_TREF_ROC1
-t_hms_trig_adcrefcut = -2600.
+t_hms_trig_adcrefcut = -6000
 
 ; bar num:          1     2     3     4     5      6     7    8        9            10       11       12       13
 t_hms_adcNames = "hASUM hBSUM hCSUM hDSUM hPSHWR hSHWR hAER hCER hFADC_TREF_ROC1 pHEL_QRT pHEL_NEG pHEL_POS pHEL_MPS"
