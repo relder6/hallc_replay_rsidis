@@ -10,30 +10,33 @@ import json
 # --------------------------------------------------------------------------
 # Exceptions list of KNOWN and DOCUMENTED problems
 # --------------------------------------------------------------------------
-# Use this kind of template for singe-run acknowledged problems
+# Use this kind of template for singe-run acknowledged problems:
+# exceptions = {<runnum>: {"checks": ["<CHECK_...>"], "reason": "<Describe why it's an exception.>"}}
+# exceptions = {0: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "Excuse."}}
 
-exceptions = {0: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "Excuse."}}
-# exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},
-#               27571: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},
-#               28435: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},}
+exceptions = {27961: {"checks": ["CHECK_MISSING_REPLAY"], "reason": "BCM Calibration run."},
+              27571: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},
+              28435: {"checks": ["CHECK_RUN_TYPE"], "reason": "BCM Calibration run."},}
 
-# # Use this kind of template for run-ranges of problems              
-# exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
-#                          "reason": "Mismatch between tv and gui, hclog 4517645",} for run in range(27504, 27507)})
-# exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
-#                          "reason": "Mismatch between tv and gui, hclog  4536541",} for run in range(28310, 28407)})
-# exceptions.update({run: {"checks": ["CHECK_HMS_TH"],
-#                          "reason": "Apparent mismatch between tv and gui",} for run in range(28403, 28407)})
+# Use this kind of template for run-ranges of problems
+# exceptions.update({run: {"checks": [<CHECK_...>],
+#                          "reason": "<Describe why it's an exception.>",} for run in range(<lower>, <upper>)})
+
+exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
+                         "reason": "Mismatch between tv and gui, hclog 4517645",} for run in range(27504, 27507)})
+exceptions.update({run: {"checks": ["CHECK_SHMS_TH"],
+                         "reason": "Mismatch between tv and gui, hclog  4536541",} for run in range(28310, 28407)})
+exceptions.update({run: {"checks": ["CHECK_HMS_TH"],
+                         "reason": "Apparent mismatch between tv and gui",} for run in range(28403, 28407)})
 
 # --------------------------------------------------------------------------
-# Running some scripts via subprocess
+# You can run some subprocesses beforehand if you like
 # --------------------------------------------------------------------------
-# print("Running parse_runlist.py...")
+print("Running parse_runlist.py...")
+subprocess.run(["python", "parse_runlist.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/parse_runlist", stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
-# subprocess.run(["python", "parse_runlist.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/parse_runlist", stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-
-# print("Running gen_run_info_tables.py...")
-# subprocess.run(["python", "gen_run_info_tables.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/runlist_validation/rsidis_phaseII", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+print("Running gen_run_info_tables.py...")
+subprocess.run(["python", "gen_run_info_tables.py"], cwd="/home/cdaq/rsidis-2025/hallc_replay_rsidis/AUX_FILES/util/runlist_validation/rsidis_phaseII", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 # --------------------------------------------------------------------------
 # Defining directories and files and such,
@@ -210,7 +213,10 @@ def three_way_check(a, b, c, tolerance):
     values = [abs(a), abs(b), abs(c)]
 
     if any(pd.isna(x) for x in values):
-           return False
+        return True
+
+    if min(values) == 0:
+        return max(values) != 0
            
     return max(values) / min(values) > 1 + tolerance
 
@@ -395,14 +401,9 @@ print(f"Run duration ratio tolerance: {duration_tolerance:.2f}")
 print(f"Target: Exact match")
 print(f"Prescales: Exact match")
 
-minor_warn = ["RCDB_MISSING_INFO", "CHECK_CURRENT", "CHECK_RCDB", "DURATION_MISMATCH"]
+minor_warn = ["RCDB_MISSING_INFO", "CHECK_CURRENT", "CHECK_RCDB", "DURATION_MISMATCH", "CHECK_SHMS_PARTICLE", "CHECK_HMS_PARTICLE", "CHECK_SHMS_TH", "CHECK_HMS_TH"]
 print("\nMINOR WARNINGS")
 print("-" * 60)
-
-minor_warn = ["RCDB_MISSING_INFO",
-              "CHECK_CURRENT",
-              "CHECK_RCDB",
-              "DURATION_MISMATCH",]
 
 for check in minor_warn:
     runs = []
