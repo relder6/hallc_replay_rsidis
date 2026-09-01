@@ -15249,23 +15249,23 @@ ppartmass = 0.13957
 
 25521 - 25521
 gpbeam = 10.6716
-gtargmass_amu = 26.981539
+gtargmass_amu = 12.0107
 htheta_lab = -16.755
 hpcentral = 6.358
 ptheta_lab = 13.505
 ppcentral = 6.358
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25522 - 25522
 gpbeam = 10.6716
-gtargmass_amu = 26.981539
+gtargmass_amu = 12.0107
 htheta_lab = -16.755
 hpcentral = 6.358
 ptheta_lab = 13.505
 ppcentral = 6.358
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25523 - 25523
 gpbeam = 10.6716
@@ -15275,7 +15275,7 @@ hpcentral = 6.358
 ptheta_lab = 13.505
 ppcentral = 6.358
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25524 - 25524
 gpbeam = 10.6716
@@ -15285,7 +15285,7 @@ hpcentral = 6.358
 ptheta_lab = 13.505
 ppcentral = 6.358
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25525 - 25525
 gpbeam = 10.6716
@@ -15295,7 +15295,7 @@ hpcentral = 5.983
 ptheta_lab = 13.505
 ppcentral = 5.983
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25526 - 25526
 gpbeam = 10.6716
@@ -15305,47 +15305,47 @@ hpcentral = 5.983
 ptheta_lab = 13.505
 ppcentral = 5.983
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25527 - 25527
 gpbeam = 10.6716
-gtargmass_amu = 26.981539
+gtargmass_amu = 12.0107
 htheta_lab = -16.755
 hpcentral = 5.983
 ptheta_lab = 13.505
 ppcentral = 5.983
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25528 - 25528
 gpbeam = 10.6716
-gtargmass_amu = 26.981539
+gtargmass_amu = 12.0107
 htheta_lab = -16.755
 hpcentral = 5.983
 ptheta_lab = 13.505
 ppcentral = 5.983
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25529 - 25529
 gpbeam = 10.6716
-gtargmass_amu = 26.981539
+gtargmass_amu = 12.0107
 htheta_lab = -16.755
 hpcentral = 5.27
 ptheta_lab = 13.505
 ppcentral = 5.27
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 25530 - 25530
 gpbeam = 10.6716
-gtargmass_amu = 26.981539
+gtargmass_amu = 12.0107
 htheta_lab = -16.755
 hpcentral = 5.27
 ptheta_lab = 13.505
 ppcentral = 5.27
 hpartmass = 0.000511
-ppartmass = 0.13957
+ppartmass = 0.000511
 
 ## MARKED JUNK ## Run 25531
 
