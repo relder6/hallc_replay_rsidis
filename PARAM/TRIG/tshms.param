@@ -1,8 +1,8 @@
 t_shms_numAdc = 11
 t_shms_numTdc = 58
 
-t_shms_tdcoffset = 300.
-t_shms_adc_tdc_offset = 200.
+t_shms_tdcoffset = 300
+t_shms_adc_tdc_offset = 200
 
 t_shms_tdcchanperns = 0.09766
 

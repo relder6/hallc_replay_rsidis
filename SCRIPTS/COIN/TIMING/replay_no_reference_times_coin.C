@@ -1,5 +1,8 @@
-void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
-  //Made from replay_production_coin_pElec_hProt.C
+#include "MultiFileRun.h"
+
+void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0,
+                                     Int_t FirstEvent = 1, Int_t MaxSegment = -1) {
+  
   // Get RunNumber and MaxEvent if not provided.
   if(RunNumber == 0) {
     cout << "Enter a Run Number (-1 to exit): ";
@@ -11,15 +14,13 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
     cin >> MaxEvent;
     if(MaxEvent == 0) {
       cerr << "...Invalid entry\n";
-      exit;
+      return;
     }
   }
 
   // Create file name patterns.
-  //const char* RunFileNamePattern = "coin_all_%05d.dat";
   const char* RunFileNamePattern = "rsidis_production_%05d.dat.0";
   vector<TString> pathList;
-  pathList.push_back("/net/cdaq/cdaql4data/hccoda/data/raw");
   pathList.push_back(".");
   pathList.push_back("./raw");
   pathList.push_back("./raw/../raw.copiedtotape");
@@ -37,13 +38,16 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   gHcParms->Load(gHcParms->GetString("g_ctp_pcal_calib_filename"));
   gHcParms->Load(gHcParms->GetString("g_ctp_hcal_calib_filename"));
   // Load params for COIN trigger configuration
-  gHcParms->Load("PARAM/TRIG/tcoin.param");
+  //gHcParms->Load("PARAM/TRIG/tcoin.param");
+  gHcParms->Load(gHcParms->GetString("g_ctp_trigdet_filename"));
+
   // Load fadc debug parameters
   gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
   gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");
   // Load the Hall C detector map
   gHcDetectorMap = new THcDetectorMap();
-  gHcDetectorMap->Load("MAPS/COIN/DETEC/coin.map");
+  gHcDetectorMap->Load(gHcParms->GetString("g_ctp_map_filename"));
+
 
   //==========================================
 
@@ -208,10 +212,10 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   // electrons in SHMS, protons in HMS
   // ---------------------------------
   // Add physics module to calculate primary (scattered electrons) beam kinematics
-  THcPrimaryKine* pkin_primary = new THcPrimaryKine("P.kin.primary", "SHMS Single Arm Kinematics", "P", "P.rb");
+  THcPrimaryKine* pkin_primary = new THcPrimaryKine("H.kin.primary", "HMS Single Arm Kinematics", "H", "H.rb");
   gHaPhysics->Add(pkin_primary);
   // Add physics module to calculate secondary (scattered hadrons) beam kinematics
-  THcSecondaryKine* hkin_secondary = new THcSecondaryKine("H.kin.secondary", "HMS Single Arm Kinematics", "H", "P.kin.primary");
+  THcSecondaryKine* hkin_secondary = new THcSecondaryKine("P.kin.secondary", "SHMS Single Arm Kinematics", "P", "H.kin.primary");
   gHaPhysics->Add(hkin_secondary);
  
   //=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
@@ -225,7 +229,7 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   THcTrigDet* coin = new THcTrigDet("coin", "Coincidence Trigger Information");
 
   //Add coin physics module
-  THcCoinTime* coinTime = new THcCoinTime("CTime", "Coincidende Time Determination", "H", "P", "T.coin");
+  THcCoinTime* coinTime = new THcCoinTime("CTime", "Coincidende Time Determination", "P", "H", "T.coin");
   gHaPhysics->Add(coinTime);
 
 

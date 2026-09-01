@@ -5,24 +5,27 @@
 void run_shms_reference_time_setup(TString infile, int RunNumber, TString outfile="move_me.root", TString spec="shms") {
   gROOT->SetBatch(kTRUE);    //do not display plots
   gHcParms->Define("gen_run_number", "Run Number", RunNumber);
+
+  // Load SHMS parameters for SHMS trigger configuration
   if(spec.CompareTo("shms",TString::kIgnoreCase)==0) {
-    gHcParms->AddString("g_ctp_database_filename", "DBASE/SHMS/standard.database");
-    gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
-    gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
-    gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
-    // Load parameters for SHMS trigger configuration
-    gHcParms->Load("PARAM/TRIG/tshms.param");
-  } else if (spec.CompareTo("coin",TString::kIgnoreCase)==0) {
     gHcParms->AddString("g_ctp_database_filename", "DBASE/COIN/standard.database");
     gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
     gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
     gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
-    // Load params for COIN trigger configuration
-    gHcParms->Load("PARAM/TRIG/tcoin.param");
-    // Load fadc debug parameters
+    gHcParms->Load(gHcParms->GetString("g_ctp_ptrigdet_filename"));
+  }
+  
+  // Load SHMS parameters for COIN trigger configuration
+  else if (spec.CompareTo("coin",TString::kIgnoreCase)==0) {
+    gHcParms->AddString("g_ctp_database_filename", "DBASE/COIN/standard.database");
+    gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
+    gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
+    gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
+    gHcParms->Load(gHcParms->GetString("g_ctp_trigdet_filename"));
     gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
     gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");
-  } else {
+  }
+  else {
     cout << "Unknown Spec: " << spec << endl;
     return;
   }
@@ -58,14 +61,6 @@ void run_shms_reference_time_setup(TString infile, int RunNumber, TString outfil
 
   gHcParms->LoadParmValues((DBRequest*)&trigRefList, trig_prefix);
   gHcParms->LoadParmValues((DBRequest*)&windowList, prefix);
-
-  //cout << fdc_tdcrefcut[0] << endl;
-  //cout << fhodo_tdcrefcut[0] << endl;
-  //cout << fhodo_adcrefcut[0] << endl;
-  //cout << fngcer_adcrefcut[0] << endl;
-  //cout << fhgcer_adcrefcut[0] << endl;
-  //cout << faero_adcrefcut[0] << endl;
-  //cout << fcal_adcrefcut[0] << endl;
 
   gStyle->SetOptStat(0);
   gROOT->SetBatch(kTRUE);    //do not display plots
@@ -250,57 +245,51 @@ void run_shms_reference_time_setup(TString infile, int RunNumber, TString outfil
   c6_pT->Write();
   c7_pFADC_ROC2->Write();
 
-  TString outplot = "move_it";
-  c1_pdcref->Print(Form("%s.pdf[", outplot.Data()));
-  c1_pdcref->Print(Form("%s.pdf", outplot.Data()));
-  c2_pdcref->Print(Form("%s.pdf", outplot.Data()));
-  c3_pdcref->Print(Form("%s.pdf", outplot.Data()));
-  c4_pdcref->Print(Form("%s.pdf", outplot.Data()));
-  c5_pdcref->Print(Form("%s.pdf", outplot.Data()));
-  c6_pT->Print(Form("%s.pdf", outplot.Data()));
-  c7_pFADC_ROC2->Print(Form("%s.pdf", outplot.Data()));
-  
-  // TString outplot = "move_it";  
-  // c1_pdcref->Print(Form("%s.pdf",outplot.Data()));;  
-  // c2_pdcref->Print(Form("%s.pdf",outplot.Data()));;
-  // c3_pdcref->Print(Form("%s.pdf",outplot.Data()));;
-  // c4_pdcref->Print(Form("%s.pdf",outplot.Data()));;
-  // c5_pdcref->Print(Form("%s.pdf",outplot.Data()));;
-  // c6_pT->Print(Form("%s.pdf",outplot.Data()));;
-  // c7_pFADC_ROC2->Print(Form("%s.pdf",outplot.Data()));;
+  TString outplot = outfile;
+  outplot.ReplaceAll(".root", ".pdf");
+  c1_pdcref->Print(Form("%s[", outplot.Data()));
+  c1_pdcref->Print(Form("%s", outplot.Data()));
+  c2_pdcref->Print(Form("%s", outplot.Data()));
+  c3_pdcref->Print(Form("%s", outplot.Data()));
+  c4_pdcref->Print(Form("%s", outplot.Data()));
+  c5_pdcref->Print(Form("%s", outplot.Data()));
+  c6_pT->Print(Form("%s", outplot.Data()));
+  c7_pFADC_ROC2->Print(Form("%s", outplot.Data()));
+
+  // If mode is shms, close the pdf here, otherwise it stays open to fill with hms plots for coin mode.
+  if(spec.CompareTo("shms",TString::kIgnoreCase)==0) {c7_pFADC_ROC2->Print(Form("%s]", outplot.Data()));}
   
   f2->Write();
   f2->Close();
-  //f1->Close();
     
   return;
 }
 
 void run_hms_reference_time_setup(TString infile, int RunNumber, TString outfile="move_me.root", TString spec="hms") {
   gROOT->SetBatch(kTRUE);    //do not display plots
-  // Load Global parameters
-  // Add variables to global list.
+  // Load Global parameters and add variables to global list.
   gHcParms->Define("gen_run_number", "Run Number", RunNumber);
+
+  // Load HMS parameters for HMS trigger configuration
   if(spec.CompareTo("hms",TString::kIgnoreCase)==0) {
-    gHcParms->AddString("g_ctp_database_filename", "DBASE/HMS/standard.database");
-    gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
-    gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
-    gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
-    // Load params for HMS trigger configuration
-    gHcParms->Load("PARAM/TRIG/thms.param");
-    // Load fadc debug parameters
-    gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
-  } else if (spec.CompareTo("coin",TString::kIgnoreCase)==0) {
     gHcParms->AddString("g_ctp_database_filename", "DBASE/COIN/standard.database");
     gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
     gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
     gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
-    // Load params for COIN trigger configuration
-    gHcParms->Load("PARAM/TRIG/tcoin.param");
-    // Load fadc debug parameters
+    gHcParms->Load(gHcParms->GetString("g_ctp_htrigdet_filename"));
+    gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
+  }
+  // Load HMS parameters for COIN trigger configuration
+  else if (spec.CompareTo("coin",TString::kIgnoreCase)==0) {
+    gHcParms->AddString("g_ctp_database_filename", "DBASE/COIN/standard.database");
+    gHcParms->Load(gHcParms->GetString("g_ctp_database_filename"), RunNumber);
+    gHcParms->Load(gHcParms->GetString("g_ctp_parm_filename"));
+    gHcParms->Load(gHcParms->GetString("g_ctp_kinematics_filename"), RunNumber);
+    gHcParms->Load(gHcParms->GetString("g_ctp_trigdet_filename"));
     gHcParms->Load("PARAM/HMS/GEN/h_fadc_debug.param");
     gHcParms->Load("PARAM/SHMS/GEN/p_fadc_debug.param");
-  } else {
+  }
+  else {
     cout << "Unknown Spec: " << spec << endl;
     return;
   }
@@ -331,13 +320,6 @@ void run_hms_reference_time_setup(TString infile, int RunNumber, TString outfile
 
   gHcParms->LoadParmValues((DBRequest*)&trigRefList, trig_prefix);
   gHcParms->LoadParmValues((DBRequest*)&windowList, prefix);
-
-  //cout << fdc_tdcrefcut[0] << endl;
-  //cout << fhodo_tdcrefcut[0] << endl;
-  //cout << fhodo_adcrefcut[0] << endl;
-  //cout << fcer_adcrefcut[0] << endl;
-  //cout << fcal_adcrefcut[0] << endl;
-  //cout << fhms_tdcrefcut[0] << endl;
 
   gStyle->SetOptStat(0);
   gROOT->SetBatch(kTRUE);    //do not display plots
@@ -419,6 +401,7 @@ void run_hms_reference_time_setup(TString infile, int RunNumber, TString outfile
   vector<TH1F*> hT_time_raw_ref_mult2;
   vector<TH1F*> hT_time_raw_ref_mult3;
   for(int i=0; i < n_hT_refs; i++) {
+
     hT_time_raw_ref.push_back((TH1F*) f1->Get(Form("hT%d_tdc_time_raw",i+1)));
     hT_tdc_mult_ref.push_back((TH1F*) f1->Get(Form("hT%d_tdc_mult",i+1)));
     hT_time_raw_ref_mult1.push_back((TH1F*) f1->Get(Form("hT%d_tdc_time_raw_mult1",i+1)));
@@ -426,6 +409,18 @@ void run_hms_reference_time_setup(TString infile, int RunNumber, TString outfile
     hT_time_raw_ref_mult3.push_back((TH1F*) f1->Get(Form("hT%d_tdc_time_raw_mult3",i+1)));
 
     c6_hT->cd(i%2+1);
+
+    if(spec.CompareTo("coin",TString::kIgnoreCase)==0 && i==0) {
+      c6_hT->cd(1)->Clear();
+
+      TLatex text;
+      text.SetTextAlign(22);
+      text.SetTextSize(0.06);
+      text.DrawLatexNDC(0.5, 0.5, "hT1 not used in COIN mode");
+
+      continue;
+    }
+    
     c6_hT->cd(i%2+1)->SetLogy();
     hT_time_raw_ref[i]->Draw();
     if(i==0) {
@@ -522,15 +517,24 @@ void run_hms_reference_time_setup(TString infile, int RunNumber, TString outfile
   c7_hFADC_ROC1->Write();
 
 
-  TString outplot = "move_it";  
-  c1_hdcref->Print(Form("%s.pdf",outplot.Data()));;
-  c2_hdcref->Print(Form("%s.pdf",outplot.Data()));;
-  if(histoFound) {
-    c3_hdcref->Print(Form("%s.pdf",outplot.Data()));;
+  TString outplot = outfile;
+  outplot.ReplaceAll(".root", ".pdf");
+  
+  if(spec.CompareTo("hms",TString::kIgnoreCase)==0) {
+  // If HMS mode, open the PDF
+  c1_hdcref->Print(Form("%s[", outplot.Data()));
   }
-  c6_hT->Print(Form("%s.pdf",outplot.Data()));;
-  c7_hFADC_ROC1->Print(Form("%s.pdf",outplot.Data()));;
-  c7_hFADC_ROC1->Print(Form("%s.pdf]",outplot.Data()));; 
+  
+  c1_hdcref->Print(Form("%s",outplot.Data()));;
+  c2_hdcref->Print(Form("%s",outplot.Data()));;
+  if(histoFound) {
+    c3_hdcref->Print(Form("%s",outplot.Data()));;
+  }
+  c6_hT->Print(Form("%s",outplot.Data()));;
+  c7_hFADC_ROC1->Print(Form("%s",outplot.Data()));;
+
+  // Always close the PDF here regardless of run mode
+  c7_hFADC_ROC1->Print(Form("%s]",outplot.Data()));; 
   
   f2->Write();
   f2->Close();
@@ -538,20 +542,6 @@ void run_hms_reference_time_setup(TString infile, int RunNumber, TString outfile
     
   return;
 }
-
-// void run_coin_reference_time_setup(TString infile, int RunNumber, TString outfile="move_me.root") {
-
-//   TString outplot = "move_it";
-
-//   TCanvas ctmp;
-//   //ctmp.Print(Form("%s.pdf[", outplot.Data()));
-  
-//   run_shms_reference_time_setup(infile, RunNumber, outfile,"coin");
-//   run_hms_reference_time_setup(infile, RunNumber, outfile,"coin");
-
-//   //ctmp.Print(Form("%s.pdf]", outplot.Data()));
-//   return;
-// }
 
 void run_coin_reference_time_setup(TString infile, int RunNumber, TString outfile="move_me.root") {
   run_shms_reference_time_setup(infile, RunNumber, outfile,"coin");
