@@ -212,11 +212,11 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0,
   // electrons in SHMS, protons in HMS
   // ---------------------------------
   // Add physics module to calculate primary (scattered electrons) beam kinematics
-  THcPrimaryKine* pkin_primary = new THcPrimaryKine("H.kin.primary", "HMS Single Arm Kinematics", "H", "H.rb");
-  gHaPhysics->Add(pkin_primary);
+  THcPrimaryKine* hkin_primary = new THcPrimaryKine("H.kin.primary", "HMS Single Arm Kinematics", "H", "H.rb");
+  gHaPhysics->Add(hkin_primary);
   // Add physics module to calculate secondary (scattered hadrons) beam kinematics
-  THcSecondaryKine* hkin_secondary = new THcSecondaryKine("P.kin.secondary", "SHMS Single Arm Kinematics", "P", "H.kin.primary");
-  gHaPhysics->Add(hkin_secondary);
+  THcSecondaryKine* pkin_secondary = new THcSecondaryKine("P.kin.secondary", "SHMS Single Arm Kinematics", "P", "H.kin.primary");
+  gHaPhysics->Add(pkin_secondary);
  
   //=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
   // Global Objects & Event Handlers
