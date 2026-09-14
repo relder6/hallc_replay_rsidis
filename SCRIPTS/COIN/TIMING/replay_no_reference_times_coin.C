@@ -61,7 +61,7 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0,
   //Now remove all Timing Windows and revert to 
   //the default values specifid in hallc_replay
   gHcParms->AddString("g_ctp_no_timing_windows_filename", "PARAM/SHMS/GEN/pdet_cuts_no_timing_windows.param");
-  gHcParms->Load(gHcParms->GetString("g_ctp_no_hms_timing_windows_filename"));
+  gHcParms->Load(gHcParms->GetString("g_ctp_no_timing_windows_filename"));
   gHcParms->AddString("g_ctp_no_hms_timing_windows_filename", "PARAM/HMS/GEN/hdet_cuts_no_timing_windows.param");
   gHcParms->Load(gHcParms->GetString("g_ctp_no_hms_timing_windows_filename"));
 
@@ -283,7 +283,12 @@ void replay_no_reference_times_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0,
   // Define output ROOT file
   analyzer->SetOutFile(ROOTFileName.Data());
   // Define DEF-file+
-  analyzer->SetOdefFile("DEF-files/COIN/TIMING/no_reference_times.def");
+  if (RunNumber <= 27000) {
+    analyzer->SetOdefFile("DEF-files/COIN/TIMING/no_reference_times.def");
+  }
+  else {
+    analyzer->SetOdefFile("DEF-files/COIN/TIMING/no_reference_times_phaseII.def");
+  }
   // Define cuts file
   analyzer->SetCutFile("DEF-files/COIN/PRODUCTION/CUTS/coin_production_cuts.def");  // optional
   // Start the actual analysis.
