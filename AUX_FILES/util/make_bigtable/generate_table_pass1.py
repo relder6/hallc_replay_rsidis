@@ -508,7 +508,7 @@ def collect_run_info(input_csv, output_csv, run_type_map):
     results = []
     issues = []
 
-    # ihwp_map = load_ihwp_table("updated_merged_run_start_stop_log_100625.csv")
+    ihwp_map = load_ihwp_table("updated_merged_run_start_stop_log_100625.csv")
     coin_block_ratios_map = load_coin_block_ratios("coin_block_ratios_pass1.csv")
     boil_corr_map = load_boil_corr("boiling_correction_factors.csv")
 
@@ -649,16 +649,16 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             merged.update(props)
 
             # Include IHWP value
-            #merged["IHWP"] = ihwp_map.get(str(run_number), "")
+            merged["IHWP"] = ihwp_map.get(str(run_number), "")
 
-            # ihwp_info = ihwp_map.get(str(run_number),{})
-            # merged["IHWP"]=ihwp_info.get("IHWP",-999)
+            ihwp_info = ihwp_map.get(str(run_number),{})
+            merged["IHWP"]=ihwp_info.get("IHWP",-999)
             # merged["start_time"] = ihwp_info.get("start_time", -999)
             # merged["stop_time"] = ihwp_info.get("stop_time", -999)
 
-            merged["IHWP"]= -999
-            merged["start_time"] = -999
-            merged["stop_time"] = -999
+            # merged["IHWP"]= -999
+            # merged["start_time"] = -999
+            # merged["stop_time"] = -999
 
             coin_block_ratio_info = coin_block_ratios_map.get(str(run_number), {})
             merged["coinblock_ratio"] = coin_block_ratio_info.get("coinblock_ratio", -999)
