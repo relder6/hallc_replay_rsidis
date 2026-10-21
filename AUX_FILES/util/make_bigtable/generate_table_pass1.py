@@ -36,7 +36,7 @@ HMS_MAP = {
     "ps6" : find_variable(68,"Ps6_factor ="),
     "pTRIG3" : find_variable(126,"["),
     "pTRIG4" : find_variable(127,"["),
-    "phys_triggers": find_variable(91,"Physics Triggers (current cut) :"),
+    "phys_triggers": find_variable(91,"Accepted Physics Triggers      :"),
     "hEL_REAL": find_variable(101,"hEL_REAL  :"),
     "pEL_REAL": find_variable(120, "pEL_REAL  :"),
     "electr_livetime": find_variable(175,"OG 6 GeV Electronic Live Time (100, 150) :"),
@@ -115,33 +115,6 @@ run_type_map = {
     "COIN": COIN_MAP,
 }
 
-# === Run-dependent line numbers ===
-# Some report entries sit on a different line for part of the run range.
-# Each entry: (first_run, last_run, {variable: line_number}), both ends included.
-# The label text searched for stays the one defined in the map above.
-#LINE_OVERRIDES = {
-#    "HMS": [],
-#    "SHMS": [],
-#    "COIN": [
-#        (23839, 24874, {"ps5_comp_livetime": 254, "ps6_comp_livetime": 257}),
-#    ],
-#}
-
-
-#def mapping_for_run(spectrometer, run_number):
-    # Returns the map to parse this run's report with: the standard map,
-    # with any line numbers replaced for runs inside an override range.
-#    mapping = dict(run_type_map[spectrometer])
-#    try:
-#        run = int(run_number)
-#    except (TypeError, ValueError):
-#        return mapping
-#    for first_run, last_run, new_lines in LINE_OVERRIDES.get(spectrometer, []):
-#        if first_run <= run <= last_run:
-#            for var, line_number in new_lines.items():
-#                _, pattern = mapping[var]
-#                mapping[var] = find_variable(line_number, pattern)
-#    return mapping
 
 def parse_report_file(report_path, mapping):
     props = {}
@@ -536,10 +509,6 @@ LIVETIME_TRIGGERS = {
 
 
 def select_comp_livetime(props, spectrometer):
-    # Returns (comp_livetime, trigger_used).
-    # A trigger is enabled when its prescale factor is > 0 (-1 means disabled).
-    # The livetime is read from the matching "<psN>_comp_livetime" report entry,
-    # given in %, and converted to a fraction capped at 1.
     for ps in LIVETIME_TRIGGERS[spectrometer]:
         factor = props.get(ps)
         if factor is None or factor <= 0:
@@ -550,6 +519,44 @@ def select_comp_livetime(props, spectrometer):
         return min(round(livetime / 100, 5), 1.0), ps
     return -999, None                # no enabled trigger
 
+# Fix for HMS livetimes ill runs (implementing H.hEL_REAL.scaler in the livetime formula)
+LIVETIME_FIX_CSV = "hms_pass1_livetime_problem_runs.csv"
+ 
+def load_livetime_fix_table(fix_csv_path):
+    # Reads the problematic runlist:
+    fix_map = {}
+    with open(fix_csv_path, newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            row = {k.strip(): v for k, v in row.items() if k}
+            run = str(row.get("run")).strip()
+            if not run:
+                continue
+            try:
+                scaler = float(row.get("h_EL_REAL_scaler"))
+            except (TypeError, ValueError):
+                scaler = None
+            fix_map[run] = scaler
+    return fix_map
+
+def corrected_hms_livetime(props, spectrometer, h_el_real_scaler):
+    phys_triggers = props.get("phys_triggers")
+ 
+    for ps in LIVETIME_TRIGGERS["HMS"]:
+        factor = props.get(ps)
+        if factor is None or factor <= 0:
+            continue
+        if phys_triggers is None:
+            return -999, "livetime fix: phys_triggers not found in report"
+        if h_el_real_scaler is None or h_el_real_scaler <= 0:
+            return -999, f"livetime fix: missing or invalid h_EL_REAL_scaler in {LIVETIME_FIX_CSV}"
+ 
+        livetime = phys_triggers / (h_el_real_scaler / factor)
+        if livetime > 1:
+            return 1.0, f"livetime fix: {ps} livetime computed as {livetime:.5f} (> 1), capped at 1"
+        return round(livetime, 5), None
+ 
+    return -999, f"livetime fix: no enabled trigger among {LIVETIME_TRIGGERS['HMS']}"
 
 def collect_run_info(input_csv, output_csv, run_type_map):
     keep_columns = ["run", "ebeam", "target", "hms_p", "hms_th", "shms_p", "shms_th", "run_type"] 
@@ -560,6 +567,8 @@ def collect_run_info(input_csv, output_csv, run_type_map):
     fan_map = load_fan_table("fan_freq_pass0.csv")
     coin_block_ratios_map = load_coin_block_ratios("coin_block_ratios_pass1.csv")
     boil_corr_map = load_boil_corr("boiling_correction_factors_pass1.csv")
+
+    livetime_fix_map = load_livetime_fix_table(LIVETIME_FIX_CSV)
 
     with open(input_csv, newline="") as f:
         reader = csv.DictReader(f)
@@ -585,8 +594,6 @@ def collect_run_info(input_csv, output_csv, run_type_map):
             props = {}
             if report_path and os.path.exists(report_path):
                 spectrometer = next(k for k, v in run_type_map.items() if v is mapping)
-                # To use LINE_OVERRIDES again, parse with
-                # mapping_for_run(spectrometer, run_number) instead of mapping.
                 props = parse_report_file(report_path, mapping)
 
                 # Electronic livetime: reports give it in %, store it as a fraction
@@ -595,7 +602,18 @@ def collect_run_info(input_csv, output_csv, run_type_map):
 
                 # Computer livetime from the trigger that is actually enabled
                 props["comp_livetime"], lt_trigger = select_comp_livetime(props, spectrometer)
-                if props["comp_livetime"] == -999:
+                run_key = str(run_number).strip()
+                if run_key in livetime_fix_map:
+                    # Report livetime is wrong for this run: recompute it
+                    props["comp_livetime"], fix_issue = corrected_hms_livetime(
+                        props, spectrometer, livetime_fix_map[run_key])
+                    if fix_issue:
+                        issues.append({
+                            "run": run_number,
+                            "run_type": run_type,
+                            "issue": fix_issue
+                        })
+                elif props["comp_livetime"] == -999:
                     issues.append({
                         "run": run_number,
                         "run_type": run_type,
