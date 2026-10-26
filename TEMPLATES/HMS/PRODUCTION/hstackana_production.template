@@ -160,8 +160,8 @@ HMS Computer Dead Time : {100.0 - (hcut_TRIG1.npassed / H.hTRIG1.scaler)*100.0:%
 Pre-Scaled Ps3 HMS Computer Live Time : {(hcut_physics_accepted.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
 Pre-Scaled Ps3 HMS Computer Dead Time : {100.0 - (hcut_physics_accepted.npassed / (H.hTRIG1.scaler/ghconfig_ti_ps_factors[2]))*100.0:%3.4f} %
 
-Pre-Scaled Ps4 HMS Computer Live Time : {(hcut_physics_accepted.npassed / (H.hTRIG2.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
-Pre-Scaled Ps4 HMS Computer Dead Time : {100.0 - (hcut_physics_accepted.npassed / (H.hTRIG2.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
+Pre-Scaled Ps4 HMS Computer Live Time : {(hcut_physics_accepted.npassed / (H.hEL_REAL.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
+Pre-Scaled Ps4 HMS Computer Dead Time : {100.0 - (hcut_physics_accepted.npassed / (H.hEL_REAL.scaler/ghconfig_ti_ps_factors[3]))*100.0:%3.4f} %
 
 Total Live Time (EDTM) : {(hcut_edtm_accepted.npassed / H.EDTM.scaler)*100.0:%3.4f} %
 Total Dead Time (EDTM) : {100.0 - (hcut_edtm_accepted.npassed / H.EDTM.scaler)*100.0:%3.4f} %
